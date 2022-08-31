@@ -1,5 +1,7 @@
 package ctrl;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -8,10 +10,11 @@ import dao.BoardDAO;
 import vo.BoardVO;
 import vo.MemberVO;
 
-public class InsertBAction implements Action {
+public class MyboardAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ArrayList<BoardVO> datas = new ArrayList<BoardVO>(); 
 		ActionForward forward = null;
 		BoardDAO dao = new BoardDAO();
 		BoardVO vo = new BoardVO();
@@ -19,26 +22,17 @@ public class InsertBAction implements Action {
 		HttpSession session=request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		vo.setMid(mvo.getMid()); // 현재 접속한 멤버 id
-		vo.setBtitle(request.getParameter("btitle")); // 입력받은 게시글 제목
-		vo.setBcontent(request.getParameter("bcontent")); // 입력한 게시글 내용
+		vo.setMid(mvo.getMid()); // 현재 접속한 사람의 id
 		
-		if(dao.insert_B(vo)) { // 게시글 등록
-			forward = new ActionForward();
-			forward.setPath("community.do");
-			forward.setRedirect(true);
-		}
-		else {
-			throw new Exception("insertB 오류");
-		}
+		datas = dao.selectAll_MEMBER(vo); // 내가 쓴 게시글 배열
+		
+		request.setAttribute("datas", datas);
+		
+		forward = new ActionForward();
+		forward.setPath("/myboard.jsp");
+		forward.setRedirect(false);
 					
 		return forward;
 	}
-	
-}
 
-/*
-		if(bDAO.insert(bVO)){
-			response.sendRedirect("ctrlB.jsp?action=main");
-		}
-*/
+}

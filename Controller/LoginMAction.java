@@ -17,15 +17,15 @@ public class LoginMAction implements Action{
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = new MemberVO();
 		
-		vo.setMid(request.getParameter("mid"));
-		vo.setMpw(request.getParameter("mpw"));
-		vo = dao.selectOne_LOGIN(vo);
+		vo.setMid(request.getParameter("mid")); // 입력받은 id
+		vo.setMpw(request.getParameter("mpw")); // 입력받은 비밀번호
+		vo = dao.selectOne_LOGIN(vo); // 로그인
 		
 		if(vo!=null) {
 			MemberVO member = new MemberVO();
-			member.setMid(vo.getMid());
-			member.setNickname(vo.getNickname());
-			member.setRole(vo.getRole());
+			member.setMid(vo.getMid()); // 접속한 사람의 id
+			member.setNickname(vo.getNickname()); // 접속한 사람의 닉네임
+			member.setRole(vo.getRole()); // 접속한 사람의 역할
 			session.setAttribute("member", member);
 		}
 		else {

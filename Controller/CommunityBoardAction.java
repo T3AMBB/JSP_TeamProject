@@ -15,16 +15,16 @@ public class CommunityBoardAction implements Action{
 		BoardDAO dao = new BoardDAO();
 		BoardVO vo = new BoardVO();
 		
-		
 //		vo.setSearchContent(searchContent);
 //		vo.setSearchCondition(searchCondition);
 		
-		BoardSet data = dao.sql_selectOne_BoardOne(vo);
+		vo.setBid(Integer.parseInt(request.getParameter("bid"))); // 게시글 번호
+		BoardSet data = dao.sql_selectOne_BoardOne(vo); // 게시글 상세 페이지 데이터
 		
 		if(data != null) {
 			request.setAttribute("data", data);
 			forward=new ActionForward();
-			forward.setPath("/community.jsp");
+			forward.setPath("/communityBoard.jsp");
 			forward.setRedirect(false);
 		}
 		else {

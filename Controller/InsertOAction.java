@@ -21,19 +21,19 @@ public class InsertOAction implements Action {
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
 
-		vo.setOcontent(request.getParameter("ocontent"));
-		vo.setMid(mvo.getMid());
-		vo.setOstar(Integer.parseInt(request.getParameter("ostar")));
+		vo.setOcontent(request.getParameter("ocontent")); // 리뷰 내용
+		vo.setMid(mvo.getMid()); // 작성자 id
+		vo.setOstar(Integer.parseInt(request.getParameter("ostar"))); // 평점
 		
-		request.setAttribute("bid", request.getParameter("bid"));
+		request.setAttribute("nid", request.getParameter("nid")); // 페이징 유지할 소설번호
 		
-		if(dao.insert_O(vo)) {
+		if(dao.insert_O(vo)) { // 리뷰 등록
 			forward = new ActionForward();
 			forward.setPath("novelBoard.do");
-			forward.setRedirect(true);
+			forward.setRedirect(false);
 		}
 		else {
-			throw new Exception("insertO ����");
+			throw new Exception("insertO 오류");
 		}
 					
 		return forward;

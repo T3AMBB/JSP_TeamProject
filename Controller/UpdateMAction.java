@@ -19,18 +19,18 @@ public class UpdateMAction implements Action{
 		HttpSession session=request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		vo.setMid(mvo.getMid());
-		vo.setMpw(request.getParameter("mpw"));
-		vo.setMname(request.getParameter("mname"));
+		vo.setMid(mvo.getMid()); // 현재 접속한 멤버 id
+		vo.setMpw(request.getParameter("mpw")); // 수정할 비밀번호
+		vo.setNickname(request.getParameter("mnickname")); // 수정할 닉네임
 
-		if(dao.update_MY(vo)) {
+		if(dao.update_MY(vo)) { // 멤버 정보 수정
 			session.invalidate();
 			forward = new ActionForward();
 			forward.setPath("main.do");
 			forward.setRedirect(true);
 		}
 		else {
-			throw new Exception("updateM ����");
+			throw new Exception("updateM 오류");
 		}
 		
 		return forward;

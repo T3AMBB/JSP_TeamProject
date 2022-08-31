@@ -5,40 +5,23 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class FrontController
- */
-@WebServlet("*.do") // *.do 占쎌뒄筌ｏ옙占쎌뱽 占쎈땾占쎈뻬占쎈릭筌롳옙 占쎈퉸占쎈뼣 占쎈선占쎈걗占쎈�믭옙�뵠占쎈�∽옙肉� 占쎌벥占쎈퉸 FC嚥∽옙 占쎌궎野껊슢留�!!!
+
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public FrontController() {
-    	// 占쎌겲 FrontController fc=new FrontController(); xxx
-    	// 揶쏆빘猿쒙옙�넅�몴占� 占쎈릭筌욑옙占쎈륫占쎈릭占쎈뮉占쎈쑓, 筌롫뗄苑뚳옙諭띄몴占� 占쎄텢占쎌뒠占쎈막占쎈땾占쎌뿳占쎈�占쎈뼄...?!!
-    	// 占쎄퐣�뇡遺얄뵺 �뚢뫂�믭옙�뵠占쎄섐(==揶쏆빘猿쒐몴占� �꽴占썹뵳�뗫릭占쎈뮉 野껓옙) == 占쎌럲 占쎄퐣甕곤옙 == 占쎈꽦筌�節뚯뵠 占쎄퐣�뇡遺얄뵺占쎌뱽 揶쏆빘猿쒙옙�넅占쎈퉸雅뚯눊�э옙�뿳占쎈�占쎌벉!!    	
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
@@ -54,7 +37,7 @@ public class FrontController extends HttpServlet {
 		
 		if(command.equals("/main.do")) {
 			try {
-				forward = new NovelMainAction().execute(request, response);
+				forward = new MainAction().execute(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -111,6 +94,22 @@ public class FrontController extends HttpServlet {
 		else if(command.equals("/mypage.do")) {
 			try {
 				forward = new MypageAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/myreview.do")) {
+			try {
+				forward = new MyreviewAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/myboard.do")) {
+			try {
+				forward = new MyboardAction().execute(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

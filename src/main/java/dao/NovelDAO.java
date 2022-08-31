@@ -29,7 +29,7 @@ public class NovelDAO {
    // 메인페이지에서 사용할 selectAll
    final String sql_selectOne_N="SELECT * FROM NOVEL WHERE NID=?";
    // 소설 하나만 뽑는 selectOne
-   final String sql_insert_N="INSERT INTO NOVEL VALUES((SELECT NVL(MAX(NID),0)+1 FROM NOVEL),?,?,?,?,?,?)";
+   final String sql_insert_N="INSERT INTO NOVEL VALUES((SELECT NVL(MAX(NID),0)+1 FROM NOVEL),?,?,?,?,?)";
    final String sql_sample = "SELECT COUNT(*) AS CNT FROM NOVEL";
    // 프로그램 실행 시 샘플데이터 확인 용
    
@@ -156,7 +156,6 @@ public class NovelDAO {
           pstmt.setString(3, nvo.getNimg());
           pstmt.setString(4, nvo.getNgenre()); 
           pstmt.setString(5, nvo.getNwriter()); 
-          pstmt.setDouble(6, 0);
 //          rs2.getDouble("AVG");
 
           pstmt.executeUpdate();

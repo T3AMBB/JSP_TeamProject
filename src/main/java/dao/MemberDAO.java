@@ -29,6 +29,8 @@ public class MemberDAO {
 	// 멤버의 계정권한 업데이트
 	final String sql_delete_M="DELETE FROM MEMBER WHERE MID=? AND MPW=?";
 	// 회원탈퇴
+	final String sql_check="SELECT * FROM MEMBER WHERE MID=?"; 
+	// 아이디 중복검사
 
 	public boolean update_MPW(MemberVO mvo) { //회원비밀번호 수정
 	      conn = JDBCUtil.connect();
@@ -235,6 +237,24 @@ public class MemberDAO {
 		}
 		return datas;
 	}
+	   public int check(MemberVO mvo) {
+	         conn=JDBCUtil.connect();
+	         System.out.println("로그DAO 중복검사");
+	         try {
+	            pstmt=conn.prepareStatement(sql_check);
+	            pstmt.setString(1, mvo.getMid());
+	            ResultSet rs=pstmt.executeQuery();
+	            if(rs.next()) { // 아이디가 있니?
+	               return 0; // 아이디 중복 발생...
+	            }
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	            return -1;
+	         } finally {
+	            JDBCUtil.disconnect(pstmt, conn);
+	         }
+	         return 1; // 아이디 중복 아님!
+	   }
 
 
 }

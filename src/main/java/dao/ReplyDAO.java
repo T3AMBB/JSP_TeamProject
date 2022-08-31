@@ -14,7 +14,6 @@ public class ReplyDAO {
 	PreparedStatement pstmt;
 	final String sql_selectOne_R="SELECT * FROM REPLY LEFT OUTER JOIN MEMBER ON REPLY.MID=MEMBER.MID WHERE RID=?";
 	final String sql_selectAll_R="SELECT * FROM REPLY LEFT OUTER JOIN MEMBER ON REPLY.MID=MEMBER.MID ORDER BY RID DESC";
-	// SQL 에서 변경했던 SELECTALL을 그대로 복사하여 기존에 검색하는 SELECTALL에 추가하였다.
 	
 	final String sql_insert_R="INSERT INTO REPLY VALUES((SELECT NVL(MAX(RID),3000)+1 FROM REPLY),?,TO_DATE(sysdate,'yyyy.mm.dd hh24:mi'),?,?)";
 		// INSERT INTO BOARD VALUES((서브쿼리),?,?,?)
@@ -65,7 +64,6 @@ public class ReplyDAO {
 				if(rs.getString("NICKNAME")==null) {
 					data.setMid("[이름없음]");
 				} else {
-					// WRITER대신 MNAME을 담아서 WRITER를 뽑으면 MNAME이 출력된다.
 					data.setMid(rs.getString("NICKNAME"));
 				}
 				datas.add(data);

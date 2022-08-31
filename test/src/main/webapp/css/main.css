@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+div,h1,h2,ul,li,form {
+	margin: 5px;
+	padding: 2px;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+a:hover {
+	color: red;
+}
+
+#header{
+	background: lightpink;
+}
+.gnb{
+	background: lightblue;
+}
+
+#wrapper{
+	background: burlywood;
+}
+#content{
+	background: blanchedalmond;
+}
+#main{
+	background: lightgray;
+}
+.reply{
+	background: blanchedalmond;
+}
+
+#footer{
+	background: mediumturquoise;
+}

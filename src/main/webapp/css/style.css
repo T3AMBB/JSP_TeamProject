@@ -4170,7 +4170,7 @@ ul {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: #dd003f;
+  background-color: #ffd200;
   padding: 8px 15px;
   width: 110px;
   height: 38px;
@@ -4443,6 +4443,8 @@ ul {
   flex-wrap: wrap;
   align-items: inherit;
   margin-right: -30px;
+  width:85%;
+  margin:auto;
 }
 @media (max-width: 991px) {
   .flex-wrap-movielist .movie-item-style-2 {
@@ -4784,7 +4786,7 @@ ul {
 .tabs ul.tab-links-3 li a {
   font-family: 'Dosis', sans-serif;
   font-size: 14px;
-  color: #abb7c4;
+  color: black;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -4850,7 +4852,7 @@ ul {
 }
 .tabs ul.tabs-mv li.active a,
 .tabs ul.tabs-mv li:hover a {
-  border-bottom: 3px solid #dcf836;
+  
 }
 .tabs ul.tabs-series li {
   margin-right: 40px;
@@ -5807,8 +5809,8 @@ ul {
   color: #abb7c4;
   font-weight: bold;
   text-transform: uppercase;
-  background-color: #dd003f;
-  color: #ffffff;
+  background-color: #ffd220;
+  color: black;
   padding: 13px 25px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -6026,8 +6028,8 @@ ul {
   padding: 18px;
   display: flex;
   flex-direction: column;
-  background-color: #07101a;
-  border: 3px solid #0c1c2c;
+  background-color: #ffd220;
+  
 }
 .movie-single .movie-img .movie-btn a,
 .movie-single .mv-ceb .movie-btn a {
@@ -7534,6 +7536,7 @@ p.ceb-single {
 .buster-light .movie-items,
 .buster-light .latestnew {
   background-color: #fff;
+  padding:0;
 }
 .buster-light .title-hd h2 {
   color: #020d18;
@@ -7733,7 +7736,7 @@ p.ceb-single {
 }
 .buster-light .tabs ul.tabs-mv li.active a,
 .buster-light .tabs ul.tabs-mv li:hover a {
-  color: #dcf836;
+  color: #ffd200;
 }
 .buster-light .tabs .movie-item-style-2 .mv-item-infor .describe {
   color: #020d18;
@@ -7985,7 +7988,7 @@ header .navbar-default .navbar-nav {
 header .navbar-default .navbar-nav li a {
   font-family: 'Dosis', sans-serif;
   font-size: 14px;
-  color: #abb7c4;
+  color: black;
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
@@ -7999,8 +8002,8 @@ header .navbar-default .navbar-nav li a i {
   margin-top: 3px;
 }
 header .navbar-default .navbar-nav li.btn a {
-  background-color: #dd003f;
-  color: #ffffff;
+  background-color: black;
+  color:white;
   padding: 11px 25px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -8424,4 +8427,117 @@ footer.full-width-ft .ft-copyright {
   color: #8c9296;
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
+}
+.formform{
+	    text-align: end;
+    width: 95%;
+}
+/* 커뮤니티 게시글 내부 드롭다운 메뉴용 시작 */
+.que:first-child {
+   /* border-top: 1px solid black; */
+   
+}
+
+.que {
+   position: relative;
+   padding: 17px 0;
+   cursor: pointer;
+   font-size: 14px;
+   border-bottom: 1px solid #dddddd;
+   width:100%;
+}
+
+.que::before {
+   display: inline-block;
+   font-size: 14px;
+   color: #006633;
+   margin: 0 5px;
+}
+
+.que.on>span {
+   font-weight: bold;
+   color: #006633;
+}
+
+.anw {
+   display: none;
+   overflow: hidden;
+   font-size: 14px;
+   background-color: #f4f4f2;
+   padding: 27px 0;
+   border: 1px solid black;
+}
+
+.rrep {
+   border: 1px solid red;
+   margin-left: 5%;
+}
+
+.anw::before {
+   display: inline-block;
+   font-size: 14px;
+   font-weight: bold;
+   color: #666;
+   margin: 0 5px;
+}
+
+.arrow-wrap {
+   position: absolute;
+   top: 50%;
+   right: 10px;
+   transform: translate(0, -50%);
+}
+
+.que .arrow-top {
+   display: none;
+}
+
+.que .arrow-bottom {
+   display: block;
+}
+
+.que.on .arrow-bottom {
+   display: none;
+}
+
+.que.on .arrow-top {
+   display: block;
+}
+
+/* 커뮤니티 게시글 내부 드롭다운 메뉴용 끝 */
+/* 별점 css*/
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+#myform label:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#reviewContents {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: solid 1.5px #D3D3D3;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
 }

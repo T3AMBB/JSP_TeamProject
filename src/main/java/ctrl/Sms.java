@@ -40,27 +40,35 @@ public class Sms extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 로직
-		SmsVO vo = new SmsVO();
-		SmsDAO dao = new SmsDAO();
-
-		vo.setPhoneNumber(request.getParameter("phoneNumber"));
-		String randMpw = Integer.toString(dao.sms(vo));
+System.out.println("로그1 ["+request.getParameter("mid")+"]");
 		
-		MemberVO mvo = new MemberVO();
-		MemberDAO mdao = new MemberDAO();
- 		
-		//HttpSession session = request.getSession();
-		//String mid = (String) session.getAttribute("mid");
-		//mvo.setMid(mid);
-		mvo.setMpw(randMpw);
-		mdao.update2_M(mvo);
+		MemberVO mvo=new MemberVO();
+		MemberDAO mdao=new MemberDAO();
+		SmsVO svo=new SmsVO();
+		SmsDAO sdao = new SmsDAO();
 		
-		// ****요청했던 곳(ajax)으로 result 값을 보낼 예정****
-		// 보통 어노테이션을 사용하는데 어려워서 이번 경우만 응답방식으로 이용
-		response.setContentType("application/x-json; charset=UTF-8"); // 이거 json파일이다 utf-8로 인코딩해!
-		response.getWriter().write(""); // 문자열을 더하면서 String 문자열로 변환 
-		// 스프링에선 @RB를 사용 => String으로 데이터를 변환 작업
+		mvo.setMid(request.getParameter("mid"));
+		int result=mdao.check(mvo);
+		
+		mvo=mdao.selectOne_MID(mvo);
+		System.out.println(mvo.getMphone());
+		
+		if(mvo!=null) {
+			svo.setPhoneNumber(mvo.getMphone());
+			String randMpw = Integer.toString(sdao.sms(svo));
+		
+			mvo.setMpw(randMpw);
+			System.out.println("로그2 ["+request.getParameter("mid")+"]");
+			mvo.setMid(request.getParameter("mid"));
+			System.out.println(mvo);
+			mdao.update_MPW(mvo);
+		}
+		
+		
+		// 요청했던 곳으로 result값을 보낼 예정
+		response.setContentType("application/x-json; charset=UTF-8");
+		response.getWriter().write(result+" "); // 문자열을 더함으로써 String으로 변환
+		
 	}
 
 }

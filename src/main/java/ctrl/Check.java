@@ -26,23 +26,23 @@ public class Check extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("로그1 ["+request.getParameter("mid")+"]");
 		
-		MemberDAO dao=new MemberDAO();
-		MemberVO vo=new MemberVO();
-		vo.setMid(request.getParameter("mid"));
-		int result=dao.check(vo);
+		MemberVO mvo=new MemberVO();
+		MemberDAO mdao=new MemberDAO();
+		
+		mvo.setMid(request.getParameter("mid"));
+		int result=mdao.check(mvo);
 		
 		// 요청했던 곳으로 result값을 보낼 예정
 		response.setContentType("application/x-json; charset=UTF-8");
-		response.getWriter().write(result+""); // 문자열을 더함으로써 String으로 변환
+		response.getWriter().write(result+" "); // 문자열을 더함으로써 String으로 변환
+		
 	}
 
 }

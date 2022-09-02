@@ -68,38 +68,42 @@
                <form>
                     아이디
                     <input type="text" name="mid" id="mid" placeholder="회원아이디 입력" required="required" />
-                    <input type="button" value="아이디 체크" onclick="check();">
+                    <input type="button" value="아이디 체크" onclick="sms();">
                     <div class="result1"></div>
-                <br>
-              
+                    </form>
+               <!--   <br>
+              		<input type="hidden" name="phoneNumberCheck" class="result2">
                     휴대폰번호
                     <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="01012345678" required="required" />
-                    <input type="button" value="임시 비밀번호 발급" onclick="sms();"id="btu">
+                    <input type="button" value="전화번호 확인" id="btu"><input type="button" value="임시 비밀번호 발급" onclick="sms();"id="btu1">
               	</form>
-                    <div id="result"></div>
+                    <div id="result"></div> -->
 <script type="text/javascript">
-document.getElementById("btu").disabled=true;
-function check(){
+//document.getElementById("btu").disabled=true;
+//document.getElementById("btu1").disabled=true;
+function sms(){
 	   var mid=$("#mid").val(); // id=mid의 value값
 	   $.ajax({
-	      type: 'GET', //어떤 방식으로 보낼지 "get, post"
-	      url: 'check?mid='+mid, //어떤 요청을 하는지 -> mid라는 변수만들어서 사용자가 입력한 값을 확보한 상태 > DB한테 물어볼 예정 "mid라는 값이 DB에 이미 있어?" => DAO(M)로 가야함 > 이제 C가(서블릿) 작업을 할 차례구나! 
-	      data: {mid:mid},
+	      type: 'GET', 
+	      url: 'Sms?mid='+mid, //사용자가 입력한 값을 확보한 상태 > DB한테 물어볼 예정 "mid라는 값이 DB에 이미 있어?" => DAO(M)로 가야함 > 이제 C가(서블릿) 작업을 할 차례구나! 
+	      data: {"mid":mid},
 	      success: function(result){ // 성공했을 때
-	         // result 는 String
-	         // JS-1 : 모든데이터가 객체
-	         // JS-2 : 동적타이핑 지원
+	         
 	         console.log("로그1 ["+result+"] succes");
-	         if(result==1){ // 중복이 아님, 사용가능
-	            $(".result1").text("가입된 회원이 아닙니다.");
-	            $(".result1").css("color","red");
-	            document.getElementById("btu").disabled=true;
-	            console.log("로그2 ["+result+"] succes");
+	         if(result==0){ // 가입된회원
+	        
+		         $(".result1").text("가입된 휴대전화로 임시비밀번호 전송되었습니다.");
+		            $(".result1").css("color","blue");
+		            
+		            document.getElementById("btu").disabled=true;
+		            console.log("로그2 ["+result+"] succes");
 	         }else{ // 중복, 사용불가
-	            $(".result1").text("가입시 휴대전화번호 입력해주세요.");
-	            $(".result1").css("color","blue");
-	            console.log("로그3 ["+result+"] succes");
-	            document.getElementById("btu").disabled=false;
+	        	 $(".result1").text("가입된 회원이 아닙니다.");
+		         $(".result1").css("color","red");
+		       //  $(".result2").val(result);
+		         
+		         console.log("로그3 ["+result+"] succes");
+		            //document.getElementById("btu").disabled=false;            
 	         }
 	      },
 	      error: function(request, status, error){
@@ -159,7 +163,7 @@ function check(){
                      </a>
                   </li>
                   <li class="dropdown first">
-                     <a href="communityMain.do">
+                     <a href="community.do">
                      커뮤니티
                      </a>
                   </li>
@@ -299,7 +303,7 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
     };
     </script>
 <!-- 카카오 스크립트 종료 -->
-<!-- 문자 api -->
+<!-- 문자 api 
 <script type="text/javascript">
 
 	function sms(){
@@ -322,4 +326,4 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
 			
 		});
 	}
-</script>
+</script> -->

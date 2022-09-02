@@ -86,31 +86,40 @@
 							
 							
 							<div>
+								<c:if test="${member==null}">
+									<img id="photo1" onclick="lstatus();" alt="추천 비활성화" src="images/thumbsUp2.png" width="70px" height="70px">
+								</c:if>
 								<c:if test="${lvo.lstatus=='0'}">
 								<img id="photo1" onclick="lstatus();" alt="추천 비활성화" src="images/thumbsUp2.png" width="70px" height="70px">
 								</c:if>
 								<c:if test="${lvo.lstatus=='1'}">
-								<img id="photo1" onclick="lstatus();" alt="추천 비활성화" src="images/thumbsUp1.png" width="70px" height="70px">
+								<img id="photo1" onclick="lstatus();" alt="추천 활성화" src="images/thumbsUp1.png" width="70px" height="70px">
 								</c:if>
 								<input id="result1" type="text" value="${b.cnt_l}" width="70px" height="70px">
 							</div>
 							
 							<div >
+								<c:if test="${member==null}">
+								<img id="photo2" onclick="nlstatus();" alt="비추천 비활성화" src="images/thumbsDown2.png" width="70px" height="70px">
+								</c:if>
 								<c:if test="${lvo.nlstatus=='0'}">
 								<img id="photo2" onclick="nlstatus();" alt="비추천 비활성화" src="images/thumbsDown2.png" width="70px" height="70px">
 								</c:if>
 								<c:if test="${lvo.nlstatus=='1'}">
-								<img id="photo2" onclick="nlstatus();" alt="비추천 비활성화" src="images/thumbsDown1.png" width="70px" height="70px">
+								<img id="photo2" onclick="nlstatus();" alt="비추천 활성화" src="images/thumbsDown1.png" width="70px" height="70px">
 								</c:if>
 								<input id="result2" type="text" value="${b.cnt_n}" width="70px" height="70px">
 							</div>
 							
 							<div>
+								<c:if test="${member==null}">
+								<img id="photo3" onclick="report();" alt="신고 비활성화" src="images/alert2.png" width="70px" height="70px">
+								</c:if>
 								<c:if test="${lvo.report=='0'}">
 								<img id="photo3" onclick="report();" alt="신고 비활성화" src="images/alert2.png" width="70px" height="70px">
 								</c:if>
 								<c:if test="${lvo.report=='1'}">
-								<img id="photo3" onclick="report();" alt="신고 비활성화" src="images/alert1.png" width="70px" height="70px">
+								<img id="photo3" onclick="report();" alt="신고 활성화" src="images/alert1.png" width="70px" height="70px">
 								</c:if>
 								<input id="result3" type="text" value="${b.cnt_r}" width="70px" height="70px">
 							</div>

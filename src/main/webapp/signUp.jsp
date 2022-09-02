@@ -33,9 +33,72 @@
 <div class="buster-light">
    <div class="page-single">
       <div class="container">
-            <div class="searh-form">
-                  <h4 class="sb-title">SIGN UP</h4>
+            <form action="insertM.do" id="form-style-123" name="regForm" style="display:inline-block; text-align:center;">
+                     <div class="row">
+                  <h2>&nbsp;&nbsp;&nbsp;&nbsp;회원 정보 입력</h2>
+                  <hr>
+                  <table id="signup-form" style="background-color:#f5f5dc; padding:1%; margin-left:28%; border:1px solid grey; border-radius:0.25rem; width:45%;">
+                  <colgroup>
+                  <col style="width:25%;">
+                  <col style="width:75%;">
+                  </colgroup>
+               
+                  <tbody style="border:0px solid black;">
+                     <tr>
+                        <th style="border-right: none;">아이디</th>
+                        <td style="border-right: none; ">
+                           <input type="text" name="mid" id="signup_form_id" maxlength="15" onchange="check();" placeholder="5자리 이상 입력해주세요"required="required" />               
+                  		<span class="result"></span>
+                  </td>
+                     </tr>
+                     <tr>
+                        <th style="border-right: none;">비밀번호</th>
+                        <td style="border-right: none; ">
+                          <input type="password" name="mpw" id="signup_form_password" maxlength="25" placeholder="영문, 숫자, 특수문자 8~25자리를 입력해주세요."  required="required" />
+                     
+                  </td>
+                     </tr>
+                    <tr>
+                        <th style="border-right: none;">비밀번호확인</th>
+                    <td style="border-right: none; ">
+                        <input type="password" id="signup_form_password_re" maxlength="25" placeholder="비밀번호 재입력" required="required" />
+               </td>
+                     </tr>
+                     <tr>
+                        <th style="border-right: none;">이름</th>
+                     <td style="border-right: none; ">                            
+                        <input type="text" name="mname" id="signup_form_Name" maxlength="15" placeholder="이름을 입력해주세요." required="required" />
+               </td>
+                     </tr>
+                     <tr>
+                        <th style="border-right: none;">별명</th>
+                     <td style="border-right: none; ">
+                   <input type="text" name="nickname" id="signup_form_Nickname" maxlength="15" placeholder="사용하실 별명을 입력해주세요." required="required" />
+                </td>
+                     </tr>                 
+                     <tr>
+                        <th style="border-right: none;">휴대폰 번호</th>
+                        <td style="border-right: none; ">                           
+                           <input type="text" name="mphone" id="signup_form_phoneNumber" placeholder="010XXXXXXX"  required="required" />
+                  </td>
+                     </tr>
+                     <tr>
+                        <th style="border-right: none; border-bottom: none;">이메일</th>
+                       <td style="border-right: none; border-bottom: none;">                           
+                       <input type="email" name="memail" id="signup-form-email" placeholder="아이디@메일주소" required="required" />
+                  </td>
+                     </tr>                  
+                  </tbody>
+                  </table>
+                  <div style="margin-right:45%; float:right;">
+                           <input type="button" class="submit" value="가입 완료하기"  onclick="joinFormCheck()">
+                        </div>
+                        </div>
+                        
+                        </form>
+                        
                   <br><br>
+                  <!-- 기존 회원가입 입력 폼 
                   <form action="insertM.do" class="form-style-123" name="regForm">
                      <div class="row">
                         <div class="col-md-12 form-it">
@@ -71,9 +134,8 @@
                            <input type="button" class="submit" value="가입 완료하기"  onclick="joinFormCheck()">
                         </div>
                      </div>
-                  </form>
+                  </form> -->
                </div>
-            </div>
          </div>
       </div>
 

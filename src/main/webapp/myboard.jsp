@@ -40,8 +40,8 @@
                   <!-- myboard.do -->
                   <!-- myreview.do -->
                      <li><a href="mypage.do">내 정보</a></li>
-                     <li class="active"><a href="myboard.jsp">내가 쓴 게시글</a></li>
-                     <li><a href="myreview.jsp">내가 쓴 리뷰</a></li>
+                     <li class="active"><a href="myboard.do">내가 쓴 게시글</a></li>
+                     <li><a href="myreview.do">내가 쓴 리뷰</a></li>
                   </ul>
 					</div>
 					

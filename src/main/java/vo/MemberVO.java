@@ -8,11 +8,8 @@ public class MemberVO {
 	private String mphone;
 	private String memail;
 	private String role;
-	private int report;
+	private int report; // 신고를 뽑기 위한 변수
 	private int cnt; // 관리자에서 회원 전체 뽑을 시 페이징을 위한 임시 변수
-	
-	
-	
 
 	public int getCnt() {
 		return cnt;

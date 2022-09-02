@@ -1,6 +1,6 @@
 package util;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
@@ -8,7 +8,7 @@ public class JDBCUtil {
  
 	static final String driverName="oracle.jdbc.driver.OracleDriver";
 	static final String url="jdbc:oracle:thin:@localhost:1521:xe";
-	static final String user="MIN";
+	static final String user="kim";
 	static final String password="1234";	
 
 	public static Connection connect() {

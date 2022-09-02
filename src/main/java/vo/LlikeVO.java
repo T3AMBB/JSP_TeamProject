@@ -10,11 +10,6 @@ public class LlikeVO {
 	private int report;
 	private boolean flag; // 좋아요 싫어요 기준
 	
-	
-	
-	
-	
-	
 
 	public boolean isFlag() {
 		return flag;

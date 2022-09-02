@@ -28,7 +28,7 @@ public class BoardDAO {
 	// 게시글 하나만 뽑는 것
 	//========================================================================================================================================================
 
-	final String sql_selectAll_BoardAll_ADMIN="SELECT * FROM BOARD LEFT OUTER JOIN MEMBER ON BOARD.MID=MEMBER.MID ORDER BY BID DESC WHERE MEMBER.MID=?";
+	final String sql_selectAll_BoardAll_ADMIN="SELECT * FROM BOARD LEFT OUTER JOIN MEMBER ON BOARD.MID=MEMBER.MID WHERE MEMBER.MID=? ORDER BY BID DESC";
 	// 게시글 전체 뽑는 것 = 내가 쓴 게시글 
 	//========================================================================================================================================================
 
@@ -41,9 +41,12 @@ public class BoardDAO {
 	final String sql_selectAll_Reply_re="SELECT * FROM REPLY_RE LEFT OUTER JOIN REPLY ON REPLY_RE.RID=REPLY.RID WHERE REPLY_RE.RID=? ORDER BY RRID DESC ";
 	// 대댓글 전체 출력 = 해당 댓글과 맞는 대댓글  
 
-	final String sql_insert_B="INSERT INTO BOARD VALUES((SELECT NVL(MAX(BID),1000)+1 FROM BOARD),?,?,TO_DATE(sysdate,'yyyy.mm.dd hh24:mi'),?)";
+	final String sql_insert_B="INSERT INTO BOARD VALUES((SELECT NVL(MAX(BID),1000)+1 FROM BOARD),?,?,TO_CHAR(sysdate,'yyyy.mm.dd hh24:mi'),?,?)";
 	final String sql_update_B="UPDATE BOARD SET TITLE=?,CONTENT=? WHERE BID=?";
 	final String sql_delete_B="DELETE FROM BOARD WHERE BID=?";
+	
+	final String sql_selectAll_BOARD_COUNT="SELECT COUNT(*) AS CNT FROM BOARD";
+
 
 	//========================================================================================================================================================
 
@@ -61,7 +64,25 @@ public class BoardDAO {
 
 	final String sql_selectOne_Report="SELECT COUNT(*) AS CNT FROM BOARD B JOIN LLIKE L ON B.BID=L.BID "
 			+ "WHERE L.BID=? AND L.REPORT=1";
-
+	
+	public BoardVO selectAll_BOARD_COUNT (BoardVO bvo){
+		BoardVO data=new BoardVO();
+		conn=JDBCUtil.connect();
+		try {
+			pstmt=conn.prepareStatement(sql_selectAll_BOARD_COUNT);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				data.setBcnt(rs.getInt("CNT")); // 전체 게시글 
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.disconnect(pstmt, conn);
+		}      
+		return data;
+	}
+	
 	public int selectOne_cnt (BoardVO bvo){
 		conn=JDBCUtil.connect();
 		int cnt = 0;
@@ -145,6 +166,7 @@ public class BoardDAO {
 		conn = JDBCUtil.connect();
 		try {
 			pstmt = conn.prepareStatement(sql_selectAll_BoardAll_ADMIN);
+			pstmt.setString(1, bvo.getMid());
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				BoardVO data = new BoardVO();
@@ -187,6 +209,8 @@ public class BoardDAO {
 				boardVO.setBcontent(rs.getString("BCONTENT"));
 				boardVO.setBtitle(rs.getString("BTITLE"));
 				boardVO.setBdate(rs.getString("BDATE"));
+				boardVO.setBimg(rs.getString("BIMG"));
+				System.out.println(rs.getString("BIMG"));
 				pstmt=conn.prepareStatement(sql_selectOne_Lstatus);
 				pstmt.setInt(1, rs.getInt("BID"));
 				ResultSet rs4=pstmt.executeQuery();
@@ -409,6 +433,7 @@ public class BoardDAO {
 			pstmt.setString(1, bvo.getBtitle());
 			pstmt.setString(2, bvo.getBcontent());
 			pstmt.setString(3, bvo.getMid());
+			pstmt.setString(4, bvo.getBimg());
 
 
 			pstmt.executeUpdate();

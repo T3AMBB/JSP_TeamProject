@@ -1,6 +1,6 @@
 package dao;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +18,7 @@ public class MemberDAO {
 	// 마이페이지 // 비밀번호 찾기
 	final String sql_selectAll_MEMBER="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM MEMBER ORDER BY MID DESC) A WHERE ROWNUM < = ?+19)WHERE RNUM  > = ?"; // 관리자에서 필요
 	
+	final String sql_selectAll_MEMBER_COUNT="SELECT COUNT(*) AS CNT FROM MEMBER";
 	
 	final String sql_insert_M="INSERT INTO MEMBER VALUES(?,?,?,?,?,?,?)";
 	// 회원가입
@@ -31,6 +32,24 @@ public class MemberDAO {
 	// 회원탈퇴
 	final String sql_check="SELECT * FROM MEMBER WHERE MID=?"; 
 	// 아이디 중복검사
+	
+	public MemberVO selectAll_MEMBER_COUNT (MemberVO bvo){
+		MemberVO data=new MemberVO();
+		conn=JDBCUtil.connect();
+		try {
+			pstmt=conn.prepareStatement(sql_selectAll_MEMBER_COUNT);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				data.setCnt(rs.getInt("CNT")); // 전체 게시글 
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.disconnect(pstmt, conn);
+		}      
+		return data;
+	}
 
 	public boolean update_MPW(MemberVO mvo) { //회원비밀번호 수정
 	      conn = JDBCUtil.connect();
@@ -82,7 +101,7 @@ public class MemberDAO {
 		try {
 			pstmt = conn.prepareStatement(sql_update_MY); 
 			pstmt.setString(1, mvo.getMpw());
-			pstmt.setString(2, mvo.getMname());
+			pstmt.setString(2, mvo.getNickname());
 			pstmt.setString(3, mvo.getMid());
 			int res = pstmt.executeUpdate();
 			if (res == 0) {
@@ -173,6 +192,7 @@ public class MemberDAO {
 			JDBCUtil.disconnect(pstmt, conn);
 		}
 	}
+	
 	public MemberVO selectOne_LOGIN(MemberVO mvo) { //로그인에 사용
 		conn = JDBCUtil.connect();
 		ResultSet rs = null;

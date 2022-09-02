@@ -17,16 +17,16 @@ public class UpdateRRAction implements Action{
 		Reply_reDAO dao = new Reply_reDAO();
 		Reply_reVO vo = new Reply_reVO();
 		
-		vo.setRrcontent(request.getParameter("content"));
-		vo.setRrid(Integer.parseInt(request.getParameter("rrid")));		
+		vo.setRrcontent(request.getParameter("content")); // 수정할 대댓글 내용
+		vo.setRrid(Integer.parseInt(request.getParameter("rrid"))); // 수정할 대댓글 번호
 		
-		if(dao.update_RR(vo)) {
+		if(dao.update_RR(vo)) { // 대댓글 수정
 			forward = new ActionForward();
 			forward.setPath("communityBoard.do");
 			forward.setRedirect(false);
 		}
 		else {
-			throw new Exception("updateRR ����");
+			throw new Exception("updateRR 오류");
 		}
 		
 		request.setAttribute("cnt", request.getParameter("cnt"));

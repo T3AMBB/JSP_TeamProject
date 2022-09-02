@@ -16,15 +16,15 @@ public class DeleteRRAction implements Action {
 		Reply_reDAO dao = new Reply_reDAO();
 		Reply_reVO vo = new Reply_reVO();
 		
-		vo.setRrid(Integer.parseInt(request.getParameter("rrid")));
+		vo.setRrid(Integer.parseInt(request.getParameter("rrid"))); // 삭제할 대댓글 번호
 		
-		if(dao.delete_RR(vo)) {
+		if(dao.delete_RR(vo)) { // 대댓글 삭제
 			forward = new ActionForward();
 			forward.setPath("communityBoard.do");
 			forward.setRedirect(false);
 		}
 		else {
-			throw new Exception("deleteRR ����");
+			throw new Exception("deleteRR 오류");
 		}
 		
 		request.setAttribute("cnt", request.getParameter("cnt"));

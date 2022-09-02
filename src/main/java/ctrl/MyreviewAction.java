@@ -25,7 +25,7 @@ public class MyreviewAction implements Action{
 		vo.setMid(mvo.getMid()); // 현재 접속한 사람의 id
 
 		datas = dao.selectAll_MYPAGE(vo); // 내가 쓴 리뷰 배열
-		
+		System.out.println(datas);
 		request.setAttribute("datas", datas);
 		
 		forward = new ActionForward();

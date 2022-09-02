@@ -15,17 +15,17 @@ public class DeleteOAction implements Action {
 		OpinionDAO dao = new OpinionDAO();
 		OpinionVO vo = new OpinionVO();
 		
-		vo.setOid(Integer.parseInt(request.getParameter("oid")));
+		vo.setOid(Integer.parseInt(request.getParameter("oid"))); // 삭제할 리뷰 번호
 				
-		request.setAttribute("bid", request.getParameter("bid"));
+		request.setAttribute("nid", request.getParameter("nid")); // 페이징 유지할 소설 번호
 		
-		if(dao.update_O(vo)) {
+		if(dao.delete_O(vo)) { // 리뷰 삭제
 			forward = new ActionForward();
 			forward.setPath("novelBoard.do");
-			forward.setRedirect(true);
+			forward.setRedirect(false);
 		}
 		else {
-			throw new Exception("updateO ����");
+			throw new Exception("deleteO 오류");
 		}
 					
 		return forward;

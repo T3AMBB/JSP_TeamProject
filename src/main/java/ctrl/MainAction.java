@@ -18,13 +18,13 @@ public class MainAction implements Action{
 		ArrayList<NovelVO> datas;
 		NovelDAO dao=new NovelDAO();
 		NovelVO vo=new NovelVO();
-		
+/*		
 		String searchCondition = request.getParameter("searchCondition");
 		String searchContent = request.getParameter("searchContent");
 		String paramCnt=request.getParameter("cnt");
 		
-		vo.setSearchContent(searchContent);
 		vo.setSearchCondition(searchCondition);
+		vo.setSearchContent(searchContent);
 		
 		if(paramCnt==null || paramCnt.equals("")){
 			datas=dao.selectAll(vo);
@@ -34,8 +34,8 @@ public class MainAction implements Action{
 			vo.setNcnt(Integer.parseInt(paramCnt));
 			datas=dao.selectAll_N(vo);
 		}
-				
-		
+*/			
+		datas=dao.selectAll(vo); // 모든 소설 데이터
 		request.setAttribute("datas", datas);
 		
 		ActionForward forward=new ActionForward();

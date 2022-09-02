@@ -69,8 +69,8 @@
                   <!-- myboard.do -->
                   <!-- myreview.do -->
                      <li  class="active"><a href="mypage.do">내 정보</a></li>
-                     <li><a href="myboard.jsp">내가 쓴 게시글</a></li>
-                     <li><a href="myreview.jsp">내가 쓴 리뷰</a></li>
+                     <li><a href="myboard.do">내가 쓴 게시글</a></li>
+                     <li><a href="myreview.do">내가 쓴 리뷰</a></li>
                      <li class="loginLink1"><a href="#">회원탈퇴</a></li>
                   </ul>
                </div>
@@ -79,25 +79,26 @@
          <div class="col-md-9 col-sm-12 col-xs-12">
             <div class="form-style-1 user-pro" >
                <form action="updateM.do" class="user">
+                <input type="hidden" name="mpw" value="${data.mpw}">
                   <h4>내 프로필</h4>
                   <div class="row">
                      <div class="col-md-6 form-it">
                         <label>이름</label>
-                        <input type="text" name="mname" value="${data.mname}" readonly>
+                        <input type="text" name="mname" value="${member.mname}" readonly>
                      </div>
                      <div class="col-md-6 form-it">
                         <label>별명</label>
-                        <input type="text" name="nickname" value="${data.nickname}" >
+                        <input type="text" name="nickname" value="${member.nickname}" >
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-md-6 form-it">
                         <label>휴대폰번호</label>
-                        <input type="text" name="mphone" value="${data.mphone}" readonly>
+                        <input type="text" name="mphone" value="${member.mphone}" readonly>
                      </div>
                      <div class="col-md-6 form-it">
                         <label>이메일</label>
-                        <input type="text" name="memail" value="${data.memail}" readonly >
+                        <input type="text" name="memail" value="${member.memail}" readonly >
                      </div>
                   </div>
                   <div class="row">

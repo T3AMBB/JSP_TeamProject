@@ -10,7 +10,7 @@ public class NovelVO {
 	private String nwriter;
 	private String searchCondition;
 	private String searchContent;
-	private double avg;
+	private double avg; // 별점 평균을 뽑기위한 변수
 	private int ncnt; // 페이징처리를 위한 변수
 	
 	

@@ -18,7 +18,7 @@ public class MypageAction implements Action{
 		HttpSession session=request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		vo.setMid(mvo.getMid());
+		vo.setMid(mvo.getMid()); // 현재 접속한 사람 id
 		vo = dao.selectOne_MID(vo); // 마이 페이지용 selectOne
 		
 		if(vo != null) {

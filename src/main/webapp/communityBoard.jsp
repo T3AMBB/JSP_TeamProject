@@ -5,7 +5,16 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-	<!-- Basic need -->
+<%
+	/*
+1.댓글 대댓글 적용 완료
+1-1. 대댓글은 드랍다운으로 댓글에 종속되고 클릭하면 메뉴출력 완료
+1-2. 댓글입력창은 상단위치 / 드랍다운 메뉴(대댓글)의 경우엔 아래쪽에 출력 (for each문 말미에 붙이면 될듯함 완료)
+
+2.UI 구조 잡아야함. 80%
+*/
+%>
+<!-- Basic need -->
 	<title>커뮤니티 상세페이지</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="">
@@ -18,143 +27,306 @@
 	<!-- Mobile specific meta -->
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<meta name="format-detection" content="telephone-no">
-
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+	crossorigin="anonymous"></script>
 	<!-- CSS files -->
 	<link rel="stylesheet" href="css/plugins.css">
 	<link rel="stylesheet" href="css/style.css">
 
 </head>
+
+
 <body>
-<!-- header section-->
 <bb:header/>
-<!-- end of header section-->
+	<!-- end of header section-->
 
-<div class="buster-light">
-<!-- blog detail section-->
-<div class="page-single">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-9 col-sm-12 col-xs-12">
-				<div class="blog-detail-ct">
-					<h1>${data.btitle}</h1>
-					<span class="time">${data.bdate}</span>
-					<img src="images/uploads/blog-detail.jpg" alt="">
-					<p>
-					${data.bcontent}
-				
-					Joss Whedon has a little bit of a history with superhero movies, and for creating layered female characters. After his documented frustrations with Wonder Woman, he's getting another chance at the DC Extended Universe and Warner Bros., closing in on a deal to write direct and produce a Batgirl movie.</p>
+	<div class="buster-light">
+		<!-- blog detail section-->
+		<div class="page-single">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9 col-sm-12 col-xs-12">
+						<div class="blog-detail-ct">
+							<div class="btitle" style="margin-bottom:1%;">
+								<h2 style="display: inline-block; float: left;">
+								
+								<c:set var="n" value="${data}"/>
+								<c:set var="b" value="${n.boardVO}"/>
 
-					<p>It's a somewhat surprising, but welcome move, given that Whedon has taken a long break to write something original, but has now pivoted to focus on developing the Batgirl project. First appearing in 1967 in Gardner Fox and Carmine Infantino's story run The Million Dollar Debut Of Batgirl, she's the superhero alias of Barbara Gordon, daughter of Gotham City Police Commissioner James Gordon. So we can likely expect J.K. Simmons' take on Gordon to appear along with other Bat-related characters.</p>
+								
+									<b>제목입니다${b.btitle} (댓글수 출력)</b>
+								</h2>
+								<div class="cncjs" style="display: inline-block; float: right;">
+								<i class="fa-solid fa-thumbs-up"></i>
+								
+<i class="fa-regular fa-thumbs-up"></i>
+									<a>추천<i class="fa-solid fa-thumbs-up" style="font-size: 22px;"> </i></a>
+									<i class="fa-regular fa-thumbs-up" style="font-size: 22px;"></i>
+								</div>
+							
+							<div>
+							<br><br>
+							<hr style="border: 1px solid black;">
+							<a>작성자 : 김 아무개${b.mid} |</a> 
+							<span class="rcd">추천수 :${b.cnt_l}</span> <span class="Nrcd">비추천수 : ${b.cnt_n}</span>
+							<span class="time" style="float: right;">작성시간:
+								YYYY::MM:DD${b.bdate}</span> 
+								</div>
+							</div>
+								<img src="images/uploads/blog-detail.jpg" alt="">
+								
+							<p>
+								${b.bcontent}
+								<!--게시글 작성에서 받아온 게시글 (리뷰)-->
+								<a> 제목부분 div 묶을건지? 고민중 리뷰하는 소설의 이미지가 들어갈것인지? 가나다라 이것이 소설의
+									후기입니다 </a>
+									</p>
+							<hr style="border: 1px solid black;">
+							
+							
+							
+							<div>
+								<c:if test="${lvo.lstatus=='0'}">
+								<img id="photo1" onclick="lstatus();" alt="추천 비활성화" src="images/thumbsUp2.png" width="70px" height="70px">
+								</c:if>
+								<c:if test="${lvo.lstatus=='1'}">
+								<img id="photo1" onclick="lstatus();" alt="추천 비활성화" src="images/thumbsUp1.png" width="70px" height="70px">
+								</c:if>
+								<input id="result1" type="text" value="${b.cnt_l}" width="70px" height="70px">
+							</div>
+							
+							<div >
+								<c:if test="${lvo.nlstatus=='0'}">
+								<img id="photo2" onclick="nlstatus();" alt="비추천 비활성화" src="images/thumbsDown2.png" width="70px" height="70px">
+								</c:if>
+								<c:if test="${lvo.nlstatus=='1'}">
+								<img id="photo2" onclick="nlstatus();" alt="비추천 비활성화" src="images/thumbsDown1.png" width="70px" height="70px">
+								</c:if>
+								<input id="result2" type="text" value="${b.cnt_n}" width="70px" height="70px">
+							</div>
+							
+							<div>
+								<c:if test="${lvo.report=='0'}">
+								<img id="photo3" onclick="report();" alt="신고 비활성화" src="images/alert2.png" width="70px" height="70px">
+								</c:if>
+								<c:if test="${lvo.report=='1'}">
+								<img id="photo3" onclick="report();" alt="신고 비활성화" src="images/alert1.png" width="70px" height="70px">
+								</c:if>
+								<input id="result3" type="text" value="${b.cnt_r}" width="70px" height="70px">
+							</div>
 
-					<p>Based on Lissa Evans’ novel “Their Finest Hour and a Half” and directed by Lone Scherfig (“An Education”), the film is set in London during World War II when the British ministry was utilizing propaganda films to boost morale. Arterton plays Catrin Cole, a scriptwriter who is brought on to handle the women’s dialogue — commonly referred to as “the nausea.” The film, opening this week, features an outstanding ensemble, including Bill Nighy as a washed-up actor and Sam Claflin as Catrin’s fellow writer and sparring partner.</p>
-					<div class="flex-it flex-ct">
-						<p>
-							Arterton is next set to play Vita Sackville-West in Vita and Virginia about her relationship with Virginia Woolf. She spoke to Variety about working with female directors, remarkable women, and why she shies away from the
-							term “strong female character.” <br>
+							<!-- comment form -->
+							<div class="comment-form">
+								<h4>댓글을 남겨주세요 입력사이즈/VARCHAR</h4>
+								<form action="insertR.do" method="post">
+									<%
+										//댓글 정보 입력란 삭제 로그인된 session정보를 불러와 데이터 넘기기
+									%>
+									<input type="hidden" name="bid" value="${b.bid}">
+									<div class="row">
+										<div class="col-md-12">
+											<textarea style="height:100px;" name="content" id=""
+												placeholder="댓글을 작성해주세요 최대 500자"></textarea>
+										</div>
+									</div>
+									<input class="submit" type="submit" placeholder="submit">
+								</form>
+							</div>
+							<!-- comment form finish-->
 
-							I’m friends with the producer who I worked with on Byzantium and he sent it to me. I read the book as well, which is fantastic. You’re always looking for untold stories and many times they’re women’s stories. What surprised me is that it centers around a woman who’s really quite timid. I guess she’s allowed to be because all of the other characters.
-						</p>
-						<img src="images/uploads/blog-detail2.jpg" alt="">
-					</div>
-					<p>Man Down debuted simultaneously on digital platforms in the U.K., meaning it was never going to be a big earner in theaters. But no one expected only one ticket sale. As of Tuesday, the Reel Cinema in Burnley was still carrying Man Down, which also stars Gary Oldman, Jai Courtney and Kate Mara.</p>
-					<p>In the film, LaBeouf stars as a war veteran suffering from PTSD following his return from Afghanistan. The indie project, reuniting the star with A Guide to Recognizing Your Saints director Dito Montile, made its world premiere at the 2016 Venice Film Festival before making making a stop at the Toronto International Film Festival.</p>
-					<!-- share link -->
-					<div class="flex-it share-tag">
-						<div class="social-link">
-							<h4>Share it</h4>
-							<a href="#"><i class="ion-social-facebook"></i></a>
-							<a href="#"><i class="ion-social-twitter"></i></a>
-							<a href="#"><i class="ion-social-googleplus"></i></a>
-							<a href="#"><i class="ion-social-pinterest"></i></a>
-							<a href="#"><i class="ion-social-linkedin"></i></a>
-						</div>
-						<div class="right-it">
-							<h4>Tags</h4>
-							<a href="#">Gray,</a>
-							<a href="#">Film,</a>
-							<a href="#">Poster</a>
-						</div>
-					</div>
-					<!-- comment items -->
-					<div class="comments">
-						<h4>04 Comments rcnt.size()</h4>
-						<div class="cmt-item flex-it">
-							<img src="images/uploads/author.png" alt="">
-							<div class="author-infor">
-								<div class="flex-it2">
-									<h6><a href="#">m.nickname</a></h6> <span class="time"> r.rdate- 27 Mar 2017</span>
-								</div>
-								<p>r.rcontent  Even though Journey's classic vocalist Steve Perry didn’t reunite with the band during their Rock Hall performance (to the dismay of hopeful fans), he did offer up a touching speech.</p>
-								<p><a class="rep-btn" href="#">+ Reply</a></p>
-							</div>
-						</div>
-						<div class="cmt-item flex-it reply">
-							<img src="images/uploads/author2.png" alt="">
-							<div class="author-infor">
-								<div class="flex-it2">
-									<h6><a href="#">m.nickname Joss Whedon</a></h6> <span class="time"> r.rrdate- 27 Mar 2017</span>
-								</div>
-								<p>r.rrcontent Prince died not long after the 2016 Rock Hall ceremony, so this year's edition featured Lenny Kravitz and a full gospel choir performing a swamp-funk take on When Doves Cry.</p>
-							</div>
-						</div>
-						<div class="cmt-item flex-it reply">
-							<img src="images/uploads/author3.png" alt="">
-							<div class="author-infor">
-								<div class="flex-it2">
-									<h6><a href="#">Dave McNary</a></h6> <span class="time"> - 27 Mar 2017</span>
-								</div>
-								<p>Blue Sky Studios is one of the world’s leading digital animation movie studios and we are proud of their commitment to stay and grow in Connecticut.</p>
-							</div>
-						</div>
-						<div class="cmt-item flex-it">
-							<img src="images/uploads/author4.png" alt="">
-							<div class="author-infor">
-								<div class="flex-it2">
-									<h6><a href="#">Margot Robbie</a></h6> <span class="time"> - 27 Mar 2017</span>
-								</div>
-								<p>Joan Baez was the sharpest of the Rock Hall inductees, singing about deportees and talking social activism as well as joking about her age and the likelihood that a good portion of the Barclays. </p>
-								<p><a class="rep-btn" href="#">+ Reply</a></p>
+
+							<!-- comment items -->
+							<div class="comments">
+								<h4>04 Comments rcnt.size() 코멘트 갯수 (댓글개수)</h4>
+								
+								++++++++======== <br>
+								[${n.replySet}]<br>
+								===============
+								<br><hr><br>
+								<!-- 2번 댓글창 -->
+								<c:forEach var="rs" items="${n.replySet}">
+								
+									<c:set var="r" value="${rs.replyVO}"/>
+									${r.mid} | ${r.rcontent}
+									
+									<c:forEach var="rr" items="${rs.rrList}">
+										${rr.mid} | ${rr.rrcontent}
+									</c:forEach>
+									
+								</c:forEach>
+								<c:forEach var="rs" items="${n.replySet}">
+								
+								<c:set var="r" value="${rs.replyVO}"/>
+								<div id="Accordion_wrap" style="width:100%;">											
+											<div class="que" style="border:1px solid black;">
+												<div>
+					
+													<div href="#" style="display:inline-block; float:left; margin-right:5%; font-weight: 600; ">${r.mid}</div>| <div style="display:inline-block; border:1px red black;">${r.rcontent} !댓글 내용! 예제 2번입니다.
+													
+												</div><div class="time" style="float:right;">${r.rdate}</div><br>
+													<hr>
+												</div>
+												
+												
+											</div>
+											<!-- 댓글창 종료 -->
+											<c:forEach var="rr" items="${rs.rrList}">
+											<!-- 대댓글창 시작 foreach문 시작 -->
+											<div class="anw">
+												<div class="rrep" style="border: 1px solid black; margin-left:5%;">
+													<div style="margin:2%;">
+													<div href="#" style="display:inline-block; float:left; margin-right:5%; font-weight: 600; "></div>| <div style="display:inline-block; border:1px red black;">4545${rr.rrcontent}!대댓글 내용!	
+												</div><div class="time" style="float:right;">${rr.rrdate}</div><br>
+													
+												</div>
+												</div>												
+											</div>
+											<!-- 대댓글창 종료 foreach 종료 -->
+											</c:forEach>
+											</div>	
+											</c:forEach>
+											
+																
+										</div>	
+															
 							</div>
 						</div>
 					</div>
-					<div class="comment-form">
-						<h4>댓글을 남겨주세요</h4>
-						<form action="insertR">
-							<div class="row">
-								<div class="col-md-4">
-									<input type="text" placeholder="${m.nickname}name">
-								</div>
-								<div class="col-md-4">
-									<input type="text" placeholder="Your email">
-								</div>
-								<div class="col-md-4">
-									<input type="text" placeholder="Website">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<textarea name="message" id="" placeholder="Message"></textarea>
-								</div>
-							</div>
-							<input class="submit" type="submit" placeholder="submit">
-						</form>
-					</div>
-					<!-- comment form -->
 				</div>
 			</div>
+			<!-- end of  blog detail section-->
 		</div>
-	</div>
-</div>
-<!-- end of  blog detail section-->
-		</div>
+		
 
-<!-- header section-->
-<bb:footer/>
-<!-- end of header section-->
+		<!-- header section-->
+		<bb:footer />
+		<!-- end of header section-->
 
-<script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/plugins2.js"></script>
-<script src="js/custom.js"></script>
-</body>
+		<script src="js/jquery.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/plugins2.js"></script>
+		<script src="js/custom.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			crossorigin="anonymous"></script>
+		<script src="js/scripts.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
+			crossorigin="anonymous"></script>
+		<script src="js/datatables-simple-demo.js"></script>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+				<script type="text/javascript">
+			$(".que").click(function() {
+				$(this).next(".anw").stop().slideToggle(300);
+				$(this).toggleClass('on').siblings().removeClass('on');
+				$(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
+			});
+		</script>
+		
+<script type="text/javascript">
+	function lstatus(){
+		var mid = '${member.mid}';
+		var bid = '${b.bid}';
+		var cnt = $('#result1').val();
+		console.log('로그: Lstatus');
+		$.ajax({
+			type: 'POST',
+			url: 'Lstatus',
+			data: {mid:mid,bid:bid},
+			success: function(result){
+				console.log("로그1 ["+result+"]");
+				if(result>cnt){
+					console.log("로그2 [추천+1]");
+					$("#photo1").prop("src","images/thumbsUp1.png");
+					$("#result1").prop("value",result);
+					///$("#result1").html(result);
+				}
+				else{
+					console.log("로그2 [추천-1]");
+					$("#photo1").prop("src","images/thumbsUp2.png");
+					$("#result1").prop("value",result);
+					///$("#result1").html(result);
+				}
+			},
+			error: function(request, status, error){ // 순서 체크해보기!
+				console.log("상태코드: "+request.status);
+				console.log("메세지: "+request.responseText);
+				console.log("에러설명: "+error);
+			}
+		});
+	}
+</script>
+
+<script type="text/javascript">
+	function nlstatus(){
+		var mid = '${member.mid}';
+		var bid = '${b.bid}';
+		var cnt = $('#result2').val();
+		console.log('로그: NLstatus');
+		$.ajax({
+			type: 'POST',
+			url: 'NLstatus',
+			data: {mid:mid,bid:bid},
+			success: function(result){
+				console.log("로그1 ["+result+"]");
+				if(result>cnt){
+					console.log("로그2 [비추천+1]");
+					//$("#result2").html(result);
+					$("#photo2").prop("src","images/thumbsDown1.png");
+					$("#result2").prop("value",result);
+				}
+				else{
+					console.log("로그2 [비추천-1]");
+					//$("#result2").html(result);
+					$("#photo2").prop("src","images/thumbsDown2.png");
+					$("#result2").prop("value",result);
+				}
+			},
+			error: function(request, status, error){ // 순서 체크해보기!
+				console.log("상태코드: "+request.status);
+				console.log("메세지: "+request.responseText);
+				console.log("에러설명: "+error);
+			}
+		});
+	}
+</script>
+
+<script type="text/javascript">
+	function report(){
+		var mid = '${member.mid}';
+		var bid = '${b.bid}';
+		var cnt = $('#result3').val();
+		console.log('로그: NLstatus');
+		$.ajax({
+			type: 'POST',
+			url: 'Report',
+			data: {mid:mid,bid:bid},
+			success: function(result){
+				console.log("로그1 ["+result+"]");
+				if(result>cnt){
+					console.log("로그2 [신고+1]");
+					//$("#result3").html(result);
+					$("#photo3").prop("src","./images/alert1.png");
+					$("#result3").prop("value",result);
+				}
+				else{
+					console.log("로그2 [신고-1]");
+					//$("#result3").html(result);
+					$("#photo3").prop("src","images/alert2.png");
+					$("#result3").prop("value",result);
+				}
+			},
+			error: function(request, status, error){ // 순서 체크해보기!
+				console.log("상태코드: "+request.status);
+				console.log("메세지: "+request.responseText);
+				console.log("에러설명: "+error);
+			}
+		});
+	}
+</script>
+		</body>
 </html>
+

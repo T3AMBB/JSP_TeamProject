@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="bb" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -39,9 +40,9 @@
                   <!-- mypage.do -->
                   <!-- myboard.do -->
                   <!-- myreview.do -->
-                     <li><a href="mypage.jsp">내 정보</a></li>
-                     <li><a href="myboard.jsp">내가 쓴 게시글</a></li>
-                     <li class="active"><a href="myreview.jsp">내가 쓴 리뷰</a></li>
+                     <li><a href="mypage.do">내 정보</a></li>
+                     <li><a href="myboard.do">내가 쓴 게시글</a></li>
+                     <li class="active"><a href="myreview.do">내가 쓴 리뷰</a></li>
                   </ul>
 					</div>
 					
@@ -57,18 +58,17 @@
 						<option value="saab">-- Choose option 2--</option>
 					</select>
 				</div>
+				<c:forEach var="o" items="${datas}">
 				<div class="movie-item-style-2 userrate">
-					<img src="images/uploads/mv1.jpg" alt="">
 					<div class="mv-item-infor">
-						<h6><a href="#">oblivion <span>(2012)</span></a></h6>
+						<h6><a href="#">${o.title}<span>${o.odate}</span></a></h6>
 						<p class="time sm-text">your rate:</p>
-						<p class="rate"><i class="ion-android-star"></i><span>9.0</span> /10</p>
+						<p class="rate"><i class="ion-android-star"></i><span>${o.ostar}</span> /5</p>
 						<p class="time sm-text">your reviews:</p>
-						<h6>Best Marvel movie in my opinion</h6>
-						<p class="time sm">02 April 2017</p>
-						<p>“This is by far one of my favorite movies from the MCU. The introduction of new Characters both good and bad also makes the movie more exciting. giving the characters more of a back story can also help audiences relate more to different characters better, and it connects a bond between the audience and actors or characters. Having seen the movie three times does not bother me here as it is as thrilling and exciting every time I am watching it. In other words, the movie is by far better than previous movies (and I do love everything Marvel), the plotting is splendid (they really do out do themselves in each film, there are no problems watching it more than once.”</p>		
+						<p>${o.ocontent}</p>		
 					</div>
 				</div>
+				</c:forEach>
 				
 				<div class="topbar-filter">
 					<label>Movies per page:</label>

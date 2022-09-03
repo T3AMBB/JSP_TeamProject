@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="bb" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -40,35 +42,26 @@
                   <!-- myboard.do -->
                   <!-- myreview.do -->
                      <li><a href="mypage.do">내 정보</a></li>
-                     <li class="active"><a href="myboard.jsp">내가 쓴 게시글</a></li>
-                     <li><a href="myreview.jsp">내가 쓴 리뷰</a></li>
+                     <li class="active"><a href="myboard.do">내가 쓴 게시글</a></li>
+                     <li><a href="myreview.do">내가 쓴 리뷰</a></li>
                   </ul>
 					</div>
 					
-
 				</div>
 			</div>
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
-					<p>Found <span>3 rates</span> in total</p>
-					<label>Sort by:</label>
-					<select>
-						<option value="range">-- Choose option --</option>
-						<option value="saab">-- Choose option 2--</option>
-					</select>
+					<p><span>${fn:length(datas)}</span>개의 게시글을 작성하셨습니다.</p>
 				</div>
+			<c:forEach var="b" items="${datas}">
 				<div class="movie-item-style-2 userrate">
-					<img src="images/uploads/mv1.jpg" alt="">
 					<div class="mv-item-infor">
-						<h6><a href="#">oblivion <span>(2012)</span></a></h6>
-						<p class="time sm-text">your rate:</p>
-						<p class="rate"><i class="ion-android-star"></i><span>9.0</span> /10</p>
-						<p class="time sm-text">your reviews:</p>
-						<h6>Best Marvel movie in my opinion</h6>
-						<p class="time sm">02 April 2017</p>
-						<p>“This is by far one of my favorite movies from the MCU. The introduction of new Characters both good and bad also makes the movie more exciting. giving the characters more of a back story can also help audiences relate more to different characters better, and it connects a bond between the audience and actors or characters. Having seen the movie three times does not bother me here as it is as thrilling and exciting every time I am watching it. In other words, the movie is by far better than previous movies (and I do love everything Marvel), the plotting is splendid (they really do out do themselves in each film, there are no problems watching it more than once.”</p>		
+						<h6><a href="communityBoard.do?bid=${b.bid}">${b.btitle} </a></h6>
+						<p class="time sm">${b.bdate}</p>
+						<p>${b.bcontent}</p>		
 					</div>
 				</div>
+				</c:forEach>
 				
 				<div class="topbar-filter">
 					<label>Movies per page:</label>

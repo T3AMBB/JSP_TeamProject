@@ -224,7 +224,7 @@
 							<i class="fas fa-table me-1"></i> !!신고
 						</div>
 						<div class="card-body">
-							<table id="alertedboarda">
+							<table id="notworkingverysad">
 								<thead>
 									<tr>
 										<th>글제목</th>

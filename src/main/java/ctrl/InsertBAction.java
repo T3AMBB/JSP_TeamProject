@@ -19,17 +19,20 @@ public class InsertBAction implements Action {
 		HttpSession session=request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		vo.setMid(mvo.getMid());
-		vo.setBtitle(request.getParameter("btitle"));
-		vo.setBcontent(request.getParameter("bcontent"));
+		vo.setMid(mvo.getMid()); // 현재 접속한 멤버 id
+		System.out.println(vo.getMid());
+		vo.setBtitle(request.getParameter("btitle")); // 입력받은 게시글 제목
+		System.out.println(request.getParameter("btitle"));
+		vo.setBcontent(request.getParameter("bcontent")); // 입력한 게시글 내용
+		System.out.println(request.getParameter("bcontent"));
 		
-		if(dao.insert_B(vo)) {
+		if(dao.insert_B(vo)) { // 게시글 등록
 			forward = new ActionForward();
 			forward.setPath("community.do");
 			forward.setRedirect(true);
 		}
 		else {
-			throw new Exception("insertB ����");
+			throw new Exception("insertB 오류");
 		}
 					
 		return forward;

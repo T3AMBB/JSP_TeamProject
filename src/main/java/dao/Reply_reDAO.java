@@ -12,8 +12,8 @@ import vo.Reply_reVO;
 public class Reply_reDAO {
 	Connection conn;
 	PreparedStatement pstmt;
-	final String sql_selectOne_RR="SELECT * FROM REPLY_RE LEFT OUTER JOIN MEMBER ON REPLY_RE.MID=MEMBER.MID WHERE RRID=?";
-	final String sql_selectAll_RR="SELECT * FROM REPLY_RE LEFT OUTER JOIN MEMBER ON REPLY_RE.MID=MEMBER.MID ORDER BY RRID DESC";
+	final String sql_selectOne_RR="SELECT * FROM REPLY_RE LEFT OUTER JOIN MEMBER ON REPLY_RE.MID=MEMBER.MID WHERE REPLY_RE.RRID=?";
+	final String sql_selectAll_RR="SELECT * FROM REPLY_RE LEFT OUTER JOIN MEMBER ON REPLY_RE.MID=MEMBER.MID ORDER BY REPLY_RE.RRID DESC";
 	// SQL 에서 변경했던 SELECTALL을 그대로 복사하여 기존에 검색하는 SELECTALL에 추가하였다.
 	
 	final String sql_insert_RR="INSERT INTO REPLY_RE VALUES((SELECT NVL(MAX(RRID),4000)+1 FROM REPLY_RE),?,TO_DATE(sysdate,'yyyy.mm.dd hh24:mi'),?,?,?)";

@@ -3,16 +3,13 @@ package vo;
 public class OpinionVO {
 	
 	private int oid;
-	private String ocontent;
-	private String odate;
-	private String mid;
 	private int nid;
+	private String ocontent;
+	private String mid;
+	private String odate;
 	private int ostar;
 	private String title; // novel과 조인 후 어느 리뷰에 작성했는지 확인하기 위한 임시변수
 	private int cnt; // 페이징처리를 위한 cnt
-	
-	
-	
 	
 	
 	public String getTitle() {

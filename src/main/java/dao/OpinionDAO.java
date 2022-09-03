@@ -80,7 +80,10 @@ public class OpinionDAO {
 				data.setOdate(rs.getString("ODATE"));
 				data.setMid(rs.getString("MID"));
 				data.setTitle(rs.getString("NTITLE"));
+<<<<<<< HEAD
 				data.setNid(rs.getInt("NID"));
+=======
+>>>>>>> 1a0d5995019fc23cc80ec55dbbb365a4bb3db22f
 				data.setOstar(rs.getInt("OSTAR"));
 				datas.add(data);
 			}

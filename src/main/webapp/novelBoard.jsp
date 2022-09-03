@@ -68,6 +68,7 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<div class="col-md-8 col-sm-12 col-xs-12">
 						<div class="movie-single-ct main-content">
 							<h1 class="bd-hd" style="color: black;">${data.ntitle}</h1>
@@ -87,6 +88,72 @@
 											<div class="row">
 												<div class="col-md-8 col-sm-12 col-xs-12">
 													<h3 style="width: 750px;">${data.ncontent}</h3>
+=======
+					<div class="movie-tabs">
+						<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li><h3><a href="#overview">소설내용</a></h3></li>
+								<li><h3><a href="#reviews"> 리뷰</a></h3></li>
+								                       
+							</ul>
+						    <div class="tab-content">
+						        <div id="overview" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            		<h4 style="width:750px;">${data.ncontent}</h4>
+						            	</div>
+						            </div>
+						        </div>
+						        
+						        <div id="reviews" class="tab review">
+						           <div class="row">
+						       	 		<c:if test="${member != null}">	
+						            	<div class="rv-hd">
+						            		<div class="div">
+							            	</div>
+							            	<br>
+							            	<br>
+							            	<div>
+							            		<form action="insertO.do" class="mb-3" name="myform" id="myform" method="post" style=" text-align: end; width: 95%;">
+							            			<input type="hidden" name="nid" value="${data.nid}">
+													<fieldset>
+														<span class="text-bold">별점을 선택해주세요</span>
+																<input type="radio" name="ostar" value="5" id="rate1"><label for="rate1">★</label>
+																<input type="radio" name="ostar" value="4" id="rate2"><label for="rate2">★</label>
+																<input type="radio" name="ostar" value="3" id="rate3"><label for="rate3">★</label>
+																<input type="radio" name="ostar" value="2" id="rate4"><label for="rate4">★</label>
+																<input type="radio" name="ostar" value="1" id="rate5"><label for="rate5">★</label>
+													</fieldset>
+							            			<textarea rows="40" cols="100" placeholder="리뷰를 작성해주세요 최대 500자" name="ocontent" style="height:100px;left:50px;top:51px;">
+							            			</textarea>
+							            			<input type="submit" value="리뷰등록" class="redbtn">
+							            		</form>
+							            	</div>
+						            	</div>
+						            	</c:if>
+						            	<c:if test="${member == null}">	
+						            			<div class="rv-hd">
+						            		<div class="div">
+							            		<h3>리뷰를 작성하려면 로그인 해주세요 :D</h3>
+						            			<form action="insertO.do" class="mb-3" name="myform" id="myform" method="post" style=" text-align: end; width: 95%;">
+							            			<textarea rows="40" cols="100" placeholder="로그인 후 리뷰를 작성해보세요 :D" name="ocontent" style="height:100px;left:50px;top:51px;" readonly>
+							            			</textarea>
+							            			<input type="submit" value="리뷰등록" class="redbtn">
+							            		</form>
+						            	</div>
+							            	</div>
+						            	</c:if>
+						          ${datas}  	
+								  <c:forEach var="o"  items="${datas}">
+								  <form>
+										<div class="mv-user-review-item">
+											<div>
+											<div class="user-infor">
+													<h3>${o.mid}</h3> &nbsp;
+													<p class="time">
+														${o.odate}
+													</p>
+>>>>>>> 1a0d5995019fc23cc80ec55dbbb365a4bb3db22f
 												</div>
 											</div>
 										</div>

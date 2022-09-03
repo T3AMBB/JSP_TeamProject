@@ -1,6 +1,6 @@
 package dao;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +16,15 @@ public class LlikeDAO {
 	final String sql_insert_RE="INSERT INTO LLIKE(LID,MID,BID,REPORT) VALUES((SELECT NVL(MAX(LID),0)+1 FROM LLIKE),?,?,1)";
 	// 추천/비추천, 신고를 insert로 진행 
 
+
+	final String sql_updateLU="UPDATE LLIKE SET LSTATUS=LSTATUS+1 WHERE LID=?";
+	final String sql_updateLD="UPDATE LLIKE SET LSTATUS=LSTATUS-1 WHERE LID=?";
+	final String sql_updateNLU="UPDATE LLIKE SET NLSTATUS=NLSTATUS+1 WHERE LID=?";
+	final String sql_updateNLD="UPDATE LLIKE SET NLSTATUS=NLSTATUS-1 WHERE LID=?";
+	final String sql_updateREPU="UPDATE LLIKE SET REPORT=REPORT+1 WHERE LID=?";
+	final String sql_updateREPD="UPDATE LLIKE SET REPORT=REPORT-1 WHERE LID=?";
+
+
 	final String sql_selectOne="SELECT * FROM LLIKE WHERE BID=? AND MID=?";
 	final String sql_delete_L="DELETE FROM LLIKE WHERE LID=?";
 	// 삭제는 하나로 가능
@@ -26,12 +35,12 @@ public class LlikeDAO {
 			if(lvo.isFlag()) {
 				System.out.println("로그 "+lvo);
 				if(lvo.getNlstatus()==0)
-				pstmt=conn.prepareStatement(sql_insert_L);
+					pstmt=conn.prepareStatement(sql_insert_L);
 			}
 			else {
 				if(lvo.getLstatus()==0) {
 					System.out.println("로그 "+lvo);
-				pstmt=conn.prepareStatement(sql_insert_NL);
+					pstmt=conn.prepareStatement(sql_insert_NL);
 				}
 			}
 
@@ -46,26 +55,85 @@ public class LlikeDAO {
 		}
 		return true;
 	}
-	
-	   public boolean insert_RE(LlikeVO lvo) {
-		      conn=JDBCUtil.connect();
-		      try {
-		         pstmt=conn.prepareStatement(sql_insert_RE);
-		         pstmt.setString(1, lvo.getMid());
-		         pstmt.setInt(2, lvo.getBid());
-		         
-		         pstmt.executeUpdate();
-		      } catch (SQLException e) {
-		         e.printStackTrace();
-		         return false;
-		      } finally {
-		         JDBCUtil.disconnect(pstmt, conn);
-		      }
-		      return true;
-		   }
-		   
+
+	public boolean insert_RE(LlikeVO lvo) {
+		conn=JDBCUtil.connect();
+		try {
+			pstmt=conn.prepareStatement(sql_insert_RE);
+			pstmt.setString(1, lvo.getMid());
+			pstmt.setInt(2, lvo.getBid());
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			JDBCUtil.disconnect(pstmt, conn);
+		}
+		return true;
+	}
 
 
+	public boolean update_L(LlikeVO lvo) {
+		conn=JDBCUtil.connect();
+		try {
+			if(lvo.isFlag()) {
+				if(lvo.getLstatus()==1 && lvo.getNlstatus()==0) {
+					pstmt=conn.prepareStatement(sql_updateLD);
+					pstmt.setInt(1, lvo.getLid());
+					pstmt.executeUpdate();
+					System.out.println("dao 추천 -1");
+				}
+				else if(lvo.getLstatus()==0 && lvo.getNlstatus()==0) {
+					pstmt=conn.prepareStatement(sql_updateLU);
+					pstmt.setInt(1, lvo.getLid());
+					pstmt.executeUpdate();
+					System.out.println("dao 추천 +1");
+				}
+			} else {
+				if(lvo.getNlstatus()==1 && lvo.getLstatus()==0) {
+					pstmt=conn.prepareStatement(sql_updateNLD);
+					pstmt.setInt(1, lvo.getLid());
+					pstmt.executeUpdate();
+					System.out.println("dao 비추천 -1");
+				}
+				else if(lvo.getNlstatus()==0 && lvo.getLstatus()==0) {
+					pstmt=conn.prepareStatement(sql_updateNLU);
+					pstmt.setInt(1, lvo.getLid());
+					pstmt.executeUpdate();
+					System.out.println("dao 비추천 +1");
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			JDBCUtil.disconnect(pstmt, conn);
+		}
+		return true;
+	}
+	public boolean update_R(LlikeVO lvo) {
+		conn=JDBCUtil.connect();
+		System.out.println(lvo);
+		try {
+			if(lvo.getReport()==1) {
+				pstmt=conn.prepareStatement(sql_updateREPD);
+				pstmt.setInt(1, lvo.getLid());
+				pstmt.executeUpdate();
+			}
+			else if(lvo.getReport()==0) {
+				pstmt=conn.prepareStatement(sql_updateREPU);
+				pstmt.setInt(1, lvo.getLid());
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			JDBCUtil.disconnect(pstmt, conn);
+		}
+		return true;
+	}
 	public LlikeVO selectOne(LlikeVO lvo) { //로그인
 		conn = JDBCUtil.connect();
 		ResultSet rs = null;
@@ -89,7 +157,7 @@ public class LlikeDAO {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.disconnect(pstmt, conn);
-		}		
+		}      
 		return null;
 	}
 

@@ -22,13 +22,13 @@ public class InsertRAction implements Action{
 		HttpSession session=request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 
-		vo.setRcontent(request.getParameter("content"));
-		vo.setMid(mvo.getMid());
-		vo.setBid(Integer.parseInt(request.getParameter("bid")));	
+		vo.setRcontent(request.getParameter("content")); // 댓글 내용
+		vo.setMid(mvo.getMid()); // 작성자 id
+		vo.setBid(Integer.parseInt(request.getParameter("bid"))); // 댓글을 작성한 게시글 번호	
 		
 		
 		
-		if(dao.insert_R(vo)) {
+		if(dao.insert_R(vo)) { // 댓글 작성
 			forward = new ActionForward();
 			forward.setPath("communityBoard.do");
 			forward.setRedirect(false);

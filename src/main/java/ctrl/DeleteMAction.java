@@ -19,10 +19,10 @@ public class DeleteMAction implements Action{
 		MemberDAO dao = new MemberDAO();
 
 		HttpSession session=request.getSession();
-		MemberVO mvo = (MemberVO)session.getAttribute("member");
+		MemberVO mvo = (MemberVO)session.getAttribute("member"); // 접속한 멤버
 		
-		vo.setMid(mvo.getMid());
-		vo.setMpw(request.getParameter("mpw"));
+		vo.setMid(mvo.getMid()); // 접속한 멤버의 id
+		vo.setMpw(request.getParameter("mpw")); // 입력받은 pw
 		vo = dao.selectOne_LOGIN(vo);
 
 		if(vo != null) {

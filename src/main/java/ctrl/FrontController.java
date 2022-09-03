@@ -54,7 +54,7 @@ public class FrontController extends HttpServlet {
 		
 		if(command.equals("/main.do")) {
 			try {
-				forward = new NovelMainAction().execute(request, response);
+				forward = new MainAction().execute(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -76,7 +76,7 @@ public class FrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/communityMain.do")) {
+		else if(command.equals("/community.do")) {
 			try {
 				forward = new CommunityMainAction().execute(request, response);
 			} catch (Exception e) {
@@ -111,6 +111,22 @@ public class FrontController extends HttpServlet {
 		else if(command.equals("/mypage.do")) {
 			try {
 				forward = new MypageAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/myreview.do")) {
+			try {
+				forward = new MyreviewAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/myboard.do")) {
+			try {
+				forward = new MyboardAction().execute(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -236,6 +252,7 @@ public class FrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
 
 
 /*		

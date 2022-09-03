@@ -17,15 +17,15 @@ public class InsertMAction implements Action{
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = new MemberVO();
 		
-		vo.setMid(request.getParameter("mid"));
-		vo.setMpw(request.getParameter("mpw"));
-		vo.setMname(request.getParameter("mname"));
-		vo.setNickname(request.getParameter("nickname"));
-		vo.setMphone(request.getParameter("mphone"));
-		vo.setMemail(request.getParameter("memail"));
-		vo.setRole(request.getParameter("member"));
+		vo.setMid(request.getParameter("mid")); // 아이디
+		vo.setMpw(request.getParameter("mpw")); // 비밀번호
+		vo.setMname(request.getParameter("mname")); // 이름
+		vo.setNickname(request.getParameter("nickname")); // 닉네임
+		vo.setMphone(request.getParameter("mphone")); // 핸드폰 번호
+		vo.setMemail(request.getParameter("memail")); // 이메일
+		vo.setRole(request.getParameter("member")); // 역할
 
-		if(dao.insert_M(vo)) {
+		if(dao.insert_M(vo)) { // 회원가입
 			forward = new ActionForward();
 			forward.setPath("main.do");
 			forward.setRedirect(true);

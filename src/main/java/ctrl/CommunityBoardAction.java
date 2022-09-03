@@ -30,10 +30,11 @@ public class CommunityBoardAction implements Action{
 		HttpSession session=request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		lvo.setMid(mvo.getMid()); // 현재 접속한 멤버 id
-		lvo.setBid(Integer.parseInt(request.getParameter("bid")));
-		
-		lvo = lDAO.selectOne(lvo);
+		if(mvo != null) {
+			lvo.setMid(mvo.getMid()); // 현재 접속한 멤버 id
+			lvo.setBid(Integer.parseInt(request.getParameter("bid")));
+			lvo = lDAO.selectOne(lvo);
+		}
 		
 		if(data != null) {
 			request.setAttribute("data", data);

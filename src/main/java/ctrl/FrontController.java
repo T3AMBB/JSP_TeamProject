@@ -277,6 +277,14 @@ public class FrontController extends HttpServlet {
 					e.printStackTrace();
 				}
 		}
+		else if(command.equals("/adminMember.do")) {
+			try {
+				forward = new AdminMemberAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 
 /*		

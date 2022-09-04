@@ -38,7 +38,8 @@ public class EncFilter extends HttpFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding(this.encoding);
-
+		response.setCharacterEncoding(this.encoding);
+		
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}

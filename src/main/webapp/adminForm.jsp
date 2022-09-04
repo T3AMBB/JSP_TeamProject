@@ -147,7 +147,8 @@
 			<main>
 				<div class="container-fluid px-4">
 					<div class="card-body">
-						<form action="insertB.do" method="post">
+						<form action="adminForm.do" method="post">
+							<input type="text" name="notice-title" required placeholder="제목을 입력하세요.">
 							<textarea name="text" id="editor">
 				  			</textarea>
 							<input type="submit" value="글 작성 완료">

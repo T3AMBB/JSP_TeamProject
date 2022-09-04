@@ -252,7 +252,31 @@ public class FrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
+		else if(command.equals("/admin.do")) {
+			try {
+				forward = new AdminAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		else if(command.equals("/adminBoard.do")) {
+			try {
+				forward = new AdminBoardAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/adminForm.do")) {
+				try {
+					forward = new AdminFormAction().execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
 
 
 /*		

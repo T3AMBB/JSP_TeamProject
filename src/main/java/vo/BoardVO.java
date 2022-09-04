@@ -8,6 +8,13 @@ public class BoardVO {
 	private String bdate;
 	private String bimg;
 	private String mid;
+	private String role;
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	private String searchCondition;
 	private String searchContent;
 	private int lid;

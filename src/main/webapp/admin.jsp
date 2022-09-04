@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="bb"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 	//추천글 , 신고글 완료
 %>
@@ -28,7 +29,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="admin.html">관리자 페이지</a>
+		<a class="navbar-brand ps-3" href="admin.do">관리자 페이지</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -67,7 +68,7 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">주요 기능</div>
-						<a class="nav-link" href="admin.jsp">
+						<a class="nav-link" href="admin.do">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 대시보드
@@ -76,7 +77,7 @@
 								<i class="fa-solid fa-unicorn"></i>
 							</div> 공지사항 등록하기
 						</a>
-						</a> <a class="nav-link" href="adminBoard.jsp">
+						</a> <a class="nav-link" href="adminBoard.do">
 							<div class="sb-nav-link-icon">
 								<i class="fa-solid fa-unicorn"></i>
 							</div> 회원관리
@@ -153,7 +154,7 @@
 								<div class="card-body">!!전체 회원수!!</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link">{member.data.size(length)}필요</a>
+									<a class="small text-white stretched-link">${mVO.cnt}</a>
 
 								</div>
 							</div>
@@ -163,7 +164,7 @@
 								<div class="card-body">!! 자유게시판 게시글수!!</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link">{board.data.size(length)}필요</a>
+									<a class="small text-white stretched-link">${bVO.bcnt}</a>
 
 								</div>
 							</div>
@@ -173,7 +174,7 @@
 								<div class="card-body">!! 현재 등록된 소설 수!!</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link">{novel.data.size(length)}필요</a>
+									<a class="small text-white stretched-link">${nVO.ncnt}</a>
 								</div>
 							</div>
 						</div>
@@ -182,8 +183,11 @@
 								<div class="card-body">!!이달의 리뷰왕!!</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link">{member.data.(id
-										or nickname)first liked order by asc}필요</a>
+									<a class="small text-white stretched-link">
+										<c:forEach var="n" items="${odatas}">
+										${n.mid}<br>
+										</c:forEach>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -224,7 +228,7 @@
 							<i class="fas fa-table me-1"></i> !!신고
 						</div>
 						<div class="card-body">
-							<table id="notworkingverysad">
+							<table id="datatablesSimple2">
 								<thead>
 									<tr>
 										<th>글제목</th>

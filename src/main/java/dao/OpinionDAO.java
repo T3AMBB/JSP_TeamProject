@@ -24,9 +24,33 @@ public class OpinionDAO {
 	final String sql_update_O="UPDATE OPINION SET CONTENT=? WHERE OID=?";
 	final String sql_delete_O="DELETE FROM OPINION WHERE OID=?";
 	final String sql_selectAll_novelBoard="SELECT * FROM OPINION LEFT OUTER JOIN MEMBER ON OPINION.MID=MEMBER.MID WHERE OPINION.NID=?";
+	final String sql_selectAll_MVP_COUNT="SELECT * FROM (SELECT  MID,COUNT(OID) AS CNT FROM OPINION GROUP BY MID  ORDER BY CNT DESC) WHERE ROWNUM <=5";
+	
+	public ArrayList<OpinionVO> selectAll_MVP_COUNT(OpinionVO ovo){
+	      ArrayList<OpinionVO> datas=new ArrayList<OpinionVO>();
+	      conn=JDBCUtil.connect();
+	      System.out.println("로그: selectAll_MVP_COUNT");
+	        
+	      try {
+	         pstmt=conn.prepareStatement(sql_selectAll_MVP_COUNT);
+	         ResultSet rs=pstmt.executeQuery();
 
-	
-	
+	         while(rs.next()) {
+	            OpinionVO data=new OpinionVO();
+	            data.setMid(rs.getString("MID"));
+	            datas.add(data);
+	        
+	         }
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         JDBCUtil.disconnect(pstmt, conn);
+	      }
+//	         System.out.println("끝");
+	      
+	      return datas;
+	   }
 	public ArrayList<OpinionVO> selectAll_novelBoard(OpinionVO ovo){
 	      ArrayList<OpinionVO> datas=new ArrayList<OpinionVO>();
 	      conn=JDBCUtil.connect();
@@ -80,10 +104,6 @@ public class OpinionDAO {
 				data.setOdate(rs.getString("ODATE"));
 				data.setMid(rs.getString("MID"));
 				data.setTitle(rs.getString("NTITLE"));
-<<<<<<< HEAD
-				data.setNid(rs.getInt("NID"));
-=======
->>>>>>> 1a0d5995019fc23cc80ec55dbbb365a4bb3db22f
 				data.setOstar(rs.getInt("OSTAR"));
 				datas.add(data);
 			}

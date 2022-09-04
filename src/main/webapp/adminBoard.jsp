@@ -139,10 +139,11 @@
 
 		<div id="layoutSidenav_content">
 			<main>
+								${datas}
 				<div class="container-fluid px-4">
 					<div class="card-body">
 							<table id="datatablesSimple">
-							<!--  
+							  
 								<thead>
 									<tr>
 										<th>ID</th>
@@ -154,7 +155,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="m" items="${member}" begin="1" end="20" step="1">
+									<c:forEach var="m" items="${datas}" begin="0" end="20" step="1">
 										<tr>
 											<td><c:out value="${m.mid}" /></td>
 											<td><c:out value="${m.mname}" /></td>
@@ -165,7 +166,7 @@
 										</tr>
 									</c:forEach>
 								</tbody>
-								-->
+							
 							</table>
 						</div>
 				</div>

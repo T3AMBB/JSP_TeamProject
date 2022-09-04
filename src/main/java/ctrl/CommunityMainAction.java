@@ -11,35 +11,64 @@ import vo.BoardVO;
 
 public class CommunityMainAction implements Action{
 
-	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+   @Override
+   public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		BoardDAO dao = new BoardDAO();
-		BoardVO vo = new BoardVO();
-		ArrayList<BoardSet> datas = new ArrayList<BoardSet>();
-		
-		String searchCondition = request.getParameter("searchCondition"); // 검색 종류 (제목, 내용, 작성자)
-		String searchContent = request.getParameter("searchContent"); // 검색 내용
-		String paramCnt=request.getParameter("cnt");
-		
-		vo.setSearchContent(searchContent);
-		vo.setSearchCondition(searchCondition);
-		
-		if(paramCnt==null || paramCnt.equals("")){
-			vo.setBcnt(1);
-		}
-		else {
-			vo.setBcnt(Integer.parseInt(paramCnt));
-		}
-		
-		datas = dao.sql_selectAll_BoardAll(vo); // 검색한 배열 or 전체 배열
-//		System.out.println(datas);	
-		request.setAttribute("datas", datas);
-		
-		ActionForward forward=new ActionForward();
-		forward.setPath("/community.jsp");
-		forward.setRedirect(false);
-		return forward;
-	}
+      BoardDAO dao = new BoardDAO();
+      BoardVO vo = new BoardVO();
+      ArrayList<BoardSet> datas = new ArrayList<BoardSet>();
+      ArrayList<BoardSet> datas_size = new ArrayList<BoardSet>();
+      int begin = 0;
+      int end = 0;
+      String searchCondition = request.getParameter("searchCondition"); // 검색 종류 (제목, 내용, 작성자)
+      String searchContent = request.getParameter("searchContent"); // 검색 내용
+      String paramCnt=request.getParameter("cnt");
+      
+      
+      vo.setSearchContent(searchContent);
+      vo.setSearchCondition(searchCondition);
+      
+      if(paramCnt==null || paramCnt.equals("")){
+         vo.setBcnt(1);
+         request.setAttribute("cnt", 1);
+         paramCnt="0";
+      }
+      else {
+         vo.setBcnt(Integer.parseInt(paramCnt));
+         request.setAttribute("cnt", paramCnt);
+      }
+      
+      datas = dao.sql_selectAll_BoardAll(vo); // 검색한 배열 or 전체 배열
+      datas_size=dao.sql_selectAll_BoardAll_All(vo);
+//      System.out<.println(datas);
+      
+      if(datas_size.size()<50) {
+         begin = 0;
+         end = datas_size.size();
+      } else {
+         if(Integer.parseInt(paramCnt)>50) {
+            begin = 50*(Integer.parseInt(paramCnt)/50);
+            end = 49+begin;
+         } else {
+            begin = 0;
+            end = 49;
+         }
+      }
+      
+      if(begin>=50) {
+         int pcnt = (int) Math.floor(begin/5);
+         request.setAttribute("pcnt", pcnt);
+      }
+      
+      request.setAttribute("datas", datas);
+      request.setAttribute("datas_size", datas_size);
+      request.setAttribute("begin", begin);
+      request.setAttribute("end", end);
+      
+      ActionForward forward=new ActionForward();
+      forward.setPath("/community.jsp");
+      forward.setRedirect(false);
+      return forward;
+   }
 
 }

@@ -47,7 +47,7 @@ public class Test extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String path="";  이미지 경로 개인 workspace images 경로로 설정해서 쓰시오
+		String path="C:\\Users\\admin\\.eclipse\\eclipse-workspace\\aJspTeamPJ\\src\\main\\webapp\\images"; 
 		int maxSize=100000000; // 바이트 단위
 		MultipartRequest mr=new MultipartRequest(request,path,maxSize,"UTF-8",new DefaultFileRenamePolicy());
 		

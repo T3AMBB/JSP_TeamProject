@@ -3,10 +3,40 @@
 <%@ attribute name="midCheck" %>
 <%@ attribute name="oid" %>
 <%@ attribute name="nid" %>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+   crossorigin="anonymous"></script>
+
+
 <c:if test="${member.nickname==midCheck}">
+	
+	
+	<br>
+	
 	<a href="deleteO.do?oid=${oid}&nid=${nid}">[삭제]</a> &nbsp;
-	<a href="javascript:update();">[수정]</a>
-	<a href="updateO.do?oid=${oid}&nid=${nid}">[수정]</a>
+	<button id="edit-btn"> 수정하기 </button>
+	<div id="comment-text" style="display: none; ">
+	<form action="updateO.do?" name="updateOform">
+			<textarea name="ocontent" placeholder="댓글입력">
+			</textarea>
+		<input type="hidden" value="${oid}" name="oid">
+		<input type="hidden" value="${nid}" name="nid">
+		<input type="hidden" value="${ocontent}" name="ocontent">
+		<input type="submit" value="수정완료" />
+	</form>
+	</div>
+	
+	
+	<!--  <input type="submit" value="수정" /> -->
 </c:if>
+
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+   		$("#edit-btn").click(function() {
+     		 $("#comment-text").toggle();	
+  		 });
+	});
+
+</script>

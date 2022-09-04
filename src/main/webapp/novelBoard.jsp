@@ -135,7 +135,7 @@
 																placeholder="로그인 후 리뷰를 작성해보세요 :D" class="ocontent"
 																name="ocontent"
 																style="height: 100px; left: 50px; top: 51px;" readonly>
-							            			</textarea>
+							            					</textarea>
 															<input type="submit" value="리뷰등록" class="redbtn">
 														</form>
 													</div>
@@ -152,22 +152,23 @@
 															<p class="time">${o.odate}</p>
 															<div class="no-star">
 																<i class="ion-android-star"></i>
-																<sqan style="color:black;">${o.ostar}</sqan>
+																<span style="color:black;">${o.ostar}</span>
 															</div>
+																<span class="ocontent"> ${o.ocontent}</span>
 														</div>
 													</div>
-													<bb:oboard midCheck="${o.mid}" oid="${o.oid}"
-														nid="${o.nid}" />
+												
+												
 
 													<%-- <span id="content">${o.ocontent}</span> --%>
-													<form action="updateO.do?oid=${oid}&nid=${nid}"
-														name="updateOform">
-														<input type="text" value="${o.ocontent}" >
-														
 													
-													</form>
+													<bb:oboard midCheck="${o.mid}" oid="${o.oid}" nid="${o.nid}"/>
+													
+													<hr>
+													
+													
+
 												
-													
 
 
 													<!-- <a href="updateO.do?oid=${oid}">수정</a>&nbsp;<a href="deleteO.do?oid=${oid}">삭제</a> -->

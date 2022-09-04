@@ -209,13 +209,14 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="l" items="${like}" begin="1" end="20" step="1">
+									<c:forEach var="n" items="${datasL}" begin="0" end="20" step="1">
+									${n}
 										<tr>
-											<td><c:out value="${b.title}" /></td>
+											<td>${n.btitle}</td>
 											<!-- 글제목 mid를 받아와서 href로 글로이동 가능하게 할것인지?-->
-											<td><c:out value="${m.name}" /></td>
+											<td>${n.mid}</td>
 											<!-- 작성자 mid를 받아와서 상세정보보기가 가능하게 할것인지.-->
-											<td><c:out value="${l.like}" /></td>
+											<td>${n.bcnt}</td>
 											<!-- 좋아요 -->
 										</tr>
 									</c:forEach>
@@ -233,15 +234,18 @@
 									<tr>
 										<th>글제목</th>
 										<th>아이디</th>
+										<th>신고수</th>
+										
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="nl" items="${Nlike}" begin="1" end="20"
+									<c:forEach var="nl" items="${datasR}" begin="0" end="20"
 										step="1">
 										<tr>
-											<td><c:out value="${b.title}" /></td>
+											<td>${nl.btitle}</td>
 											<!-- 글제목 -->
-											<td><c:out value="${m.name}" /></td>
+											<td>${nl.mid}</td>
+											<td>${nl.bcnt}</td>
 											<!-- 작성자 -->
 											<!-- 신고수 cnt가 1인 이상의 title or mid만 출력 -->
 										</tr>

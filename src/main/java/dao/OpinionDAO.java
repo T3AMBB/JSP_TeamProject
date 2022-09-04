@@ -37,17 +37,9 @@ public class OpinionDAO {
 //		            System.out.println("중간");
 		         while(rs.next()) {
 		            OpinionVO data=new OpinionVO();
-		            data.setOid(rs.getInt("OID"));
-		            data.setOcontent(rs.getString("OCONTENT"));
-		            data.setOdate(rs.getString("ODATE"));
-		            data.setOstar(rs.getInt("OSTAR"));
-		            data.setNid(rs.getInt("NID"));
-		            if(rs.getString("NICKNAME")==null) {
-		               data.setMid("[이름없음]");
-		            } else {
-		               // WRITER대신 MNAME을 담아서 WRITER를 뽑으면 MNAME이 출력된다.
-		               data.setMid(rs.getString("NICKNAME"));
-		            }
+		            data.setMid(rs.getString("MID"));
+		           
+		           
 		            datas.add(data);
 		         }
 		      } catch (SQLException e) {

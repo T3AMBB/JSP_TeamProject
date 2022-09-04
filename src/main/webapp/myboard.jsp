@@ -49,6 +49,7 @@
 					
 				</div>
 			</div>
+			${datas}
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
 					<p><span>${fn:length(datas)}</span>개의 게시글을 작성하셨습니다.</p>
@@ -59,21 +60,16 @@
 						<h6><a href="communityBoard.do?bid=${b.bid}">${b.btitle} </a></h6>
 						<p class="time sm">${b.bdate}</p>
 						<p>${b.bcontent}</p>		
+						<p>추천수 : ${b.cnt_l}</p>		
+						<p>비추천수 : ${b.cnt_n}</p>		
+						<p>신고수 : ${b.cnt_r}</p>		
 					</div>
 				</div>
 				</c:forEach>
 				
 				<div class="topbar-filter">
-					<label>Movies per page:</label>
-					<select>
-						<option value="range">20 Movies</option>
-						<option value="saab">10 Movies</option>
-					</select>
-					<div class="pagination2">
-						<span>Page 1 of 1:</span>
-						<a class="active" href="#">1</a>
-						<a href="#"><i class="ion-arrow-right-b"></i></a>
-					</div>
+					<a href=><label>더보기</label></a>
+					
 				</div>
 			</div>
 		</div>

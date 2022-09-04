@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="bb" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -51,20 +52,17 @@
 			</div>
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
-					<p>Found <span>3 rates</span> in total</p>
-					<label>Sort by:</label>
-					<select>
-						<option value="range">-- Choose option --</option>
-						<option value="saab">-- Choose option 2--</option>
-					</select>
+					<p><span>${fn:length(datas)}</span>개의 리뷰를 작성하셨습니다.</p>
+					
 				</div>
 				<c:forEach var="o" items="${datas}">
 				<div class="movie-item-style-2 userrate">
 					<div class="mv-item-infor">
-						<h6><a href="#">${o.title}<span>${o.odate}</span></a></h6>
-						<p class="time sm-text">your rate:</p>
+						<a href="novelBoard.do?nid=${o.nid}"><h6>${o.title}</h6></a>
+						<p class="time sm">${o.odate}</p>
+						<p class="time sm-text">나의 평점</p>
 						<p class="rate"><i class="ion-android-star"></i><span>${o.ostar}</span> /5</p>
-						<p class="time sm-text">your reviews:</p>
+						<p class="time sm-text">나의 리뷰</p>
 						<p>${o.ocontent}</p>		
 					</div>
 				</div>

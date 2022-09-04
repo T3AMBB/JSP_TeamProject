@@ -173,6 +173,7 @@ public class BoardDAO {
       conn = JDBCUtil.connect();
       try {
          pstmt = conn.prepareStatement(sql_selectAll_BoardAll_ADMIN);
+         System.out.println("BoardDAO 로그 : "+bvo.getMid());
          pstmt.setString(1, bvo.getMid());
          ResultSet rs = pstmt.executeQuery();
          while (rs.next()) {
@@ -181,6 +182,8 @@ public class BoardDAO {
             data.setBcontent(rs.getString("BCONTENT"));
             data.setBtitle(rs.getString("BTITLE"));
             data.setBdate(rs.getString("BDATE"));
+            data.setMid(rs.getString("MID"));
+            data.setRole(rs.getString("ROLE"));
             pstmt=conn.prepareStatement(sql_selectOne_Lstatus);
             pstmt.setInt(1, rs.getInt("BID"));
             ResultSet rs2=pstmt.executeQuery();

@@ -179,7 +179,7 @@ public class BoardDAO {
             BoardVO data = new BoardVO();
             data.setBid(rs.getInt("BID"));
             data.setBcontent(rs.getString("BCONTENT"));
-            data.setBtitle(rs.getString("BTITLT"));
+            data.setBtitle(rs.getString("BTITLE"));
             data.setBdate(rs.getString("BDATE"));
             if(rs.getString("NICKNAME")==null) {
                data.setMid("[이름없음]");

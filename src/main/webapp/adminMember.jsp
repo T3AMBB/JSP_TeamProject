@@ -76,7 +76,7 @@
 							<div class="sb-nav-link-icon">
 								<i class="fa-solid fa-unicorn"></i>
 							</div> 공지사항 등록하기
-						</a>
+						
 						</a> <a class="nav-link" href="adminBoard.do">
 							<div class="sb-nav-link-icon">
 								<i class="fa-solid fa-unicorn"></i>
@@ -153,30 +153,30 @@
 			 			<div class="col-xl-3 col-md-6">
 							<div class="card bg-primary text-white mb-4">
 								<div class="card-body">회원이름 </div>
-								<c:forEach var="n" items="${datas}" begin="0" end="0">
+								<%-- <c:forEach var="n" items="${datas}" begin="0" end="0"> --%>
 								<div class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link">${n.mid}</a>
+									<a class="small text-white stretched-link">${Mvo.mname}</a>
 
 								</div>
-								</c:forEach>
+								<%-- </c:forEach> --%>
 							</div>
 						</div>
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-warning text-white mb-4">
 								<div class="card-body">회원등급</div>
-								<c:forEach var="n" items="${datas}" begin="0" end="0">
+								<%-- <c:forEach var="n" items="${datas}" begin="0" end="0"> --%>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link">${n.role}</a>
+									<a class="small text-white stretched-link">${Mvo.role}</a>
 
 								</div>
-								</c:forEach>
+								<%-- </c:forEach> --%>
 							</div>
 						</div>
 						
 					</div>
 					<hr>
-				<%-- <div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
 					<p><span>${fn:length(datas)}</span>개의 게시글을 작성하셨습니다.</p>
 				</div>
@@ -211,10 +211,10 @@
 					<p><span>${fn:length(datas)}</span>개의 리뷰를 작성하셨습니다.</p>
 					
 				</div> 
-				<c:forEach var="o" items="${datas}">
+				<c:forEach var="o" items="${datas1}">
 				<div class="movie-item-style-2 userrate">
 					<div class="mv-item-infor">
-						<a href="novelBoard.do?nid=${o.nid}"><h6>${o.title}</h6></a>
+						<h6><a href="novelBoard.do?nid=${o.nid}">${o.title}</a></h6>
 						<p class="time sm">${o.odate}</p>
 						<p class="time sm-text">나의 평점</p>
 						<p class="rate"><i class="ion-android-star"></i><span>${o.ostar}</span> /5</p>
@@ -222,7 +222,7 @@
 						<p>${o.ocontent}</p>		
 					</div>
 				</div>
-				</c:forEach> --%>
+				</c:forEach> 
 				
 				<div class="topbar-filter">
 					<label>Movies per page:</label>

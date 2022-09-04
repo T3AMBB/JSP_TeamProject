@@ -117,17 +117,32 @@ float : right;}
                                           </tr>
                                        </thead>
                                        <tbody>
+                                      
                                           <ul class="noticeList" id="notice-list">
+                                          
                                              <c:forEach var="n" items="${datas}" begin="0" end="4"
                                                 step="1">
+                                               
                                                 <c:set var="b" value="${n.boardVO}"/>
+                                                
                                                 <tr class="notice_fix">
+                                                
                                                    <td><a href="communityBoard.do?bid=${b.bid}">${b.bid}</a></td>
                                                    <td>${b.mid}</td>
+                                                   <c:choose>
+                                                   <c:when test="${b.role eq 'admin'}">
+                                                   <td class="subject"><strong class="FG01">
+                                                   </strong><a
+                                                      href="javascript:counsel.noticeList.goDetail('35940')">
+                                                         <b>&lt공지&gt</b>${b.btitle} </a></td>
+                                                         </c:when>
+                                                   <c:otherwise>
                                                    <td class="subject"><strong class="FG01">
                                                    </strong><a
                                                       href="javascript:counsel.noticeList.goDetail('35940')">
                                                          ${b.btitle} </a></td>
+                                                         </c:otherwise> 
+                                                         </c:choose>
                                                    <td>${b.cnt_l}</td>
                                                    <td>${b.bdate}</td>
                                                 </tr>

@@ -84,21 +84,21 @@
                   <div class="row">
                      <div class="col-md-6 form-it">
                         <label>이름</label>
-                        <input type="text" name="mname" value="${member.mname}" readonly>
+                        <input type="text" name="mname" value="${data.mname}" readonly>
                      </div>
                      <div class="col-md-6 form-it">
                         <label>별명</label>
-                        <input type="text" name="nickname" value="${member.nickname}" >
+                        <input type="text" name="nickname" value="${data.nickname}" >
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-md-6 form-it">
                         <label>휴대폰번호</label>
-                        <input type="text" name="mphone" value="${member.mphone}" readonly>
+                        <input type="text" name="mphone" value="${data.mphone}" readonly>
                      </div>
                      <div class="col-md-6 form-it">
                         <label>이메일</label>
-                        <input type="text" name="memail" value="${member.memail}" readonly >
+                        <input type="text" name="memail" value="${data.memail}" readonly >
                      </div>
                   </div>
                   <div class="row">

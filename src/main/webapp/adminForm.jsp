@@ -70,16 +70,16 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">주요 기능</div>
-						<a class="nav-link" href="admin.jsp">
+						<a class="nav-link" href="admin.do">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 대시보드
-						</a> <a class="nav-link" href="adminboard.jsp">
+						</a> <a class="nav-link" href="adminForm.jsp">
 							<div class="sb-nav-link-icon">
 								<i class="fa-solid fa-unicorn"></i>
 							</div> 공지사항 등록하기
 						</a>
-						</a> <a class="nav-link" href="admindetail.jsp">
+						</a> <a class="nav-link" href="adminBoard.do">
 							<div class="sb-nav-link-icon">
 								<i class="fa-solid fa-unicorn"></i>
 							</div> 회원관리

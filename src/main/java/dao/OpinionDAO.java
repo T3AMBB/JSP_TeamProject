@@ -24,9 +24,44 @@ public class OpinionDAO {
 	final String sql_update_O="UPDATE OPINION SET CONTENT=? WHERE OID=?";
 	final String sql_delete_O="DELETE FROM OPINION WHERE OID=?";
 	final String sql_selectAll_novelBoard="SELECT * FROM OPINION LEFT OUTER JOIN MEMBER ON OPINION.MID=MEMBER.MID WHERE OPINION.NID=?";
-
+	   final String sql_selectAll_MVP_COUNT="SELECT * FROM (SELECT  MID,COUNT(OID) AS CNT FROM OPINION GROUP BY MID  ORDER BY CNT DESC) WHERE ROWNUM <=5";
 	
-	
+	   public ArrayList<OpinionVO> selectAll_MVP_COUNT(OpinionVO ovo){
+		      ArrayList<OpinionVO> datas=new ArrayList<OpinionVO>();
+		      conn=JDBCUtil.connect();
+		      System.out.println("로그: selectAll_MVP_COUNT");
+//		         System.out.println(ovo.getNid());
+		      try {
+		         pstmt=conn.prepareStatement(sql_selectAll_MVP_COUNT);
+		         ResultSet rs=pstmt.executeQuery();
+//		            System.out.println("중간");
+		         while(rs.next()) {
+		            OpinionVO data=new OpinionVO();
+		            data.setOid(rs.getInt("OID"));
+		            data.setOcontent(rs.getString("OCONTENT"));
+		            data.setOdate(rs.getString("ODATE"));
+		            data.setOstar(rs.getInt("OSTAR"));
+		            data.setNid(rs.getInt("NID"));
+		            if(rs.getString("NICKNAME")==null) {
+		               data.setMid("[이름없음]");
+		            } else {
+		               // WRITER대신 MNAME을 담아서 WRITER를 뽑으면 MNAME이 출력된다.
+		               data.setMid(rs.getString("NICKNAME"));
+		            }
+		            datas.add(data);
+		         }
+		      } catch (SQLException e) {
+		         // TODO Auto-generated catch block
+		         e.printStackTrace();
+		      } finally {
+		         JDBCUtil.disconnect(pstmt, conn);
+		      }
+//		         System.out.println("끝");
+		      
+		      return datas;
+		   }
+	   
+	   
 	public ArrayList<OpinionVO> selectAll_novelBoard(OpinionVO ovo){
 	      ArrayList<OpinionVO> datas=new ArrayList<OpinionVO>();
 	      conn=JDBCUtil.connect();

@@ -210,7 +210,7 @@
 								</thead>
 								<tbody>
 									<c:forEach var="n" items="${datasL}" begin="0" end="20" step="1">
-									${n}
+									
 										<tr>
 											<td>${n.btitle}</td>
 											<!-- 글제목 mid를 받아와서 href로 글로이동 가능하게 할것인지?-->

@@ -163,19 +163,50 @@
 						</div>
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-warning text-white mb-4">
-								<div class="card-body">회원등급</div>
+								<div class="card-body">회원등급
+								
+								
+								</div>
 								<%-- <c:forEach var="n" items="${datas}" begin="0" end="0"> --%>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-white stretched-link">${Mvo.role}</a>
+									
 
 								</div>
 								<%-- </c:forEach> --%>
+								
 							</div>
 						</div>
 						
 					</div>
+					<div style="float:left;">
+					<form action="adminMemberD.do">
+					<input type="hidden" value="${Mvo.mid}" name="mid">
+					<input type="hidden" value="${Mvo.mpw}" name="mpw">
+					<input type="submit" value="회원삭제">
+					</form>
+					</div>
+					
+					<div >
+					<form action="adminMemberU.do" method="post" style="width:74%; float:right;">
+										<select name="role">
+											<option value="member">member</option>
+											<option value="admin">admin</option>
+											<option value="MVP">MVP</option>
+											
+										</select>
+										<input type="hidden" value="${Mvo.mid}" name="mid">
+										<input type="submit" value="등급수정">
+								</form>
+								</div>
+					<br>
+					<br>
+					<br>
+					
+			
 					<hr>
+					
 				<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
 					<p><span>${fn:length(datas)}</span>개의 게시글을 작성하셨습니다.</p>
@@ -185,8 +216,8 @@
 			
 				<div class="movie-item-style-2 userrate">
 					<div class="mv-item-infor">
-						<h6><a href="communityBoard.do?bid=${b.bid}">${b.btitle} </a></h6>
-						<p class="time sm">${b.bdate}</p>
+						<h6><a href="communityBoard.do?bid=${b.bid}">${b.btitle} </a></h6>&nbsp;&nbsp;&nbsp;&nbsp;<p class="time sm">${b.bdate}</p>
+						
 						<p>${b.bcontent}</p>		
 					</div>
 				</div>

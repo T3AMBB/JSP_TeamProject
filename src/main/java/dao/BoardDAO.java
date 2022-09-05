@@ -415,6 +415,7 @@ public class BoardDAO {
             boardVO.setBtitle(rs.getString("BTITLE"));
             boardVO.setBcontent(rs.getString("BCONTENT"));
             boardVO.setBdate(rs.getString("BDATE"));
+            boardVO.setRole(rs.getString("ROLE"));
             pstmt=conn.prepareStatement(sql_selectOne_Lstatus);
             pstmt.setInt(1, rs.getInt("BID"));
             ResultSet rs4=pstmt.executeQuery();

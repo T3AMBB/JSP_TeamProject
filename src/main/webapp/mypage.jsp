@@ -32,27 +32,22 @@
         <form action="deleteM.do" method="post"> 
            <div class="row">
                <label>
+                    아이디
+                    <input type="text" name="mid"  id="mid" value="${member.mid}" readonly />
+                </label>
+               <label>
                     비밀번호 입력
-                    <input type="password" name="mpw" id="password" placeholder="비밀번호 입력해주세요." required="required" />
+                    <input type="password" name="mpw" id="mpw" placeholder="비밀번호 입력해주세요." required="required" />
                 </label>
            </div>
-           
-            <div class="row">
-               <label>
-                    비밀번호 확인
-                    <input type="password" id="passwordcheck" placeholder="비밀번호 입력해주세요." required="required" />
-                </label>
-            </div>
-            
            <div class="row">
-           	 	<input type="submit" value="회원탈퇴" class="submit">
-              <!--  <button type="submit">회원탈퇴</button>  -->
+           	 	<input type="submit" value="회원탈퇴" class="submit" onclick="deleteM();">
            </div>
         </form>
         
     </div>
 </div>
-<!--end of login form popup-->
+<!--end of delete form popup-->
 <!-- header section-->
 <bb:header/>
 <!-- end of header section-->
@@ -147,5 +142,25 @@
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>
 <script src="js/custom.js"></script>
+<script type="text/javascript">
+function deleteM(){
+	   var mid=$("#mid").val();  // id=mid의 value값
+	   $.ajax({
+	      type: 'GET', 
+	      url: 'Email?mid='+mid, 
+	      data: {"mid":mid},
+	      success: function(result){ // 성공했을 때
+	         alert("이용해 주셔서 감사합니다.");
+	         console.log("로그1 ["+result+"] succes");
+	      },
+	      error: function(request, status, error){
+	         console.log("code: "+request.status);
+	         console.log("message: "+request.responseText);
+	         console.log("error: "+error);
+	      }
+	   });
+	}
+
+</script>        
 </body>
 </html>

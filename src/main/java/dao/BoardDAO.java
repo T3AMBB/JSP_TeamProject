@@ -16,18 +16,20 @@ import vo.Reply_reVO;
 public class BoardDAO {
    Connection conn;
    PreparedStatement pstmt;
-   final String sql_selectAll_BTITLE="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM BOARD B JOIN MEMBER M ON B.MID=M.MID WHERE B.BTITLE LIKE '%'||?||'%' ORDER BY BID DESC)A WHERE ROWNUM < = ?+19)WHERE RNUM  > = ?";
-   final String sql_selectAll_BCONTENT="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM BOARD B JOIN MEMBER M ON B.MID=M.MID WHERE B.BCONTENT LIKE '%'||?||'%' ORDER BY BID DESC)A WHERE ROWNUM < = ?+19)WHERE RNUM  > = ?";
-   final String sql_selectAll_WRITER="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM BOARD B JOIN MEMBER M ON B.MID=M.MID WHERE B.MID LIKE '%'||?||'%' ORDER BY BID DESC)A WHERE ROWNUM < = ?+19)WHERE RNUM  > = ?";
-   final String sql_selectAll_BoardAll="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM BOARD B JOIN MEMBER M ON B.MID=M.MID ORDER BY BID DESC) A WHERE ROWNUM < = ?+4)WHERE RNUM  > = ?";
+   final String sql_selectAll_BTITLE="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM BOARD B LEFT OUTER JOIN MEMBER M ON B.MID=M.MID WHERE B.BTITLE LIKE '%'||?||'%' ORDER BY BID DESC)A WHERE ROWNUM < = ?+19)WHERE RNUM  > = ?";
+   final String sql_selectAll_BCONTENT="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM BOARD B LEFT OUTER JOIN MEMBER M ON B.MID=M.MID WHERE B.BCONTENT LIKE '%'||?||'%' ORDER BY BID DESC)A WHERE ROWNUM < = ?+19)WHERE RNUM  > = ?";
+   final String sql_selectAll_WRITER="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM BOARD B LEFT OUTER JOIN MEMBER M ON B.MID=M.MID WHERE B.MID LIKE '%'||?||'%' ORDER BY BID DESC)A WHERE ROWNUM < = ?+19)WHERE RNUM  > = ?";
+   final String sql_selectAll_BoardAll="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM BOARD B LEFT OUTER JOIN MEMBER M ON B.MID=M.MID ORDER BY BID DESC) A WHERE ROWNUM < = ?+4)WHERE RNUM  > = ?";
+   
    // 게시글 검색
    // 게시글 전체 뽑는 것
    
-   final String sql_selectAll_BTITLE_ALL="SELECT * FROM BOARD B JOIN MEMBER M ON B.MID=M.MID WHERE B.BTITLE LIKE '%'||?||'%' ORDER BY BID DESC";
-   final String sql_selectAll_BCONTENT_ALL="SELECT * FROM BOARD B JOIN MEMBER M ON B.MID=M.MID WHERE B.BCONTENT LIKE '%'||?||'%' ORDER BY BID DESC";
-   final String sql_selectAll_WRITER_ALL="SELECT * FROM BOARD B JOIN MEMBER M ON B.MID=M.MID WHERE B.MID LIKE '%'||?||'%' ORDER BY BID DESC";
-   final String sql_selectAll_BoardAll_ALL="SELECT * FROM BOARD B JOIN MEMBER M ON B.MID=M.MID ORDER BY BID DESC";
+   final String sql_selectAll_BTITLE_ALL="SELECT * FROM BOARD B LEFT OUTER JOIN MEMBER M ON B.MID=M.MID WHERE B.BTITLE LIKE '%'||?||'%' ORDER BY BID DESC";
+   final String sql_selectAll_BCONTENT_ALL="SELECT * FROM BOARD B LEFT OUTER JOIN MEMBER M ON B.MID=M.MID WHERE B.BCONTENT LIKE '%'||?||'%' ORDER BY BID DESC";
+   final String sql_selectAll_WRITER_ALL="SELECT * FROM BOARD B LEFT OUTER JOIN MEMBER M ON B.MID=M.MID WHERE B.MID LIKE '%'||?||'%' ORDER BY BID DESC";
+   final String sql_selectAll_BoardAll_ALL="SELECT * FROM BOARD B LEFT OUTER JOIN MEMBER M ON B.MID=M.MID ORDER BY BID DESC";
 
+   
    
    //========================================================================================================================================================
 
@@ -59,8 +61,8 @@ public class BoardDAO {
    final String sql_selectAll_BOARD_COUNT="SELECT COUNT(*) AS CNT FROM BOARD";
    
    final String sql_selectAll_Recommend ="SELECT * FROM MEMBER M JOIN (SELECT B.BID, B.BTITLE, B.MID, B.BCONTENT, B.BIMG, B.BDATE, COUNT(L.LSTATUS) AS CNT FROM BOARD B "
-   		+ "JOIN LLIKE L ON B.BID=L.BID GROUP BY B.MID , B.BCONTENT, B.BIMG, B.BDATE, B.BID, B.BTITLE) A ON M.MID=A.MID ORDER BY CNT DESC";
-	
+         + "JOIN LLIKE L ON B.BID=L.BID GROUP BY B.MID , B.BCONTENT, B.BIMG, B.BDATE, B.BID, B.BTITLE) A ON M.MID=A.MID ORDER BY CNT DESC";
+   
 
    //========================================================================================================================================================
 
@@ -150,30 +152,30 @@ public class BoardDAO {
    }
 
       public ArrayList<BoardVO> selectAll_Recommend (BoardVO bvo){
-	      ArrayList<BoardVO> datas=new ArrayList<BoardVO>();
-	      BoardVO data=new BoardVO();
-	      conn=JDBCUtil.connect();
-	      try {
-	         pstmt=conn.prepareStatement(sql_selectAll_Recommend);
-	         ResultSet rs=pstmt.executeQuery();
-	         while(rs.next()) {
-	            data.setBid(rs.getInt("BID"));
-	            data.setBtitle(rs.getString("BTITLE"));
-	            data.setBcontent(rs.getString("BCONTENT"));
-	            data.setBimg(rs.getString("BIMG"));
-	            data.setBdate(rs.getString("BDATE"));
-	            data.setCnt_l(rs.getInt("CNT")); // 추천수
-	            data.setMid(rs.getString("NICKNAME"));
-	            datas.add(data);
-	         }
-	      } catch (SQLException e) {
-	         // TODO Auto-generated catch block
-	         e.printStackTrace();
-	      } finally {
-	         JDBCUtil.disconnect(pstmt, conn);
-	      }      
-	      return datas;
-	   }
+         ArrayList<BoardVO> datas=new ArrayList<BoardVO>();
+         BoardVO data=new BoardVO();
+         conn=JDBCUtil.connect();
+         try {
+            pstmt=conn.prepareStatement(sql_selectAll_Recommend);
+            ResultSet rs=pstmt.executeQuery();
+            while(rs.next()) {
+               data.setBid(rs.getInt("BID"));
+               data.setBtitle(rs.getString("BTITLE"));
+               data.setBcontent(rs.getString("BCONTENT"));
+               data.setBimg(rs.getString("BIMG"));
+               data.setBdate(rs.getString("BDATE"));
+               data.setCnt_l(rs.getInt("CNT")); // 추천수
+               data.setMid(rs.getString("NICKNAME"));
+               datas.add(data);
+            }
+         } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+         } finally {
+            JDBCUtil.disconnect(pstmt, conn);
+         }      
+         return datas;
+      }
 
    public ArrayList<BoardVO> selectAll_Lstatus (BoardVO bvo){
       ArrayList<BoardVO> datas=new ArrayList<BoardVO>();
@@ -211,7 +213,7 @@ public class BoardDAO {
             BoardVO data = new BoardVO();
             data.setBid(rs.getInt("BID"));
             data.setBcontent(rs.getString("BCONTENT"));
-            data.setBtitle(rs.getString("BTITLT"));
+            data.setBtitle(rs.getString("BTITLE"));
             data.setBdate(rs.getString("BDATE"));
             if(rs.getString("NICKNAME")==null) {
                data.setMid("[이름없음]");
@@ -316,7 +318,7 @@ public class BoardDAO {
                pstmt.setInt(1, rvo.getRid());
                ResultSet rs3 = pstmt.executeQuery();
                while(rs3.next()) {
-            	  Reply_reVO rrvo = new Reply_reVO();
+                 Reply_reVO rrvo = new Reply_reVO();
                   System.out.println("rrList 로그");
                   rrvo.setBid(rs3.getInt("BID"));
                   rrvo.setRid(rs3.getInt("RID"));

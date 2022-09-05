@@ -141,17 +141,17 @@
 									<div id="Accordion_wrap" style="width: 100%;">
 										<div class="que" style="border: 1px solid black;">
 											<div>
-
+										${r}
 												<div href="#"
 													style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">${r.mid}</div>
 												|
-												<div style="display: inline-block; border: 1px red black;">${r.rcontent}
+												<div style="display: inline-block; border: 1px black;">${r.rcontent}
 													</div>
 												<div class="time" style="float: right;">${r.rdate}</div>
 												<br>
 												<hr>
 											</div>
-												<bb:cboard midCheck="${r.mid}" type="rmsg" rid="${r.rid}" />
+												<bb:cboard midCheck="${r.mid}" type="rmsg" rid="${r.rid}" bid="${b.bid}" />
 
 										</div>
 										<!-- 댓글창 종료 -->
@@ -167,7 +167,7 @@
 																style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">${rr.mid}</div>
 
 															<div
-																style="display: inline-block; border: 1px red black;">${rr.rrcontent}
+																style="display: inline-block; border: 1px black;">${rr.rrcontent}
 															</div>
 															<div class="time" style="float: right;">${rr.rrdate}</div>
 															<br>

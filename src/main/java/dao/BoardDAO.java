@@ -336,8 +336,7 @@ public class BoardDAO {
                   // WRITER대신 MNAME을 담아서 WRITER를 뽑으면 MNAME이 출력된다.
                   rvo.setMid(rs.getString("NICKNAME"));
                }
-//               System.out.println(rs2.getString("RCONTENT"));
-//               System.out.println(rvo);
+//        
                rSet.setReplyVO(rvo);
                
 
@@ -347,7 +346,7 @@ public class BoardDAO {
                ResultSet rs3 = pstmt.executeQuery();
                while(rs3.next()) {
                  Reply_reVO rrvo = new Reply_reVO();
-                  System.out.println("rrList 로그");
+                  
                   rrvo.setBid(rs3.getInt("BID"));
                   rrvo.setRid(rs3.getInt("RID"));
                   rrvo.setRrcontent(rs3.getString("RRCONTENT"));

@@ -18,7 +18,7 @@ public class ReplyDAO {
 	
 	final String sql_insert_R="INSERT INTO REPLY VALUES((SELECT NVL(MAX(RID),3000)+1 FROM REPLY),?,TO_DATE(sysdate,'yyyy.mm.dd hh24:mi'),?,?)";
 		// INSERT INTO BOARD VALUES((서브쿼리),?,?,?)
-	final String sql_update_R="UPDATE REPLY SET CONTENT=? WHERE RID=?";
+	final String sql_update_R="UPDATE REPLY SET RCONTENT=? WHERE RID=?";
 	final String sql_delete_R="DELETE FROM REPLY WHERE RID=?";
 	
 	public ReplyVO selectOne_R(ReplyVO rvo) {

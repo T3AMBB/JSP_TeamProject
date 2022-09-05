@@ -53,7 +53,8 @@ public class BoardDAO {
    final String sql_delete_B="DELETE FROM BOARD WHERE BID=?";
    
    final String sql_selectAll_BOARD_COUNT="SELECT COUNT(*) AS CNT FROM BOARD";
-
+   final String sql_selectAll_Recommend ="SELECT * FROM MEMBER M JOIN (SELECT B.BID, B.BTITLE, B.MID, B.BCONTENT, B.BIMG, B.BDATE, COUNT(L.LSTATUS) AS CNT FROM BOARD B "
+   		+ "JOIN LLIKE L ON B.BID=L.BID GROUP BY B.MID , B.BCONTENT, B.BIMG, B.BDATE, B.BID, B.BTITLE) A ON M.MID=A.MID ORDER BY CNT DESC";
 
    //========================================================================================================================================================
 
@@ -72,6 +73,32 @@ public class BoardDAO {
    final String sql_selectOne_Report="SELECT COUNT(*) AS CNT FROM BOARD B JOIN LLIKE L ON B.BID=L.BID "
          + "WHERE L.BID=? AND L.REPORT=1";
 
+   public ArrayList<BoardVO> selectAll_Recommend (BoardVO bvo){
+	      ArrayList<BoardVO> datas=new ArrayList<BoardVO>();
+	      BoardVO data=new BoardVO();
+	      conn=JDBCUtil.connect();
+	      try {
+	         pstmt=conn.prepareStatement(sql_selectAll_Recommend);
+	         ResultSet rs=pstmt.executeQuery();
+	         while(rs.next()) {
+	            data.setBid(rs.getInt("BID"));
+	            data.setBtitle(rs.getString("BTITLE"));
+	            data.setBcontent(rs.getString("BCONTENT"));
+	            data.setBimg(rs.getString("BIMG"));
+	            data.setBdate(rs.getString("BDATE"));
+	            data.setCnt_l(rs.getInt("CNT")); // 추천수
+	            data.setMid(rs.getString("NICKNAME"));
+	            datas.add(data);
+	         }
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         JDBCUtil.disconnect(pstmt, conn);
+	      }      
+	      return datas;
+	   }
+   
    public BoardVO selectAll_BOARD_COUNT (BoardVO bvo){
       BoardVO data=new BoardVO();
       conn=JDBCUtil.connect();
@@ -173,7 +200,6 @@ public class BoardDAO {
       conn = JDBCUtil.connect();
       try {
          pstmt = conn.prepareStatement(sql_selectAll_BoardAll_ADMIN);
-         System.out.println("BoardDAO 로그 : "+bvo.getMid());
          pstmt.setString(1, bvo.getMid());
          ResultSet rs = pstmt.executeQuery();
          while (rs.next()) {
@@ -182,8 +208,6 @@ public class BoardDAO {
             data.setBcontent(rs.getString("BCONTENT"));
             data.setBtitle(rs.getString("BTITLE"));
             data.setBdate(rs.getString("BDATE"));
-            data.setMid(rs.getString("MID"));
-            data.setRole(rs.getString("ROLE"));
             pstmt=conn.prepareStatement(sql_selectOne_Lstatus);
             pstmt.setInt(1, rs.getInt("BID"));
             ResultSet rs2=pstmt.executeQuery();

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.BoardDAO;
 import dao.NovelDAO;
+import vo.BoardVO;
 import vo.NovelVO;
 
 
@@ -18,6 +20,10 @@ public class MainAction implements Action{
 		ArrayList<NovelVO> datas;
 		NovelDAO dao=new NovelDAO();
 		NovelVO vo=new NovelVO();
+		
+		ArrayList<BoardVO> bdatas;
+		BoardDAO bdao=new BoardDAO();
+		BoardVO bvo=new BoardVO();
 /*		
 		String searchCondition = request.getParameter("searchCondition");
 		String searchContent = request.getParameter("searchContent");
@@ -28,7 +34,7 @@ public class MainAction implements Action{
 		
 		if(paramCnt==null || paramCnt.equals("")){
 			datas=dao.selectAll(vo);
-			
+		
 		}
 		else {			
 			vo.setNcnt(Integer.parseInt(paramCnt));
@@ -37,6 +43,9 @@ public class MainAction implements Action{
 */			
 		datas=dao.selectAll(vo); // 모든 소설 데이터
 		request.setAttribute("datas", datas);
+		
+		bdatas=bdao.selectAll_Recommend(bvo);
+		request.setAttribute("bdatas", bdatas);
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("/main.jsp");

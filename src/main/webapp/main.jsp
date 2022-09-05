@@ -262,46 +262,23 @@
       
    </div>
 </div>
+<div>
+${bdatas}
+<h1><strong>&lt이달의 추천왕&gt</strong></h1>
 <div class="flex-wrap-movielist12 user-fav-list12">
-               
+               <c:forEach var="b" items="${bdatas}" begin="0" end="3" step="1"> 
                <div class="movie-item-style-2">
-                  <img src="images/uploads/mv2.jpg" alt="">
                   <div class="mv-item-infor">
-                     <h6><a href="#">into the wild <span>(2014)</span></a></h6>
-                     <p class="rate"><i class="ion-android-star"></i><span>7.8</span> /10</p>
+                     <h6><a href="communityBoard.do?bid=${b.bid}">작성자 : ${b.mid} </a></h6>
+                     <p class="rate"><span>추천수 : ${b.cnt_l}</span></p>
                      <p class="describe"></p>
-                     <p class="run-time"> Run Time: 2h21’    .     <span>MMPA: PG-13 </span>    .     <span>Release: 1 May 2015</span></p>
-                     <p>Director: <a href="#">Anthony Russo,</a><a href="#">Joe Russo</a></p>
-                     <p>Stars: <a href="#">Chris Evans,</a> <a href="#">Samuel L. Jackson,</a> <a href="#">  Scarlett Johansson</a></p>
+                     <p class="run-time">제목 : ${b.btitle}  <span></span></p>
+                     <p>날짜 : ${b.bdate}</p>
+                     <p>내용 : ${b.bcontent}</p>
                   </div>
                </div>
-               <div class="movie-item-style-2">
-                  <img src="images/uploads/mv3.jpg" alt="">
-                  <div class="mv-item-infor">
-                     <h6><a href="#">blade runner  <span>(2015)</span></a></h6>
-                     <p class="rate"><i class="ion-android-star"></i><span>7.3</span> /10</p>
-                     <p class="describe"></p>
-                     <p class="run-time"> Run Time: 2h21’    .     <span>MMPA: PG-13 </span>    .     <span>Release: 1 May 2015</span></p>
-                     <p>Director: <a href="#">Peyton Reed</a></p>
-                     <p>Stars: <a href="#">Paul Rudd,</a> <a href="#"> Michael Douglas</a></p>
-                  </div>
-               </div>
-               <div class="movie-item-style-2">
-                  <img src="images/uploads/mv4.jpg" alt="">
-                  <div class="mv-item-infor">
-                     <h6><a href="#">Mulholland pride<span> (2013)  </span></a></h6>
-                     <p class="rate"><i class="ion-android-star"></i><span>7.2</span> /10</p>
-                     <p class="describe"></p>
-                     <p class="run-time"> Run Time: 2h21’    .     <span>MMPA: PG-13 </span>    .     <span>Release: 1 May 2015</span></p>
-                     <p>Director: <a href="#">Shane Black</a></p>
-                     <p>Stars: <a href="#">Robert Downey Jr., </a> <a href="#">  Guy Pearce,</a><a href="#">Don Cheadle</a></p>
-                  </div>
-               </div>
-               
+               </c:forEach>
             </div>      
-
-
-
 <!--end of latest new v1 section-->
       </div>
 <!-- footer section-->

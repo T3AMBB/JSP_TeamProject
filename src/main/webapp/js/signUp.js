@@ -18,30 +18,35 @@
          id.focus();
          return false;
       }
-      if(id.value.indexOf(" ") >= 0){
-         alert("아이디에 공백을 사용할 수 없습니다.");
-         id.focus();
+      if(Nickname.value == ""){
+         alert("별명을 입력하세요.");
+         Nickname.focus();
          return false;
       }
-      if(id.value.length < 5){
-         alert("아이디를 다섯자 이상 입력해주세요.");
-         id.focus();
-         return false;
-      }
-      
       if(pw.value==""){
          alert("비밀번호를 입력하세요.");
-         pw.focus();
-         return false;
-      }
-      if(pw.value.indexOf(" ") >= 0){
-         alert("비밀번호에 공백을 사용할 수 없습니다.");
          pw.focus();
          return false;
       }
       if(pw_re.value==""){
          alert("비밀번호 재입력을 입력하세요.");
          pw_re.focus();
+         return false;
+      }
+      if(name.value==""){
+         alert("이름을 입력하세요.");
+         name.focus();
+         return false;
+      }
+      if(id.value.indexOf(" ") >= 0){
+         alert("아이디에 공백을 사용할 수 없습니다.");
+         id.focus();
+         return false;
+      }
+      
+      if(pw.value.indexOf(" ") >= 0){
+         alert("비밀번호에 공백을 사용할 수 없습니다.");
+         pw.focus();
          return false;
       }
       if(pw_re.value.indexOf(" ") >= 0){
@@ -62,23 +67,13 @@
          pw_re.focus();
          return false;
       }
-      if(name.value==""){
-         alert("이름을 입력하세요.");
-         name.focus();
-         return false;
-      }
       if(name.value.indexOf(" ") >= 0){
          alert("이름에 공백을 사용할 수 없습니다.");
          name.focus();
          return false;
       }
-      if(name.value==""){
-         alert("별명을 입력하세요.");
-         name.focus();
-         return false;
-      }
       if(name.value.indexOf(" ") >= 0){
-         alert("별명에 공백을 사용할 수 없습니다.");
+         alert("이름에 공백을 사용할 수 없습니다.");
          name.focus();
          return false;
       }
@@ -117,24 +112,3 @@
       
    }
 
-   
-   // 이메일 api
-   $("document").ready(function() {
-        emailjs.init('ZG_RClGCYX4SAIQrc');
-       
-        // 괄호 부분이 공개키 ... 이 부분은 사용자마다 다르니 확인 필요
-        $('button[name=sub]').click(function(){           
-          var templateParams = {   
-          //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
-                name : $('input[name=Name]').val(),
-                email : $('input[name=email]').val(),
-                       };
-         emailjs.send('arimjeong', 'template_k5uiutb', templateParams)
-         //emailjs.send('service ID', 'template ID', 보낼 내용이 담긴 객체)
-                .then(function(response) {
-                   console.log('SUCCESS!', response.status, response.text);
-                }, function(error) {
-                   console.log('FAILED...', error);
-                });
-        });
-     });

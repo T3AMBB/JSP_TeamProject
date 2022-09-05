@@ -47,7 +47,7 @@
 									<c:set var="b" value="${n.boardVO}" />
 
 
-									<b>제목입니다${b.btitle} (댓글수 출력)</b>
+									<b>${b.btitle} (댓글수 출력)</b>
 								</h2>
 								<div class="cncjs" style="display: inline-block; float: right;">
 									<i class="fa-solid fa-thumbs-up"></i> <i
@@ -59,20 +59,19 @@
 								<div>
 									<br> <br>
 									<hr style="border: 1px solid black;">
-									<a>작성자 : 김 아무개${b.mid} |</a> <span class="rcd">추천수
+									<a>작성자 : ${b.mid} |</a> <span class="rcd">추천수
 										:${b.cnt_l}</span> <span class="Nrcd">비추천수 : ${b.cnt_n}</span> <span
 										class="time" style="float: right;">작성시간:${b.bdate}</span>
 								</div>
 							</div>
 							<img src="images/${b.bimg}" alt="${b.bimg}">
 
-							<p>
+								<p>
 								${b.bcontent}
 								<!--게시글 작성에서 받아온 게시글 (리뷰)-->
-								<a> 제목부분 div 묶을건지? 고민중 리뷰하는 소설의 이미지가 들어갈것인지? 가나다라 이것이 소설의
-									후기입니다 </a>
 							</p>
 							<hr style="border: 1px solid black;">
+
 
 
 
@@ -122,36 +121,19 @@
 									height="70px">
 							</div>
 
+							<!-- comment items -->
+							<div class="comments">
+								<h4> (댓글개수)</h4>
+								<hr>
+								<br>
 							<!-- comment form -->
 							<div class="comment-form">
-								<h4>댓글을 남겨주세요 입력사이즈/VARCHAR</h4>
-								<form action="insertR.do" method="post">
-									<%
-									//댓글 정보 입력란 삭제 로그인된 session정보를 불러와 데이터 넘기기
-									%>
-									<input type="hidden" name="bid" value="${b.bid}">
-									<div class="row">
-										<div class="col-md-12">
-											<textarea style="height: 100px;" name="content" id=""
-												placeholder="댓글을 작성해주세요 최대 500자"></textarea>
-										</div>
-									</div>
-									<input class="submit" type="submit" placeholder="submit">
-								</form>
+								<h4>댓글을 남겨주세요</h4>
+								<bb:cwrite type="rmsg"  bid="${b.bid}"/>
 							</div>
 							<!-- comment form finish-->
 
-
-							<!-- comment items -->
-							<div class="comments">
-								<h4>04 Comments rcnt.size() 코멘트 갯수 (댓글개수)</h4>
-
-								++++++++======== <br> [{rr.rrcontent}]<br>
-								=============== <br>
-								<hr>
-								<br>
-								<!-- 2번 댓글창 -->
-
+								<!-- 댓글창 시작 -->
 								<c:forEach var="rs" items="${n.replySet}" begin="0" end="4"
 									step="1">
 
@@ -164,19 +146,19 @@
 													style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">${r.mid}</div>
 												|
 												<div style="display: inline-block; border: 1px red black;">${r.rcontent}
-													!댓글 내용! 예제 2번입니다.</div>
+													</div>
 												<div class="time" style="float: right;">${r.rdate}</div>
 												<br>
 												<hr>
 											</div>
-
+												<bb:cboard midCheck="${r.mid}" type="rmsg" rid="${r.rid}" />
 
 										</div>
 										<!-- 댓글창 종료 -->
 
 										<div class="anw">
 
-											<!-- 대댓글창 시작 foreach문 시작 -->
+											<!-- 대댓글창 시작  -->
 											<c:forEach var="rr" items="${rs.rrList}" begin="${rcnt-1}" end="${rcnt+3}" step="1">
 												<div class="rrep">
 													<div style="border: 1px solid black; margin-left: 5%;">
@@ -189,24 +171,14 @@
 															</div>
 															<div class="time" style="float: right;">${rr.rrdate}</div>
 															<br>
-
+													
 														</div>
 													</div>
+													<bb:cboard midCheck="${rr.mid}" type="rrmsg" rrid="${rr.rrid}"/>
 												</div>
 											</c:forEach>
-											<!-- 대댓글창 종료 foreach 종료 -->
-
-											<form action="insertRR.do" method="post">
-												<input type="hidden" name="bid" value="${b.bid}"> <input
-													type="hidden" name="rid" value="${r.rid}">
-												<div class="row">
-													<div class="col-md-12">
-														<textarea style="height: 100px;" name="content"
-															placeholder="대댓글을 작성해주세요 최대 500자"></textarea>
-													</div>
-												</div>
-												<input class="submit" type="submit" placeholder="submit">
-											</form>
+											<!-- 대댓글창 종료  -->
+												<bb:cwrite type="rrmsg" bid="${b.bid}" rid="${r.rid}"/>
 
 											<!-- 대댓글 페이징 -->
 											<ul class="pagination">

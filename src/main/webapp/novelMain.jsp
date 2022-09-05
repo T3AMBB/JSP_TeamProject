@@ -51,19 +51,7 @@
    <div class="container">
       <div class="row ipad-width">
          <div class="col-md-81 col-sm-12 col-xs-12">
-            <div class="topbar-filter">
-               <p>소설&nbsp;<span>${fn:length(datas)}</span>&nbsp;in total</p>
-               <label name="searchCondition">장르:</label>
-               <select name="searchContent">
-                  <option selected value="판타지">판타지</option>
-                  <option value="로맨스">로맨스</option>
-                  <option value="무협">무협</option>
-                  <option value="로판">로판</option>
-                  <option value="현판">현판</option>
-               </select>
-               <a href="movielist.html" class="list"><i class="ion-ios-list-outline "></i></a>
-               <a  href="moviegrid.html" class="grid"><i class="ion-grid active"></i></a>
-            </div>
+
             <div class="flex-wrap-movielist">
             <c:forEach var="n" items="${datas}" begin="0" end="20" step="1">
                   <div class="movie-item-style-2 movie-item-style-1">
@@ -79,26 +67,25 @@
                   </div>
                </c:forEach>               
                   
-            </div>      
-            <div class="topbar-filter">
-               <label>Movies per page:</label>
-               <select>
-                  <option value="range">20 Movies</option>
-                  <option value="saab">10 Movies</option>
-               </select>
-               
-               <div class="pagination2">
-                  <span>Page ${data[1].ncnt} of 5:</span>
+            </div>         
+            				${begin} ${end}
+                           <ul class="pagination">
+                              
+                              <c:if test="${100<=begin}">
+                              <li class="icon-prev"><a href="novelMain.do?cnt=${begin-99}"> <i
+                                    class="ion-ios-arrow-left"></i></a></li>
+                              </c:if>
+                                    
+                              <c:forEach var="c" items="${datas_size}" varStatus="status" begin="${begin}" end="${end}" step="20">
+                                 <a href="novelMain.do?searchCondition=${searchCondition}&searchContent=${searchContent}&cnt=${status.count+pcnt+(19*(status.count+pcnt-1))}">${status.count+pcnt}&nbsp;</a>
+                                 &nbsp;&nbsp;
+                              </c:forEach>
 
-                  <a href="novelMain.do?cnt=${1+20*(a-1)} " >ㅁ</a>
-                  
-                  <a href="novelMain.do?cnt=21">2</a>
-                  <a href="novelMain.do?cnt=41">3</a>
-                  <a href="novelMain.do?cnt=61">4</a>
-                  <a href="novelMain.do?cnt=81">5</a>
-                  <a href="#"><i class="ion-arrow-right-b"></i></a>
-               </div>
-            </div>
+                              <c:if test="${datas_size.size()>end}">
+                              <li class="icon-next"><a href="novelMain.do?cnt=${end+2}"><i
+                                    class="ion-ios-arrow-right"></i></a></li>
+                              </c:if>
+                           </ul>
          </div>
       </div>
    </div>

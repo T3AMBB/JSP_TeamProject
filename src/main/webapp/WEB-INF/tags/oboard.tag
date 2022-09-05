@@ -14,11 +14,12 @@
 	<br>
 	
 	<a href="deleteO.do?oid=${oid}&nid=${nid}">[삭제]</a> &nbsp;
+	<div class="que2">
 	<button id="edit-btn"> 수정하기 </button>
-	<div id="comment-text" style="display: none; ">
+	</div>
+	<div class="anw2" style="display: none; ">
 	<form action="updateO.do?" name="updateOform">
-			<textarea name="ocontent" placeholder="댓글입력">
-			</textarea>
+			<textarea name="ocontent" placeholder="댓글입력"></textarea>
 		<input type="hidden" value="${oid}" name="oid">
 		<input type="hidden" value="${nid}" name="nid">
 		<input type="hidden" value="${ocontent}" name="ocontent">
@@ -31,12 +32,3 @@
 </c:if>
 
 
-<script type="text/javascript">
-
-	$(document).ready(function() {
-   		$("#edit-btn").click(function() {
-     		 $("#comment-text").toggle();	
-  		 });
-	});
-
-</script>

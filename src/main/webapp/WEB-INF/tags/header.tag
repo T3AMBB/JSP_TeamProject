@@ -17,29 +17,27 @@
     <div class="login-content">
         <a href="#" class="close">x</a>
         <h3>로그인</h3>
-        <form action="loginM.do" method="post">
+        <form action="loginM.do" method="post" id="login">
            <div class="row">
                <label>아이디
-                    <input type="text" name="mid" placeholder="아이디" required />
+                    <input type="text" name="mid" placeholder="아이디" id="mid" required />
                </label>
            </div>
            
             <div class="row">
                <label>
                     비밀번호
-                    <input type="password" name="mpw" placeholder="******" required />
+                    <input type="password" name="mpw" placeholder="******" id="mpw" required />
                 </label>
             </div>
             <div class="row">
                <div class="remember">
                <div>
-                  <input type="checkbox" name="remember" value="Remember me"><span>로그인 상태 유지</span>
                </div>
                  <a class="nav-link" href="#" data-toggle="modal" data-target="#login">비밀번호찾기</a>
                </div>
             </div>
            <div class="row">
-               <!-- <button class="submit">로그인</button> -->
 				<input type="submit" value="로그인">
            </div>
         </form>
@@ -67,54 +65,11 @@
            		<div class="row">
                <form>
                     아이디
-                    <input type="text" name="mid" id="mid" placeholder="회원아이디 입력" required="required" />
+                    <input type="text" name="mid" id="mid" placeholder="아이디 입력" required="required" />
                     <input type="button" value="아이디 체크" onclick="sms();">
                     <div class="result1"></div>
                     </form>
-               <!--   <br>
-              		<input type="hidden" name="phoneNumberCheck" class="result2">
-                    휴대폰번호
-                    <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="01012345678" required="required" />
-                    <input type="button" value="전화번호 확인" id="btu"><input type="button" value="임시 비밀번호 발급" onclick="sms();"id="btu1">
-              	</form>
-                    <div id="result"></div> -->
-<script type="text/javascript">
-//document.getElementById("btu").disabled=true;
-//document.getElementById("btu1").disabled=true;
-function sms(){
-	   var mid=$("#mid").val(); // id=mid의 value값
-	   $.ajax({
-	      type: 'GET', 
-	      url: 'Sms?mid='+mid, //사용자가 입력한 값을 확보한 상태 > DB한테 물어볼 예정 "mid라는 값이 DB에 이미 있어?" => DAO(M)로 가야함 > 이제 C가(서블릿) 작업을 할 차례구나! 
-	      data: {"mid":mid},
-	      success: function(result){ // 성공했을 때
-	         
-	         console.log("로그1 ["+result+"] succes");
-	         if(result==0){ // 가입된회원
-	        
-		         $(".result1").text("가입된 휴대전화로 임시비밀번호 전송되었습니다.");
-		            $(".result1").css("color","blue");
-		            
-		            document.getElementById("btu").disabled=true;
-		            console.log("로그2 ["+result+"] succes");
-	         }else{ // 중복, 사용불가
-	        	 $(".result1").text("가입된 회원이 아닙니다.");
-		         $(".result1").css("color","red");
-		       //  $(".result2").val(result);
-		         
-		         console.log("로그3 ["+result+"] succes");
-		            //document.getElementById("btu").disabled=false;            
-	         }
-	      },
-	      error: function(request, status, error){
-	         console.log("code: "+request.status);
-	         console.log("message: "+request.responseText);
-	         console.log("error: "+error);
-	      }
-	   });
-	}
 
-</script>               
 
 
 
@@ -206,7 +161,7 @@ function sms(){
 var naverLogin = new naver.LoginWithNaverId(
       {
          clientId: "hLQzHJecbMviikbiJiSo", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-         callbackUrl: "http://localhost:8088/teamproject/main.jsp", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+         callbackUrl: "http://localhost:8088/bbday/main.jsp", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
          isPopup: false,
          callbackHandle: true
       }
@@ -221,6 +176,13 @@ window.addEventListener('load', function () {
           
          console.log(naverLogin.user); 
           
+         if(email != null){
+             var form=document.forms['login'];
+             $('#mid').val(email);
+             form.action = "naverlogin.do";
+             form.submit();
+             
+          }
             if( email == undefined || email == null) {
             alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
             naverLogin.reprompt();
@@ -256,25 +218,41 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
 
         function kakaoLogin() {
             window.Kakao.Auth.login({
-                scope: 'account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+//                 scope: 'account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
                 success: function(response) {
-                    console.log(response) // 로그인 성공하면 받아오는 데이터
-                    window.Kakao.API.request({ // 사용자 정보 가져오기 
-                        url: '/v2/user/me',
-                        success: (res) => {
-                            const kakao_account = res.kakao_account;
-                            console.log(kakao_account)
-                        }
-                    });
-                    window.location.href='main.jsp' //리다이렉트 되는 코드
-                },
+                      Kakao.API.request({
+                           url : '/v2/user/me',
+                           success : function(response) {
+                        	   
+                               var email=response.kakao_account.email;
+                               var name=response.kakao_account.profile.nickname;
+                               console.log(response)
+                               console.log('이메일:'+response.kakao_account.email);
+                               console.log('닉네임:'+response.kakao_account.profile.nickname);
+//                                location.href="login.do?amid="+email;
+
+                               if(email!=null){
+                                   var form=document.forms['login'];
+                                   $('#mid').val(email);
+                                   $('#mpw').val(name);
+                                   form.action="kakaologin.do";
+                                   form.submit();
+                                }
+                               
+                           },
+                           fail : function(error) {
+                               console.log(error)
+                           },
+                       })
+                   },
+
                 fail: function(error) {
                     console.log(error);
                 }
             });
         }
         
-        window.Kakao.init('6e89f814e92b8d171dd5a1fa9be630e9');
+   //     window.Kakao.init('6e89f814e92b8d171dd5a1fa9be630e9');
         
        function kakaoLogout() {
            if (!Kakao.Auth.getAccessToken()) {
@@ -303,27 +281,62 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
     };
     </script>
 <!-- 카카오 스크립트 종료 -->
-<!-- 문자 api 
+<!-- 문자 API -->
 <script type="text/javascript">
-
-	function sms(){
-		var phoneNumber = $("#phoneNumber").val();
-		
-		$.ajax({
-			type: 'POST',
-			url: '${pageContext.request.contextPath}/Sms',
-			data:{phoneNumber:phoneNumber},
-			success: function(result){
-				console.log("글을써");
-				$("#result").text("임시 비밀번호 발급이 완료되었습니다.");
-				$("#result").css("color","blue");
-			},
-			error: function(request, status, error){ // 요청 보낸 곳(서블릿)에서 에러가 발생할 시 실행
-				console.log("code: "+request.status);
-				console.log("message: "+request.responseText);
-				console.log("error: "+error);
-			}
-			
-		});
+function sms(){
+	   var mid=$("#mid").val(); // id=mid의 value값
+	   $.ajax({
+	      type: 'GET', 
+	      url: 'Sms?mid='+mid, //사용자가 입력한 값을 확보한 상태 > DB한테 물어볼 예정 "mid라는 값이 DB에 이미 있어?" => DAO(M)로 가야함 > 이제 C가(서블릿) 작업을 할 차례구나! 
+	      data: {"mid":mid},
+	      success: function(result){ // 성공했을 때
+	         
+	         console.log("로그1 ["+result+"] succes");
+	         if(result==0){ // 가입된회원
+	        
+		         $(".result1").text("가입된 휴대전화로 임시비밀번호 전송되었습니다.");
+		            $(".result1").css("color","blue");
+		            
+		            document.getElementById("btu").disabled=true;
+		            console.log("로그2 ["+result+"] succes");
+	         }else{ // 중복, 사용불가
+	        	 $(".result1").text("가입된 회원이 아닙니다.");
+		         $(".result1").css("color","red");
+		       //  $(".result2").val(result);
+		         
+		         console.log("로그3 ["+result+"] succes");
+		            //document.getElementById("btu").disabled=false;            
+	         }
+	      },
+	      error: function(request, status, error){
+	         console.log("code: "+request.status);
+	         console.log("message: "+request.responseText);
+	         console.log("error: "+error);
+	      }
+	   });
 	}
-</script> -->
+
+</script> 
+
+<script type="text/javascript">
+if(${logoutValue}==100){
+
+    // deleteCookie(변수이름)
+//        deleteCookie('nid_inf');
+//        deleteCookie('NID_AUT');
+//        deleteCookie('NID_SES');
+//        deleteCookie('NID_JKL');
+       
+//         deleteCookie('nx_ssl');
+//         deleteCookie('NNB');
+//         deleteCookie('nid_slevel');
+//         deleteCookie('ASID');
+//         deleteCookie('nid_buk');
+//        deleteCookie('JSESSIONID');
+       
+//     기타 사이트 데이터 제거
+//     쿠키라는 쿠키는 다 삭제했지만 삭제가 안됐음
+      window.localStorage.clear();
+       ${logoutValue=99};
+ }
+</script>              

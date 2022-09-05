@@ -139,9 +139,10 @@
 
 									<c:set var="r" value="${rs.replyVO}" />
 									<div id="Accordion_wrap" style="width: 100%;">
-										<div class="que" style="border: 1px solid black;">
+										<div class="que1" style="border: 1px solid black;">
+									
 											<div>
-										${r}
+									
 												<div href="#"
 													style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">${r.mid}</div>
 												|
@@ -153,6 +154,9 @@
 											</div>
 												<bb:cboard midCheck="${r.mid}" type="rmsg" rid="${r.rid}" bid="${b.bid}" />
 
+										</div>
+										<div class="que">
+											<button>대댓글보기</button>
 										</div>
 										<!-- 댓글창 종료 -->
 
@@ -203,6 +207,8 @@
 											<!-- 대댓글 페이징 -->
 
 										</div>
+										<br>
+										<br>
 									</div>
 
 								</c:forEach>
@@ -263,7 +269,7 @@
 			$(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
 		});
 	</script>
-
+	
 	<script type="text/javascript">
 		function lstatus() {
 			var mid = '${member.mid}';
@@ -372,6 +378,20 @@
 		}
 	</script>
 </body>
+<script type="text/javascript">
+		$(".que2").click(function() {
+			$(this).next(".anw2").stop().slideToggle(300);
+			$(this).toggleClass('on').siblings().removeClass('on');
+			$(this).next(".anw2").siblings(".anw2").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
+		});
+	</script>
+<script type="text/javascript">
+		$(".que3").click(function() {
+			$(this).next(".anw3").stop().slideToggle(300);
+			$(this).toggleClass('on').siblings().removeClass('on');
+			$(this).next(".anw3").siblings(".anw3").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
+		});
+	</script>
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>

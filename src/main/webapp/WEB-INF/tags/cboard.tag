@@ -15,8 +15,10 @@
 	<c:choose>
 		<c:when test="${type=='rmsg'}">
 			<a href="deleteR.do?rid=${rid}&bid=${bid}">[삭제]</a> &nbsp;
-	<button class="edit-btn"> 수정하기 </button>
-	<div class="comment-text" style="display: none; ">
+		<div class="que2">
+	<button> 수정하기 </button>
+	</div>
+	<div class="anw2" style="display: none; ">
 	<form action="updateR.do" name="updateRform">
 			<textarea name="content" placeholder="댓글입력">
 			</textarea>
@@ -30,8 +32,10 @@
 	
 		<c:when test="${type=='rrmsg'}">
 			<a href="deleteRR.do?rrid=${rrid}&bid=${bid}">[삭제]</a> &nbsp;
-	<button class="edit-btn1"> 수정하기 </button>
-	<div class="comment-text1" style="display: none; ">
+			<div class="que3">
+	<button> 수정하기 </button>
+	</div>
+	 <div class="anw3" style="display: none; "> 
 	<form action="updateRR.do" name="updateRRform">
 			<textarea name="content" placeholder="댓글입력">
 			</textarea>
@@ -40,13 +44,9 @@
 		<input type="hidden" value="${bid}" name="bid">
 		<input type="submit" value="수정완료" />
 	</form>
-	</div>
+	 </div> 
 		</c:when>
-	</c:choose>
-	
-	
-	
-	
+	</c:choose>	
 </c:if>
 
 
@@ -54,7 +54,7 @@
 
 	$(document).ready(function() {
    		$(".edit-btn").click(function() {
-     		 $(".comment-text").toggle();	
+     		 $(this).next(".comment-text").toggle();	
   		 });
 	});
 	
@@ -63,10 +63,12 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
-   		$(".edit-btn1").click(function() {
-     		 $(".comment-text1").toggle();	
+   		$("#edit-btn1").click(function() {
+     		 $("#comment-text1").toggle();	
   		 });
 	});
 	
 
 </script>
+
+

@@ -41,8 +41,7 @@
 		</div>
 			<form action="InsertB" method="post" enctype="multipart/form-data">
 				<input type="text" name="btitle" placeholder="제목을 입력해주세요">
-				  <textarea name="bcontent" id="editor" style="height: 500px;">
-				  </textarea>
+				  <textarea name="bcontent" id="editor" style="height: 500px;"></textarea>
 				 <input type="file" name="bimg" placeholder="제목을 입력해주세요" onchange="loadFile(this)">
 				 <img alt="미리보기" id="preview" />
 				  

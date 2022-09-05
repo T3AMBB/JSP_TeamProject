@@ -301,6 +301,22 @@ public class FrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/naverlogin.do")) {
+			try {
+				forward = new NaverLoginAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/kakaologin.do")) {
+			try {
+				forward = new KakaoLoginAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 
 /*		

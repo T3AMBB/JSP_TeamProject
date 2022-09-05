@@ -92,7 +92,7 @@
 										</div>
 										<br>
 										<hr>
-										<h4>[ 리뷰 ] &nbsp; ${fn:length(datas)}개</h4>
+										<h4>[리뷰] &nbsp; ${fn:length(datas)}개</h4>
 										<div class="row">
 											<c:if test="${member != null}">
 												<div class="rv-hd">
@@ -116,8 +116,7 @@
 															</fieldset>
 															<textarea rows="40" cols="100"
 																placeholder="리뷰를 작성해주세요 최대 500자" name="ocontent"
-																style="height: 100px; left: 50px; top: 51px;">
-							            			</textarea>
+																style="height: 100px; left: 50px; top: 51px;"></textarea>
 															<input type="submit" value="리뷰등록" class="redbtn">
 														</form>
 													</div>
@@ -207,4 +206,11 @@
 	<script src="js/plugins2.js"></script>
 	<script src="js/custom.js"></script>
 </body>
+<script type="text/javascript">
+		$(".que2").click(function() {
+			$(this).next(".anw2").stop().slideToggle(300);
+			$(this).toggleClass('on').siblings().removeClass('on');
+			$(this).next(".anw2").siblings(".anw2").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
+		});
+	</script>
 </html>

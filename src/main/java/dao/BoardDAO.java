@@ -45,13 +45,15 @@ public class BoardDAO {
    // 댓글 하나만 뽑는 것
    final String sql_selectAll_ReplyAll="SELECT * FROM REPLY LEFT OUTER JOIN MEMBER ON REPLY.MID=MEMBER.MID WHERE REPLY.MID=? ORDER BY RID DESC ";
    // 댓글 전체 뽑는 것 = 내가 쓴 댓글 전체
-   final String sql_selectAll_ReplyAll_paging="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY LEFT OUTER JOIN BOARD ON REPLY.BID=BOARD.BID WHERE REPLY.BID=? ORDER BY RID DESC) A WHERE ROWNUM < = ?+4)WHERE RNUM  > = ? ";
+   final String sql_selectAll_ReplyAll_paging="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY LEFT OUTER JOIN MEMBER ON REPLY.MID=MEMBER.MID WHERE REPLY.BID=? ORDER BY RID DESC) A WHERE ROWNUM < = ?+4)WHERE RNUM  > = ? ";
+   // 해당 게시글의 댓글만 페이징 처리해서 뽑는 것
+//   final String sql_selectAll_ReplyAll_paging="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY LEFT OUTER JOIN BOARD ON REPLY.BID=BOARD.BID WHERE REPLY.BID=? ORDER BY RID DESC) A WHERE ROWNUM < = ?+4)WHERE RNUM  > = ? ";
    // 해당 게시글의 댓글만 페이징 처리해서 뽑는 것
    final String sql_selectAll_ReplyAll_All="SELECT * FROM REPLY LEFT OUTER JOIN BOARD ON REPLY.BID=BOARD.BID WHERE REPLY.BID=? ORDER BY RID DESC ";
    // 해당 게시글의 댓글만 뽑는 것 = 게시글에 맞는 댓글
    final String sql_selectAll_Reply_re_paging="SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY_RE LEFT OUTER JOIN REPLY ON REPLY_RE.RID=REPLY.RID WHERE REPLY_RE.RID=? ORDER BY REPLY_RE.RRID DESC) A WHERE ROWNUM < = ?+4";
    // 대댓글 전체 출력 = 해당 댓글과 맞는 대댓글을 페이징 처리해서 뽑는것  
-   final String sql_selectAll_Reply_re="SELECT * FROM REPLY_RE LEFT OUTER JOIN REPLY ON REPLY_RE.RID=REPLY.RID WHERE REPLY_RE.RID=? ORDER BY RRID DESC ";
+   final String sql_selectAll_Reply_re="SELECT * FROM REPLY_RE LEFT OUTER JOIN MEMBER ON REPLY_RE.MID=MEMBER.MID WHERE REPLY_RE.RID=? ORDER BY RRID DESC ";
    // 대댓글 전체 출력 = 해당 댓글과 맞는 대댓글  
 
    final String sql_insert_B="INSERT INTO BOARD VALUES((SELECT NVL(MAX(BID),1000)+1 FROM BOARD),?,?,TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI'),?,?)";
@@ -330,13 +332,13 @@ public class BoardDAO {
                rvo.setBid(rs2.getInt("BID"));
                rvo.setRcontent(rs2.getString("RCONTENT"));
                rvo.setRdate(rs2.getString("RDATE"));
-               if(rs.getString("NICKNAME")==null) {
+               if(rs2.getString("NICKNAME")==null) {
                   rvo.setMid("[이름없음]");
                } else {
                   // WRITER대신 MNAME을 담아서 WRITER를 뽑으면 MNAME이 출력된다.
-                  rvo.setMid(rs.getString("NICKNAME"));
+                  rvo.setMid(rs2.getString("NICKNAME"));
                }
-//        
+//               System.out.println(rs2.getString("NICKNAME"));
                rSet.setReplyVO(rvo);
                
 
@@ -352,12 +354,13 @@ public class BoardDAO {
                   rrvo.setRrcontent(rs3.getString("RRCONTENT"));
                   rrvo.setRrdate(rs3.getString("RRDATE"));
                   rrvo.setRrid(rs3.getInt("RRID"));
-                  if(rs.getString("NICKNAME")==null) {
+                  if(rs3.getString("NICKNAME")==null) {
                      rrvo.setMid("[이름없음]");
                   } else {
                      // WRITER대신 MNAME을 담아서 WRITER를 뽑으면 MNAME이 출력된다.
-                     rrvo.setMid(rs.getString("NICKNAME"));
+                     rrvo.setMid(rs3.getString("NICKNAME"));
                   }
+//                  System.out.println(rs3.getString("NICKNAME"));
                   rrList.add(rrvo);      
                }
                rSet.setrrList(rrList);

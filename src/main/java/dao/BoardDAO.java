@@ -202,7 +202,7 @@ public class BoardDAO {
    }
 
 
-   public ArrayList<BoardVO> selectAll_MEMBER(BoardVO bvo) { // 관리자에서 사용할 전체 회원목록
+  public ArrayList<BoardVO> selectAll_MEMBER(BoardVO bvo) { // 관리자에서 사용할 전체 회원목록
       ArrayList<BoardVO> datas = new ArrayList<BoardVO>();
       conn = JDBCUtil.connect();
       try {
@@ -215,6 +215,33 @@ public class BoardDAO {
             data.setBcontent(rs.getString("BCONTENT"));
             data.setBtitle(rs.getString("BTITLE"));
             data.setBdate(rs.getString("BDATE"));
+            pstmt=conn.prepareStatement(sql_selectOne_Lstatus);
+            pstmt.setInt(1, rs.getInt("BID"));
+            ResultSet rs2=pstmt.executeQuery();
+            if(rs2.next()) {
+               data.setCnt_l(rs2.getInt("CNT"));
+            }
+            else {
+               data.setCnt_l(0);
+            }
+            pstmt=conn.prepareStatement(sql_selectOne_NLstatus);
+            pstmt.setInt(1, rs.getInt("BID"));
+            ResultSet rs3=pstmt.executeQuery();
+            if(rs3.next()) {
+               data.setCnt_n(rs3.getInt("CNT"));
+            }
+            else {
+               data.setCnt_n(0);
+            }
+            pstmt=conn.prepareStatement(sql_selectOne_Report);
+            pstmt.setInt(1, rs.getInt("BID"));
+            ResultSet rs4=pstmt.executeQuery();
+            if(rs4.next()) {
+               data.setCnt_r(rs4.getInt("CNT"));
+            }
+            else {
+               data.setCnt_r(0);
+            }
             if(rs.getString("NICKNAME")==null) {
                data.setMid("[이름없음]");
             } else {
@@ -232,6 +259,7 @@ public class BoardDAO {
       }
       return datas;
    }
+
 
 
    //===========게시글상세에서 사용할 selectOne

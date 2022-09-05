@@ -77,23 +77,13 @@ float : right;}
                                  </div>
                                  <br> <br> <br> <br>
                                  <!-- 상단 버튼바 시작 -->
-                                 <div class=list_top_btnbox>
-                                    <div class=fl>
-                                    <a href="communityForm.jsp">
-                                       <button class=btn_view>전체글보기</button>
-                                    </a> 
-                                    <a href="communityForm.jsp">
-                                       <button class=btn_view>공지글보기</button>
-                                    </a>
-                                    </div>
-                                    <div class=fr>
-                                       <div class=btn_write>
-                                          <a href="communityForm.jsp"><button class=btn_write>글작성하기</button>
-                                          </a>
-                                    </div>
-                                    </div>
-                                 </div>
-                                 <!-- 상단 버튼바 끝 -->
+                                     <c:if test="${member != null}">
+    <div class=list_bottom_btnbox>
+                              <div style="float: right;">
+                                 <a href="communityForm.jsp"><button>글 작성하기</button></a>
+                              </div>
+                           </div>
+</c:if>
 
                                  <!-- 게시글 콘텐츠 시작 -->
                                  <div class="TabsConts on">
@@ -116,15 +106,14 @@ float : right;}
                                              <th scope="col">등록일</th>
                                           </tr>
                                        </thead>
-                                       <tbody>
-                                      
+                                       
+                                        <tbody>
                                           <ul class="noticeList" id="notice-list">
                                           
                                              <c:forEach var="n" items="${datas}" begin="0" end="4"
                                                 step="1">
-                                               
                                                 <c:set var="b" value="${n.boardVO}"/>
-                                                
+                                                <c:if test="${b.role eq 'admin'}">
                                                 <tr class="notice_fix">
                                                 
                                                    <td><a href="communityBoard.do?bid=${b.bid}">${b.bid}</a></td>
@@ -146,28 +135,58 @@ float : right;}
                                                    <td>${b.cnt_l}</td>
                                                    <td>${b.bdate}</td>
                                                 </tr>
+                                                </c:if>
                                              </c:forEach>
                                           </ul>
-                                          </div>
                                        </tbody>
+                                       
+                                       <tbody>
+                                          <ul class="noticeList" id="notice-list">
+                                          
+                                             <c:forEach var="n" items="${datas}" begin="0" end="4"
+                                                step="1">
+                                               
+                                                <c:set var="b" value="${n.boardVO}"/>
+                                                <c:if test="${b.role != 'admin'}">
+                                                <tr class="notice_fix">
+                                                
+                                                   <td><a href="communityBoard.do?bid=${b.bid}">${b.bid}</a></td>
+                                                   <td>${b.mid}</td>
+                                                   <c:choose>
+                                                   <c:when test="${b.role eq 'admin'}">
+                                                   <td class="subject"><strong class="FG01">
+                                                   </strong><a
+                                                      href="javascript:counsel.noticeList.goDetail('35940')">
+                                                         <b>&lt공지&gt</b>${b.btitle} </a></td>
+                                                         </c:when>
+                                                   <c:otherwise>
+                                                   <td class="subject"><strong class="FG01">
+                                                   </strong><a
+                                                      href="javascript:counsel.noticeList.goDetail('35940')">
+                                                         ${b.btitle} </a></td>
+                                                         </c:otherwise> 
+                                                         </c:choose>
+                                                   <td>${b.cnt_l}</td>
+                                                   <td>${b.bdate}</td>
+                                                </tr>
+                                                </c:if>
+                                             </c:forEach>
+                                          </ul>
+                                       </tbody>
+  
                                     </table>
                                  </div>
                               </div>
                            </div>
                            <!-- 게시글 콘텐츠 끝 -->
-                           <!-- 아래쪽 버튼 바 -->
-                           <div class=list_bottom_btnbox>
-                              <div style="float: left;">
-                                 <a href="communityForm.jsp"><button>전체글 보기</button></a>
-                              </div>
-                              <div>
-                                 <a href="communityForm.jsp"><button>공지글 보기</button></a>
-                              </div>
+                         <!-- 하단 버튼바 시작 -->
+							<c:if test="${member != null}">
+    <div class=list_bottom_btnbox>
                               <div style="float: right;">
                                  <a href="communityForm.jsp"><button>글 작성하기</button></a>
                               </div>
                            </div>
-                           <!-- 아래쪽 버튼 바 끝 -->
+</c:if>
 
                            <!-- 페이지 갯수 로직 필요 -->
                            <ul class="pagination">

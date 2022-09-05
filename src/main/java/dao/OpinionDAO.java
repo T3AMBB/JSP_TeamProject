@@ -102,6 +102,7 @@ public class OpinionDAO {
 				data.setMid(rs.getString("MID"));
 				data.setTitle(rs.getString("NTITLE"));
 				data.setOstar(rs.getInt("OSTAR"));
+				data.setNid(rs.getInt("NID"));
 				datas.add(data);
 			}
 		} catch (SQLException e) {

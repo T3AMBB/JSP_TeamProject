@@ -16,8 +16,8 @@ public class EmailDAO {
    public int email(EmailVO vo) {
 
       String host = "smtp.naver.com"; // 사용할 사이트
-      final String user = "lisa052@naver.com"; // ID
-      final String password = "rnrql0607!"; // PW
+      final String user = "aimee3213@naver.com"; // ID
+      final String password = "asdf1234"; // PW
 
       // String to = "lisa23@kakao.com"; // 보낼 이메일 주소
       String to = vo.getEmailAddress();

@@ -141,7 +141,7 @@
 													</div>
 												</div>
 											</c:if>
-											${datas}
+											<!-- ${datas} -->
 
 											<c:forEach var="o" items="${datas}">
 												<div class="mv-user-review-item">
@@ -177,17 +177,14 @@
 											</c:forEach>
 
 
-											<%--	<c:if test="${cnt < datasSize}">
-									<a href="novelBoard.do?cnt=${cnt+2}">더보기&gt;&gt;</a>
-										</c:if>
-										  --%>
-
-											<div class="topbar-filter">
-												<div class="pagination2">
-													<a href="novelBoard.do?cnt=${cnt+2}">더보기<i
-														class="ion-arrow-right-b"></i></a>
-												</div>
-											</div>
+											<c:if test="${datas_size>cnt}">
+													<div class="topbar-filter">
+														<div class="pagination2">
+															<a href="novelBoard.do?cnt=${cnt+5}&nid=${data.nid}">더보기<i
+																class="ion-arrow-right-b"></i></a>
+														</div>
+													</div>
+												</c:if>
 										</div>
 
 

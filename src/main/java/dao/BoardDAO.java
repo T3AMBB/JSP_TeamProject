@@ -43,8 +43,12 @@ public class BoardDAO {
    // 댓글 하나만 뽑는 것
    final String sql_selectAll_ReplyAll="SELECT * FROM REPLY LEFT OUTER JOIN MEMBER ON REPLY.MID=MEMBER.MID WHERE REPLY.MID=? ORDER BY RID DESC ";
    // 댓글 전체 뽑는 것 = 내가 쓴 댓글 전체
-   final String sql_selectAll_ReplyAll_Board="SELECT * FROM REPLY LEFT OUTER JOIN BOARD ON REPLY.BID=BOARD.BID WHERE REPLY.BID=? ORDER BY RID DESC ";
+   final String sql_selectAll_ReplyAll_paging="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY LEFT OUTER JOIN BOARD ON REPLY.BID=BOARD.BID WHERE REPLY.BID=? ORDER BY RID DESC) A WHERE ROWNUM < = ?+4)WHERE RNUM  > = ? ";
+   // 해당 게시글의 댓글만 페이징 처리해서 뽑는 것
+   final String sql_selectAll_ReplyAll_All="SELECT * FROM REPLY LEFT OUTER JOIN BOARD ON REPLY.BID=BOARD.BID WHERE REPLY.BID=? ORDER BY RID DESC ";
    // 해당 게시글의 댓글만 뽑는 것 = 게시글에 맞는 댓글
+   final String sql_selectAll_Reply_re_paging="SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY_RE LEFT OUTER JOIN REPLY ON REPLY_RE.RID=REPLY.RID WHERE REPLY_RE.RID=? ORDER BY REPLY_RE.RRID DESC) A WHERE ROWNUM < = ?+4";
+   // 대댓글 전체 출력 = 해당 댓글과 맞는 대댓글을 페이징 처리해서 뽑는것  
    final String sql_selectAll_Reply_re="SELECT * FROM REPLY_RE LEFT OUTER JOIN REPLY ON REPLY_RE.RID=REPLY.RID WHERE REPLY_RE.RID=? ORDER BY RRID DESC ";
    // 대댓글 전체 출력 = 해당 댓글과 맞는 대댓글  
 
@@ -53,8 +57,10 @@ public class BoardDAO {
    final String sql_delete_B="DELETE FROM BOARD WHERE BID=?";
    
    final String sql_selectAll_BOARD_COUNT="SELECT COUNT(*) AS CNT FROM BOARD";
+   
    final String sql_selectAll_Recommend ="SELECT * FROM MEMBER M JOIN (SELECT B.BID, B.BTITLE, B.MID, B.BCONTENT, B.BIMG, B.BDATE, COUNT(L.LSTATUS) AS CNT FROM BOARD B "
    		+ "JOIN LLIKE L ON B.BID=L.BID GROUP BY B.MID , B.BCONTENT, B.BIMG, B.BDATE, B.BID, B.BTITLE) A ON M.MID=A.MID ORDER BY CNT DESC";
+	
 
    //========================================================================================================================================================
 
@@ -73,32 +79,6 @@ public class BoardDAO {
    final String sql_selectOne_Report="SELECT COUNT(*) AS CNT FROM BOARD B JOIN LLIKE L ON B.BID=L.BID "
          + "WHERE L.BID=? AND L.REPORT=1";
 
-   public ArrayList<BoardVO> selectAll_Recommend (BoardVO bvo){
-	      ArrayList<BoardVO> datas=new ArrayList<BoardVO>();
-	      BoardVO data=new BoardVO();
-	      conn=JDBCUtil.connect();
-	      try {
-	         pstmt=conn.prepareStatement(sql_selectAll_Recommend);
-	         ResultSet rs=pstmt.executeQuery();
-	         while(rs.next()) {
-	            data.setBid(rs.getInt("BID"));
-	            data.setBtitle(rs.getString("BTITLE"));
-	            data.setBcontent(rs.getString("BCONTENT"));
-	            data.setBimg(rs.getString("BIMG"));
-	            data.setBdate(rs.getString("BDATE"));
-	            data.setCnt_l(rs.getInt("CNT")); // 추천수
-	            data.setMid(rs.getString("NICKNAME"));
-	            datas.add(data);
-	         }
-	      } catch (SQLException e) {
-	         // TODO Auto-generated catch block
-	         e.printStackTrace();
-	      } finally {
-	         JDBCUtil.disconnect(pstmt, conn);
-	      }      
-	      return datas;
-	   }
-   
    public BoardVO selectAll_BOARD_COUNT (BoardVO bvo){
       BoardVO data=new BoardVO();
       conn=JDBCUtil.connect();
@@ -169,6 +149,31 @@ public class BoardDAO {
       return datas;
    }
 
+      public ArrayList<BoardVO> selectAll_Recommend (BoardVO bvo){
+	      ArrayList<BoardVO> datas=new ArrayList<BoardVO>();
+	      BoardVO data=new BoardVO();
+	      conn=JDBCUtil.connect();
+	      try {
+	         pstmt=conn.prepareStatement(sql_selectAll_Recommend);
+	         ResultSet rs=pstmt.executeQuery();
+	         while(rs.next()) {
+	            data.setBid(rs.getInt("BID"));
+	            data.setBtitle(rs.getString("BTITLE"));
+	            data.setBcontent(rs.getString("BCONTENT"));
+	            data.setBimg(rs.getString("BIMG"));
+	            data.setBdate(rs.getString("BDATE"));
+	            data.setCnt_l(rs.getInt("CNT")); // 추천수
+	            data.setMid(rs.getString("NICKNAME"));
+	            datas.add(data);
+	         }
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         JDBCUtil.disconnect(pstmt, conn);
+	      }      
+	      return datas;
+	   }
 
    public ArrayList<BoardVO> selectAll_Lstatus (BoardVO bvo){
       ArrayList<BoardVO> datas=new ArrayList<BoardVO>();
@@ -206,35 +211,8 @@ public class BoardDAO {
             BoardVO data = new BoardVO();
             data.setBid(rs.getInt("BID"));
             data.setBcontent(rs.getString("BCONTENT"));
-            data.setBtitle(rs.getString("BTITLE"));
+            data.setBtitle(rs.getString("BTITLT"));
             data.setBdate(rs.getString("BDATE"));
-            pstmt=conn.prepareStatement(sql_selectOne_Lstatus);
-            pstmt.setInt(1, rs.getInt("BID"));
-            ResultSet rs2=pstmt.executeQuery();
-            if(rs2.next()) {
-               data.setCnt_l(rs2.getInt("CNT"));
-            }
-            else {
-               data.setCnt_l(0);
-            }
-            pstmt=conn.prepareStatement(sql_selectOne_NLstatus);
-            pstmt.setInt(1, rs.getInt("BID"));
-            ResultSet rs3=pstmt.executeQuery();
-            if(rs3.next()) {
-               data.setCnt_n(rs3.getInt("CNT"));
-            }
-            else {
-               data.setCnt_n(0);
-            }
-            pstmt=conn.prepareStatement(sql_selectOne_Report);
-            pstmt.setInt(1, rs.getInt("BID"));
-            ResultSet rs4=pstmt.executeQuery();
-            if(rs4.next()) {
-               data.setCnt_r(rs4.getInt("CNT"));
-            }
-            else {
-               data.setCnt_r(0);
-            }
             if(rs.getString("NICKNAME")==null) {
                data.setMid("[이름없음]");
             } else {
@@ -271,7 +249,7 @@ public class BoardDAO {
             boardVO.setBtitle(rs.getString("BTITLE"));
             boardVO.setBdate(rs.getString("BDATE"));
             boardVO.setBimg(rs.getString("BIMG"));
-            System.out.println(rs.getString("BIMG"));
+//            System.out.println(rs.getString("BIMG"));
             pstmt=conn.prepareStatement(sql_selectOne_Lstatus);
             pstmt.setInt(1, rs.getInt("BID"));
             ResultSet rs4=pstmt.executeQuery();
@@ -308,8 +286,10 @@ public class BoardDAO {
             bs.setBoardVO(boardVO);
 
             ArrayList<ReplySet> replySet = new ArrayList<ReplySet>();
-            pstmt=conn.prepareStatement(sql_selectAll_ReplyAll_Board);
+            pstmt=conn.prepareStatement(sql_selectAll_ReplyAll_paging);
             pstmt.setInt(1, bvo.getBid());
+            pstmt.setInt(2, bvo.getBcnt());
+            pstmt.setInt(3, bvo.getBcnt());            
             ResultSet rs2 =pstmt.executeQuery();
 //            System.out.println("댓글 all 로그");
             while(rs2.next()) {
@@ -332,11 +312,11 @@ public class BoardDAO {
                
 
                ArrayList<Reply_reVO> rrList=new ArrayList<Reply_reVO>();
-               Reply_reVO rrvo = new Reply_reVO();
                pstmt=conn.prepareStatement(sql_selectAll_Reply_re);
                pstmt.setInt(1, rvo.getRid());
                ResultSet rs3 = pstmt.executeQuery();
                while(rs3.next()) {
+            	  Reply_reVO rrvo = new Reply_reVO();
                   System.out.println("rrList 로그");
                   rrvo.setBid(rs3.getInt("BID"));
                   rrvo.setRid(rs3.getInt("RID"));

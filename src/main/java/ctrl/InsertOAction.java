@@ -25,8 +25,8 @@ public class InsertOAction implements Action {
 			vo.setOcontent(request.getParameter("ocontent")); // 리뷰 내용
 			vo.setOstar(Integer.parseInt(request.getParameter("ostar"))); // 평점
 			vo.setNid(Integer.parseInt(request.getParameter("nid")));
-			request.setAttribute("nid", request.getParameter("nid")); // 페이징 유지할 소설번호
 		}
+		request.setAttribute("nid", request.getParameter("nid")); // 페이징 유지할 소설번호
 		
 		if(dao.insert_O(vo)) { // 리뷰 등록
 			forward = new ActionForward();
@@ -35,8 +35,7 @@ public class InsertOAction implements Action {
 		}
 		else {
 			throw new Exception("insertO 오류");
-		}
-					
+		}	
 		return forward;
 	}
 	

@@ -1,3 +1,32 @@
+Skip to content
+Search or jump to…
+Pulls
+Issues
+Marketplace
+Explore
+ 
+@Clearing01 
+T3AMBB
+/
+JSP_TeamProject
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+JSP_TeamProject/src/main/webapp/myboard.jsp
+@ArimJung
+ArimJung 추천수, 비추천수, 신고수 추가 출력
+Latest commit 95faeb2 13 hours ago
+ History
+ 2 contributors
+@T3AMBB@ArimJung
+88 lines (80 sloc)  2.62 KB
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="bb" %>
@@ -86,3 +115,18 @@
 <script src="js/custom.js"></script>
 </body>
 </html>
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+You have no unread notifications

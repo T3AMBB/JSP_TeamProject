@@ -172,33 +172,17 @@ float : right;}
                            <!-- 페이지 갯수 로직 필요 -->
                            <ul class="pagination">
                               
-                              <c:if test="${cnt>50}">
-                              <li class="icon-prev"><a href="community.do?cnt=${cnt-50}"> <i
+                              <c:if test="${25<=begin}">
+                              <li class="icon-prev"><a href="community.do?cnt=${begin-24}"> <i
                                     class="ion-ios-arrow-left"></i></a></li>
                               </c:if>      
                               <c:forEach var="c" items="${datas_size}" varStatus="status" begin="${begin}" end="${end}" step="5">
                                  <a href="community.do?cnt=${status.count+pcnt+(4*(status.count+pcnt-1))}">${status.count+pcnt}&nbsp;</a>
-                                 <!--
-                                 <c:if test="${status.last}">
-                                    <c:if test="${datas_size.size()-20>0}">
-                                    &nbsp;&nbsp;
-                                    ${status.count+1}
-                                    </c:if>
-                                 </c:if>
-                                 -->
                                  &nbsp;&nbsp;
                               </c:forEach>
-                              <!-- 
-                              <li class="active"><a href="#">1</a></li>
-                              <li><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">...</a></li>
-                              <li><a href="#">21</a></li>
-                              <li><a href="#">22</a></li>
-                               -->
-                              <c:if test="${datas_size.size()-cnt>50}">
-                              <li class="icon-next"><a href="community.do?cnt=${cnt+50}"><i
+
+                              <c:if test="${datas_size.size()>end}">
+                              <li class="icon-next"><a href="community.do?cnt=${end+2}"><i
                                     class="ion-ios-arrow-right"></i></a></li>
                               </c:if>
                            </ul>

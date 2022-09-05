@@ -47,7 +47,7 @@ public class Test extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String path="C:\\Users\\admin\\.eclipse\\eclipse-workspace\\aJspTeamPJ\\src\\main\\webapp\\images"; 
+		String path="C:\\Users\\Administrator\\Desktop\\bbster-master\\BBSTER\\src\\main\\webapp\\images"; 
 		int maxSize=100000000; // 바이트 단위
 		MultipartRequest mr=new MultipartRequest(request,path,maxSize,"UTF-8",new DefaultFileRenamePolicy());
 		
@@ -74,9 +74,9 @@ public class Test extends HttpServlet {
 		Enumeration<?> file=mr.getFileNames();
 		if(file.hasMoreElements()) {
 			String paramName=(String)file.nextElement();
-			String clientFileName=mr.getOriginalFileName(paramName);
-			System.out.println("서버에 업로드된 파일명 ["+clientFileName+"]");
-			vo.setBimg(clientFileName); // 입력한 게시글 내용
+			String serverFileName=mr.getFilesystemName(paramName);
+			System.out.println("서버에 업로드된 파일명 ["+serverFileName+"]");
+			vo.setBimg(serverFileName); // 입력한 게시글 내용
 //			System.out.println(mr.getParameter("bimg"));
 		}
 		

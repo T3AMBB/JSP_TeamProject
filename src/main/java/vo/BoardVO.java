@@ -9,12 +9,6 @@ public class BoardVO {
 	private String bimg;
 	private String mid;
 	private String role;
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
 	private String searchCondition;
 	private String searchContent;
 	private int lid;
@@ -23,6 +17,13 @@ public class BoardVO {
 	private int cnt_l; // lstatus
 	private int cnt_n;
 
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 	public String getBimg() {
 		return bimg;
 	}

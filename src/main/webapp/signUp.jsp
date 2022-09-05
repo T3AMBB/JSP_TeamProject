@@ -47,14 +47,14 @@
                      <tr>
                         <th style="border-right: none;">아이디</th>
                         <td style="border-right: none; ">
-                           <input type="text" name="mid" id="signup_form_id" maxlength="15" onchange="check();" placeholder="5자리 이상 입력해주세요"required="required" />               
+                           <input type="text" name="mid" id="signup_form_id" maxlength="15" onchange="check();" placeholder="아이디를 입력해주세요."required="required" />               
                   		<span class="result"></span>
                   </td>
                      </tr>
                      <tr>
                         <th style="border-right: none;">비밀번호</th>
                         <td style="border-right: none; ">
-                          <input type="password" name="mpw" id="signup_form_password" maxlength="25" placeholder="영문, 숫자, 특수문자 8~25자리를 입력해주세요."  required="required" />
+                          <input type="password" name="mpw" id="signup_form_password" maxlength="25" placeholder="영문, 숫자, 특수문자 8~25자리"  required="required" />
                      
                   </td>
                      </tr>
@@ -96,45 +96,7 @@
                         </div>
                         
                         </form>
-                        
-                  <br><br>
-                  <!-- 기존 회원가입 입력 폼 
-                  <form action="insertM.do" class="form-style-123" name="regForm">
-                     <div class="row">
-                        <div class="col-md-12 form-it">
-                           <label>아이디</label> 
-                           <input type="text" name="mid" id="signup_form_id" maxlength="15" onchange="check();" placeholder="5자리 이상 입력해주세요." required="required" />
-                        <span class="result"></span>
-                        </div>
-                        <div class="col-md-12 form-it">
-                           <label>비밀번호</label> 
-                           <input type="password" name="mpw" id="signup_form_password" maxlength="25" placeholder="영문, 숫자, 특수문자 8~25자리를 입력해주세요." required="required" />
-                        </div>
-                        <div class="col-md-12 form-it">
-                           <label>비밀번호 확인</label> 
-                           <input type="password" id="signup_form_password_re" maxlength="25" placeholder="비밀번호 재입력" required="required" />
-                        </div>
-                        <div class="col-md-12 form-it">
-                           <label>이름</label>
-                            <input type="text" name="mname" id="signup_form_Name" maxlength="15" placeholder="이름을 입력해주세요." required="required" />
-                        </div>
-                        <div class="col-md-12 form-it">
-                           <label>별명</label>
-                            <input type="text" name="nickname" id="signup_form_Nickname" maxlength="15" placeholder="사용하실 별명을 입력해주세요." required="required" />
-                        </div>
-                        <div class="col-md-12 form-it">
-                           <label>휴대폰 번호</label> 
-                           <input type="text" name="mphone" id="signup_form_phoneNumber" placeholder="010-xxxx-xxxx" required="required" />
-                        </div>
-                        <div class="col-md-12 form-it">
-                           <label>이메일</label> 
-                            <input type="email" name="memail" id="signup-form-email" placeholder="아이디@메일주소" required="required" />
-                        </div>
-                        <div class="col-md-12 ">
-                           <input type="button" class="submit" value="가입 완료하기"  onclick="joinFormCheck()">
-                        </div>
-                     </div>
-                  </form> -->
+                
                </div>
          </div>
       </div>

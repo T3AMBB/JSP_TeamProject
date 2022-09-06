@@ -13,6 +13,20 @@
 <c:if test="${member.nickname==midCheck}">
 	<br>
 	<c:choose>
+		<c:when test="${type=='bmsg'}">
+			<a href="deleteB.do?bid=${bid}"><button>삭제</button></a> &nbsp;
+		<div class="que1">
+	<button>수정</button>
+	</div>
+	<div class="anw1" style="display: none; ">
+	<form action="updateB.do" name="updateBform">
+			<textarea name="bcontent" placeholder="수정할 내용 입력"></textarea>
+		<input type="hidden" value="${bid}" name="bid">
+		<input type="submit" value="수정완료" />
+	</form>
+	</div>
+		</c:when>
+		
 		<c:when test="${type=='rmsg'}">
 			<a href="deleteR.do?rid=${rid}&bid=${bid}">[삭제]</a> &nbsp;
 		<div class="que2">
@@ -20,8 +34,7 @@
 	</div>
 	<div class="anw2" style="display: none; ">
 	<form action="updateR.do" name="updateRform">
-			<textarea name="content" placeholder="댓글입력">
-			</textarea>
+			<textarea name="content" placeholder="댓글입력"></textarea>
 		<input type="hidden" value="${rid}" name="rid">
 		<input type="hidden" value="${content}" name="content">
 		<input type="hidden" value="${bid}" name="bid">
@@ -37,8 +50,7 @@
 	</div>
 	 <div class="anw3" style="display: none; "> 
 	<form action="updateRR.do" name="updateRRform">
-			<textarea name="content" placeholder="댓글입력">
-			</textarea>
+			<textarea name="content" placeholder="댓글입력"></textarea>
 		<input type="hidden" value="${rrid}" name="rrid">
 		<input type="hidden" value="${content}" name="content">
 		<input type="hidden" value="${bid}" name="bid">
@@ -48,27 +60,4 @@
 		</c:when>
 	</c:choose>	
 </c:if>
-
-
-<script type="text/javascript">
-
-	$(document).ready(function() {
-   		$(".edit-btn").click(function() {
-     		 $(this).next(".comment-text").toggle();	
-  		 });
-	});
-	
-
-</script>
-<script type="text/javascript">
-
-	$(document).ready(function() {
-   		$("#edit-btn1").click(function() {
-     		 $("#comment-text1").toggle();	
-  		 });
-	});
-	
-
-</script>
-
 

@@ -149,7 +149,7 @@
 			<div class="col-md-9 col-sm-12 col-xs-12"style="border:solid;width:50%; margin:20px; padding:10px">
 				<div class="topbar-filter">
 					<h2>&lt${Mvo.mname}님의 리뷰></h2>
-					<p><span>${fn:length(datas)}</span>개의 리뷰를 작성하셨습니다.</p>
+					<p><span>${fn:length(datas1)}</span>개의 리뷰를 작성하셨습니다.</p>
 					
 				</div> 
 				<c:forEach var="o" items="${datas1}">

@@ -21,7 +21,7 @@
 	<form action="updateB.do" name="updateBform">
 			<textarea name="bcontent" placeholder="수정할 내용 입력"></textarea>
 		<input type="hidden" value="${bid}" name="bid">
-		<input type="submit" value="수정완료" />
+		<input type="submit" value="수정완료"style="float:right;" />
 	</form>
 	</div>
 	

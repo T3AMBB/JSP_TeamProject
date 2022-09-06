@@ -10,6 +10,8 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="author" content="">
+	<link rel="shorycut icon" href="images/favicon.png" type="images/png">
+   <link rel="apple-touch-icon" href="images/favicon.png">
 	<link rel="profile" href="#">
 
     <!--Google Font-->

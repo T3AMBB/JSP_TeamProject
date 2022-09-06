@@ -10,6 +10,8 @@
    <meta name="description" content="">
    <meta name="keywords" content="">
    <meta name="author" content="">
+   <link rel="shorycut icon" href="images/favicon.png" type="images/png">
+   <link rel="apple-touch-icon" href="images/favicon.png">
    <link rel="profile" href="#">
 
     <!--Google Font-->
@@ -37,7 +39,7 @@
                 </label>
                <label>
                     비밀번호 입력
-                    <input type="password" name="mpw" id="mpw" onchange="DeletePw()" placeholder="비밀번호 입력해주세요." required="required" />
+                    <input type="password" name="mpw" id="mpw" onchange="DeletePw()" placeholder="비밀번호 입력해주세요." style="font: icon;"required="required" />
                     <span class="result3"></span>
                 </label>
            </div>

@@ -14,6 +14,8 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>관리자 상세페이지</title>
+<link rel="shorycut icon" href="images/favicon.png" type="images/png">
+   <link rel="apple-touch-icon" href="images/favicon.png">
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
 	rel="stylesheet" />

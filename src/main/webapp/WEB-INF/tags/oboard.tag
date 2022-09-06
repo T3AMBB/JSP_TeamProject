@@ -11,7 +11,7 @@
 <c:if test="${member.nickname==midCheck}">
 	<br>
 	<a href="deleteO.do?oid=${oid}&nid=${nid}"><button>삭제</button></a> &nbsp;
-	<div class="que2"  style=“display:inline-block;”>
+	<div class="que2"  style="display:inline-block;">
 	<button id="edit-btn">수정</button>
 	</div>
 	<div class="anw2" style="display: none; ">
@@ -20,7 +20,7 @@
 		<input type="hidden" value="${oid}" name="oid">
 		<input type="hidden" value="${nid}" name="nid">
 		<input type="hidden" value="${ocontent}" name="ocontent">
-		<input type="submit" value="수정완료" />
+		<input type="submit" value="수정완료" style="float:right;"/>
 	</form>
 	</div>
 </c:if>

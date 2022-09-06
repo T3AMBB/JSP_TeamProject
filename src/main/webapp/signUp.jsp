@@ -11,6 +11,8 @@
    <meta name="description" content="">
    <meta name="keywords" content="">
    <meta name="author" content="">
+   <link rel="shorycut icon" href="images/favicon.png" type="images/png">
+   <link rel="apple-touch-icon" href="images/favicon.png">
    <link rel="profile" href="#">
 
     <!--Google Font-->
@@ -54,7 +56,7 @@
                      <tr>
                         <th style="border-right: none;">비밀번호</th>
                         <td style="border-right: none; ">
-                          <input type="password" name="mpw" id="signup_form_password" onchange="checkPw()" maxlength="25" placeholder="영문, 숫자, 특수문자 8~25자리"  required="required" />
+                          <input type="password" name="mpw" id="signup_form_password" onchange="checkPw()" maxlength="25" placeholder="영문, 숫자, 특수문자 8~25자리" style="font: icon;"  required="required" />
                           <span class="result1"></span>
                   </td>
                      </tr>

@@ -96,20 +96,20 @@
 					<form action="adminMemberD.do">
 					<input type="hidden" value="${Mvo.mid}" name="mid">
 					<input type="hidden" value="${Mvo.mpw}" name="mpw">
-					<input type="submit" value="회원삭제">
+					<input type="submit" value="회원삭제" style="border-radius: 12px;border:1.5px solid #aaa; background-color:#EFF2FB;">
 					</form>
 					</div>
 					
 					<div >
 					<form action="adminMemberU.do" method="post" style="width:74%; float:right;">
-										<select name="role">
+										<select name="role"style="border-radius: 12px;">
 											<option value="member">member</option>
 											<option value="admin">admin</option>
 											<option value="MVP">MVP</option>
 											
 										</select>
 										<input type="hidden" value="${Mvo.mid}" name="mid">
-										<input type="submit" value="등급수정">
+										<input type="submit" value="등급수정" style="border-radius: 12px;border:1.5px solid #aaa; background-color:#EFF2FB;">
 								</form>
 								</div>
 					<br>
@@ -118,67 +118,54 @@
 					
 			
 					<hr>
-					
-				<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="co" style="display:flex;">
+				<div class="col-md-9 col-sm-12 col-xs-12" style="border:solid;width:45%; margin:20px; padding:10px" >
 				<div class="topbar-filter">
+					<h2>&lt${Mvo.mname}님의 게시글></h2>
 					<p><span>${fn:length(datas)}</span>개의 게시글을 작성하셨습니다.</p>
 				</div>
 				
 			<c:forEach var="b" items="${datas}">
 			
-				<div class="movie-item-style-2 userrate">
-					<div class="mv-item-infor">
-						<h6><a href="communityBoard.do?bid=${b.bid}">${b.btitle} </a></h6>&nbsp;&nbsp;&nbsp;&nbsp;<p class="time sm">${b.bdate}</p>
+				<div class="movie-item-style-2 userrate" style="width:100%;">
+					<div class="mv-item-infor" >
+						<h6>게시글 제목: <a href="communityBoard.do?bid=${b.bid}">${b.btitle} </a></h6>
+						<h6>게시글 추천: <a >${b.cnt_l} </a></h6>
+						<h6>게시글 비추천: <a >${b.cnt_n} </a></h6>						
+						<h6>게시글 신고수: <a >${b.cnt_r} </a></h6>						
+						<h6>게시글 내용: <a style="disply:none;">${b.bcontent}</a></h6>		
+						<h6>게시글 작성날짜: <a style="disply:none;">${b.bdate}</a></h6>
 						
-						<p>${b.bcontent}</p>		
 					</div>
+					<hr style="border:solid">
 				</div>
 				</c:forEach>
 				
-				<div class="topbar-filter">
-					<label>Movies per page: 이건 뭐에요?</label>
-					<select>
-						<option value="range">20 Movies 영화?</option>
-						<option value="saab">10 Movies</option>
-					</select>
-					<div class="pagination2">
-						<span>Page 1 of 1:</span>
-						<a class="active" href="#">1</a>
-						<a href="#"><i class="ion-arrow-right-b"></i></a>
-					</div>
-				</div>
+				
 			</div>
-			<hr>
-			<div class="col-md-9 col-sm-12 col-xs-12">
+			<br>
+			<br>
+			<br>
+			<div class="col-md-9 col-sm-12 col-xs-12"style="border:solid;width:50%; margin:20px; padding:10px">
 				<div class="topbar-filter">
-					<p><span>${fn:length(datas1)}</span>개의 리뷰를 작성하셨습니다.</p>
+					<h2>&lt${Mvo.mname}님의 리뷰></h2>
+					<p><span>${fn:length(datas)}</span>개의 리뷰를 작성하셨습니다.</p>
 					
 				</div> 
 				<c:forEach var="o" items="${datas1}">
 				<div class="movie-item-style-2 userrate">
 					<div class="mv-item-infor">
-						<h6><a href="novelBoard.do?nid=${o.nid}">${o.title}</a></h6>
-						<p class="time sm">${o.odate}</p>
-						<p class="time sm-text">나의 평점</p>
-						<p class="rate"><i class="ion-android-star"></i><span>${o.ostar}</span> /5</p>
-						<p class="time sm-text">나의 리뷰</p>
-						<p>${o.ocontent}</p>		
+						<h6>소설 제목: <a href="novelBoard.do?nid=${o.nid}">${o.title}</a></h6>
+						<p class="time sm">리뷰 작성날짜: ${o.odate}</p>
+						<p class="time sm-text">리뷰 평점: ${o.ostar}</p>
+						<p class="time sm-text">리뷰 내용: ${o.ocontent}</p>
 					</div>
+					<hr style="border:solid">
 				</div>
 				</c:forEach> 
 				
-				<div class="topbar-filter">
-					<label>Movies per page:</label>
-					<select>
-						<option value="range">20 Movies</option>
-						<option value="saab">10 Movies</option>
-					</select>
-					<div class="pagination2">
-						<span>Page 1 of 1:</span>
-						<a class="active" href="#">1</a>
-						<a href="#"><i class="ion-arrow-right-b"></i></a>
-					</div>
-				</div>
+				
+			</div>
 			</div>
 					
 </div>

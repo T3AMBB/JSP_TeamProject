@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import dao.MemberDAO;
 import vo.MemberVO;
 
-
+  
 public class LoginMAction implements Action{
 
 	@Override

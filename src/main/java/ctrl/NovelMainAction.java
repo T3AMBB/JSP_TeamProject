@@ -55,7 +55,7 @@ public class NovelMainAction implements Action{
 	      }
 	      
 	      if(begin>=25) {
-	         int pcnt = (int) Math.floor(begin/5);
+	         int pcnt = (int) Math.floor(begin/20);
 	         request.setAttribute("pcnt", pcnt);
 	      }
 		System.out.println(datas_size.size());

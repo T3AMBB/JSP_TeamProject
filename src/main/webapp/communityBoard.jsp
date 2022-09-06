@@ -47,12 +47,11 @@
 									<c:set var="b" value="${n.boardVO}" />
 
 
-									<b>${b.btitle} </b>
+									<b>${b.btitle} (댓글수 출력)</b>
 								</h2>
-								<div class="cncjs" style="display: inline-block; float: right;">
-								<bb:cboard midCheck="${b.mid}" type="bmsg" bid="${b.bid}"/>
-								</div>
-
+								<c:if test="${member==null}">
+								<p style="float: right;">추천, 비추천, 신고 기능은 로그인 후 이용해주세요</p>
+								</c:if>
 								<div>
 									<br> <br>
 									<hr style="border: 1px solid black;">
@@ -61,71 +60,145 @@
 										class="time" style="float: right;">작성시간:${b.bdate}</span>
 								</div>
 							</div>
-								${b.bcontent}
 							<img src="images/${b.bimg}" alt="${b.bimg}">
-								<p>
+
+							<p>
+								${b.bcontent}
 								<!--게시글 작성에서 받아온 게시글 (리뷰)-->
 							</p>
 							<hr style="border: 1px solid black;">
 
 
+							<!-- 추천 비추천 신고 부분 시작 -->
+							<c:if test="${member != null}">
+							<div class="recmd-alert" style="margin-left:38%;">
+								<div class="recmd-N">
+									<input id="result1" type="text" value="${b.cnt_l}"
+										style="display: inline-block; width: 40px; height: 40px;"
+										disabled>
+									<div style="display: inline-block;">
+										<c:choose>
+											<c:when test="${lvo.lstatus=='1'}">
+												<img id="photo1" onclick="lstatus();" alt="추천 활성화"
+													src="images/thumbsUp1.png"
+													style="width: 70px; height: 70px; margin: 0px; cursor:pointer;">
+											</c:when>
+											<c:otherwise>
+												<img id="photo1" onclick="lstatus();" alt="추천 비활성화"
+													src="images/thumbsUp2.png"
+													style="width: 70px; height: 70px; margin: 0px; cursor:pointer;">
+											</c:otherwise>
+										</c:choose>
+									</div>
+									&nbsp; &nbsp;
+									<div style="display: inline-block;">
+										<c:choose>
+											<c:when test="${lvo.nlstatus=='1'}">
+												<img id="photo2" onclick="nlstatus();" alt="비추천 활성화"
+													src="images/thumbsDown1.png"
+													style="width: 70px; height: 70px; margin: 0px; cursor:pointer;">
+											</c:when>
+											<c:otherwise>
+												<img id="photo2" onclick="nlstatus();" alt="비추천 비활성화"
+													src="images/thumbsDown2.png"
+													style="width: 70px; height: 70px; margin: 0px; cursor:pointer;">
+											</c:otherwise>
+										</c:choose>
 
-
-							<div>
-
-								<c:choose>
-									<c:when test="${lvo.lstatus=='1'}">
-										<img id="photo1" onclick="lstatus();" alt="추천 활성화"
-											src="images/thumbsUp1.png" width="70px" height="70px">
-									</c:when>
-									<c:otherwise>
-										<img id="photo1" onclick="lstatus();" alt="추천 비활성화"
-											src="images/thumbsUp2.png" width="70px" height="70px">
-									</c:otherwise>
-								</c:choose>
-								<input id="result1" type="text" value="${b.cnt_l}" width="70px"
-									height="70px">
+									</div>
+									<input id="result2" type="text" value="${b.cnt_n}"
+										style="display: inline-block; width: 40px; height: 40px;"
+										disabled>
+								</div>
+								<div style="margin-left:18%;">
+									<c:choose>
+										<c:when test="${lvo.report=='1'}">
+											<img id="photo3" onclick="report();" alt="신고 활성화"
+												src="images/alert1.png"
+												style="width: 70px; height: 70px; margin: 0px; cursor:pointer;">
+										</c:when>
+										<c:otherwise>
+											<img id="photo3" onclick="report();" alt="신고 비활성화"
+												src="images/alert2.png"
+												style="width: 70px; height: 70px; margin: 0px; cursor:pointer;">
+										</c:otherwise>
+									</c:choose>
+									<input id="result3" type="text" value="${b.cnt_r}"
+										style="width: 40px; height: 40px; margin-left: 3.5%;" disabled>
+								</div>
 							</div>
+							</c:if>
+							<c:if test="${member == null}">
+							<div class="recmd-alert" style="margin-left:38%;">
+								<div class="recmd-N">
+									<input id="result1" type="text" value="${b.cnt_l}"
+										style="display: inline-block; width: 40px; height: 40px;"
+										disabled>
+									<div style="display: inline-block;">
+										<c:choose>
+											<c:when test="${lvo.lstatus=='1'}">
+												<img id="photo1" onclick="lstatus();" alt="추천 활성화"
+													src="images/thumbsUp1.png"
+													style="width: 70px; height: 70px; margin: 0px;">
+											</c:when>
+											<c:otherwise>
+												<img id="photo1" onclick="lstatus();" alt="추천 비활성화"
+													src="images/thumbsUp2.png"
+													style="width: 70px; height: 70px; margin: 0px;">
+											</c:otherwise>
+										</c:choose>
+									</div>
+									&nbsp; &nbsp;
+									<div style="display: inline-block;">
+										<c:choose>
+											<c:when test="${lvo.nlstatus=='1'}">
+												<img id="photo2" onclick="nlstatus();" alt="비추천 활성화"
+													src="images/thumbsDown1.png"
+													style="width: 70px; height: 70px; margin: 0px;">
+											</c:when>
+											<c:otherwise>
+												<img id="photo2" onclick="nlstatus();" alt="비추천 비활성화"
+													src="images/thumbsDown2.png"
+													style="width: 70px; height: 70px; margin: 0px;">
+											</c:otherwise>
+										</c:choose>
 
-							<div>
-								<c:choose>
-									<c:when test="${lvo.nlstatus=='1'}">
-										<img id="photo2" onclick="nlstatus();" alt="비추천 활성화"
-											src="images/thumbsDown1.png" width="70px" height="70px">
-									</c:when>
-									<c:otherwise>
-										<img id="photo2" onclick="nlstatus();" alt="비추천 비활성화"
-											src="images/thumbsDown2.png" width="70px" height="70px">
-									</c:otherwise>
-								</c:choose>
-								<input id="result2" type="text" value="${b.cnt_n}" width="70px"
-									height="70px">
+									</div>
+									<input id="result2" type="text" value="${b.cnt_n}"
+										style="display: inline-block; width: 40px; height: 40px;"
+										disabled>
+								</div>
+								<div style="margin-left:18%;">
+									<c:choose>
+										<c:when test="${lvo.report=='1'}">
+											<img id="photo3" onclick="report();" alt="신고 활성화"
+												src="images/alert1.png"
+												style="width: 70px; height: 70px; margin: 0px;">
+										</c:when>
+										<c:otherwise>
+											<img id="photo3" onclick="report();" alt="신고 비활성화"
+												src="images/alert2.png"
+												style="width: 70px; height: 70px; margin: 0px;">
+										</c:otherwise>
+									</c:choose>
+									<input id="result3" type="text" value="${b.cnt_r}"
+										style="width: 40px; height: 40px; margin-left: 3.5%;" disabled>
+								</div>
 							</div>
-
-							<div>
-								<c:choose>
-									<c:when test="${lvo.report=='1'}">
-										<img id="photo3" onclick="report();" alt="신고 활성화"
-											src="images/alert1.png" width="70px" height="70px">
-									</c:when>
-									<c:otherwise>
-										<img id="photo3" onclick="report();" alt="신고 비활성화"
-											src="images/alert2.png" width="70px" height="70px">
-									</c:otherwise>
-								</c:choose>
-								<input id="result3" type="text" value="${b.cnt_r}" width="70px"
-									height="70px">
-							</div>
+							</c:if>
+							<!-- 추천 비추천 신고 부분 끝 -->
 
 							<!-- comment items -->
 							<div class="comments">
-							
-							<!-- comment form -->
-							<div class="comment-form">
-								<h4>댓글을 남겨주세요</h4>
-								<bb:cwrite type="rmsg"  bid="${b.bid}"/>
-							</div>
-							<!-- comment form finish-->
+								<h4>(댓글개수)</h4>
+								<hr>
+								
+								<!-- comment form -->
+								<div class="comment-form">
+									<h4>댓글을 남겨주세요</h4>
+									<bb:cwrite type="rmsg" bid="${b.bid}" />
+								</div>
+								<!-- comment form finish-->
 
 								<!-- 댓글창 시작 -->
 								<c:forEach var="rs" items="${n.replySet}" begin="0" end="4"
@@ -133,20 +206,19 @@
 
 									<c:set var="r" value="${rs.replyVO}" />
 									<div id="Accordion_wrap" style="width: 100%;">
-										<div class="que1" style="border: 1px solid black;">
-									
-											<div>
-									
-												<div href="#"
-													style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">${r.mid}</div>
+										<div class="que1" >
+
+											<div style="padding:20px; margin-bottom: -4%;">
+
+												<div style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">${r.mid}</div>
 												|
-												<div style="display: inline-block; border: 1px black;">${r.rcontent}
-													</div>
+												<div  style="display: inline-block; border: 1px black;">${r.rcontent} </div>
 												<div class="time" style="float: right;">${r.rdate}</div>
 												<br>
 												<hr>
 											</div>
-												<bb:cboard midCheck="${r.mid}" type="rmsg" rid="${r.rid}" bid="${b.bid}" />
+											<bb:cboard midCheck="${r.mid}" type="rmsg" rid="${r.rid}"
+												bid="${b.bid}" />
 
 										</div>
 										<div class="que">
@@ -157,26 +229,28 @@
 										<div class="anw">
 
 											<!-- 대댓글창 시작  -->
-											<c:forEach var="rr" items="${rs.rrList}" begin="${rcnt-1}" end="${rcnt+3}" step="1">
+											<c:forEach var="rr" items="${rs.rrList}" begin="${rcnt-1}"
+												end="${rcnt+3}" step="1">
+												<hr>
 												<div class="rrep">
-													<div style="border: 1px solid black; margin-left: 5%;">
+													<div style="margin-left: 5%;">
 														<div style="margin: 2%;">
-															<div href="#"
-																style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">${rr.mid}</div>
+															<div style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">ㄴ &nbsp;  ${rr.mid}</div>
 
-															<div
-																style="display: inline-block; border: 1px black;">${rr.rrcontent}
+															<div style="display: inline-block;">| &nbsp; ${rr.rrcontent}
 															</div>
 															<div class="time" style="float: right;">${rr.rrdate}</div>
 															<br>
-													
+
 														</div>
 													</div>
-													<bb:cboard midCheck="${rr.mid}" type="rrmsg" rrid="${rr.rrid}"/>
+												<hr>
+													<bb:cboard midCheck="${rr.mid}" type="rrmsg"
+														rrid="${rr.rrid}" />
 												</div>
 											</c:forEach>
 											<!-- 대댓글창 종료  -->
-												<bb:cwrite type="rrmsg" bid="${b.bid}" rid="${r.rid}"/>
+											<bb:cwrite type="rrmsg" bid="${b.bid}" rid="${r.rid}" />
 
 											<!-- 대댓글 페이징 -->
 											<ul class="pagination">
@@ -201,8 +275,7 @@
 											<!-- 대댓글 페이징 -->
 
 										</div>
-										<br>
-										<br>
+										<br> <br>
 									</div>
 
 								</c:forEach>
@@ -263,7 +336,7 @@
 			$(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
 		});
 	</script>
-	
+
 	<script type="text/javascript">
 		function lstatus() {
 			var mid = '${member.mid}';
@@ -373,26 +446,19 @@
 	</script>
 </body>
 <script type="text/javascript">
-		$(".que1").click(function() {
-			$(this).next(".anw1").stop().slideToggle(300);
-			$(this).toggleClass('on').siblings().removeClass('on');
-			$(this).next(".anw1").siblings(".anw1").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
-		});
-	</script>
+	$(".que2").click(function() {
+		$(this).next(".anw2").stop().slideToggle(300);
+		$(this).toggleClass('on').siblings().removeClass('on');
+		$(this).next(".anw2").siblings(".anw2").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
+	});
+</script>
 <script type="text/javascript">
-		$(".que2").click(function() {
-			$(this).next(".anw2").stop().slideToggle(300);
-			$(this).toggleClass('on').siblings().removeClass('on');
-			$(this).next(".anw2").siblings(".anw2").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
-		});
-	</script>
-<script type="text/javascript">
-		$(".que3").click(function() {
-			$(this).next(".anw3").stop().slideToggle(300);
-			$(this).toggleClass('on').siblings().removeClass('on');
-			$(this).next(".anw3").siblings(".anw3").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
-		});
-	</script>
+	$(".que3").click(function() {
+		$(this).next(".anw3").stop().slideToggle(300);
+		$(this).toggleClass('on').siblings().removeClass('on');
+		$(this).next(".anw3").siblings(".anw3").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
+	});
+</script>
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>

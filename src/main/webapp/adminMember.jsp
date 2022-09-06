@@ -136,9 +136,9 @@
 				</c:forEach>
 				
 				<div class="topbar-filter">
-					<label>Movies per page:</label>
+					<label>Movies per page: 이건 뭐에요?</label>
 					<select>
-						<option value="range">20 Movies</option>
+						<option value="range">20 Movies 영화?</option>
 						<option value="saab">10 Movies</option>
 					</select>
 					<div class="pagination2">
@@ -151,7 +151,7 @@
 			<hr>
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
-					<p><span>${fn:length(datas)}</span>개의 리뷰를 작성하셨습니다.</p>
+					<p><span>${fn:length(datas1)}</span>개의 리뷰를 작성하셨습니다.</p>
 					
 				</div> 
 				<c:forEach var="o" items="${datas1}">

@@ -21,8 +21,8 @@ public class NovelDAO {
 	final String sql_selectAll_NOVEL_COUNT="SELECT COUNT(*) AS CNT FROM NOVEL";
 
 
-   final String sql_selectAll_AVG="SELECT NID, ROUND(AVG(OSTAR),1) AS AVG FROM OPINION WHERE NID = ? GROUP BY NID";
-   final String sql_selectAll_AVG2="SELECT NID, ROUND(AVG(OSTAR),1) AS AVG FROM OPINION GROUP BY NID";
+   final String sql_selectAll_AVG="SELECT NID, AVG(OSTAR) AS AVG FROM OPINION WHERE NID = ? GROUP BY NID";
+   final String sql_selectAll_AVG2="SELECT NID, AVG(OSTAR) AS AVG FROM OPINION GROUP BY NID";
    // 각 소설의 별점 평균뽑는 selectAll
 
    final String sql_selectAll="SELECT * FROM NOVEL"; 
@@ -266,7 +266,7 @@ public class NovelDAO {
             pstmt.setInt(1, nvo.getNid());
             ResultSet rs2=pstmt.executeQuery();
             if(rs2.next()) {
-               data.setAvg(rs2.getDouble("AVG"));
+               data.setAvg(Math.round(rs2.getDouble("AVG")*100)/100.0);
             }
             else {
                data.setAvg(0);

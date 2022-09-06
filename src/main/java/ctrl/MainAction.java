@@ -1,6 +1,7 @@
 package ctrl;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,6 +47,11 @@ public class MainAction implements Action{
 		
 		bdatas=bdao.selectAll_Recommend(bvo);
 		request.setAttribute("bdatas", bdatas);
+		
+		Random random = new Random();
+		int rd = random.nextInt(80);
+		request.setAttribute("rs", rd);
+		request.setAttribute("re", rd+11);
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("/main.jsp");

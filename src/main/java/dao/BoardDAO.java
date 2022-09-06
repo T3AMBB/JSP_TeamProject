@@ -45,7 +45,7 @@ public class BoardDAO {
    // 댓글 하나만 뽑는 것
    final String sql_selectAll_ReplyAll="SELECT * FROM REPLY LEFT OUTER JOIN MEMBER ON REPLY.MID=MEMBER.MID WHERE REPLY.MID=? ORDER BY RID DESC ";
    // 댓글 전체 뽑는 것 = 내가 쓴 댓글 전체
-   final String sql_selectAll_ReplyAll_paging="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY LEFT OUTER JOIN MEMBER ON REPLY.MID=MEMBER.MID WHERE REPLY.BID=? ORDER BY RID DESC) A WHERE ROWNUM < = ?+4)WHERE RNUM  > = ? ";
+   final String sql_selectAll_ReplyAll_paging="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY LEFT OUTER JOIN MEMBER ON REPLY.MID=MEMBER.MID WHERE REPLY.BID=? ORDER BY RID ASC) A WHERE ROWNUM < = ?+4)WHERE RNUM  > = ? ";
    // 해당 게시글의 댓글만 페이징 처리해서 뽑는 것
 //   final String sql_selectAll_ReplyAll_paging="SELECT * FROM (SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY LEFT OUTER JOIN BOARD ON REPLY.BID=BOARD.BID WHERE REPLY.BID=? ORDER BY RID DESC) A WHERE ROWNUM < = ?+4)WHERE RNUM  > = ? ";
    // 해당 게시글의 댓글만 페이징 처리해서 뽑는 것
@@ -53,11 +53,11 @@ public class BoardDAO {
    // 해당 게시글의 댓글만 뽑는 것 = 게시글에 맞는 댓글
    final String sql_selectAll_Reply_re_paging="SELECT A.*, ROWNUM AS RNUM FROM(SELECT * FROM REPLY_RE LEFT OUTER JOIN REPLY ON REPLY_RE.RID=REPLY.RID WHERE REPLY_RE.RID=? ORDER BY REPLY_RE.RRID DESC) A WHERE ROWNUM < = ?+4";
    // 대댓글 전체 출력 = 해당 댓글과 맞는 대댓글을 페이징 처리해서 뽑는것  
-   final String sql_selectAll_Reply_re="SELECT * FROM REPLY_RE LEFT OUTER JOIN MEMBER ON REPLY_RE.MID=MEMBER.MID WHERE REPLY_RE.RID=? ORDER BY RRID DESC ";
+   final String sql_selectAll_Reply_re="SELECT * FROM REPLY_RE LEFT OUTER JOIN MEMBER ON REPLY_RE.MID=MEMBER.MID WHERE REPLY_RE.RID=? ORDER BY RRID ASC ";
    // 대댓글 전체 출력 = 해당 댓글과 맞는 대댓글  
 
    final String sql_insert_B="INSERT INTO BOARD VALUES((SELECT NVL(MAX(BID),1000)+1 FROM BOARD),?,?,TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI'),?,?)";
-   final String sql_update_B="UPDATE BOARD SET BCONTENT=? WHERE BID=?";
+   final String sql_update_B="UPDATE BOARD SET TITLE=?,CONTENT=? WHERE BID=?";
    final String sql_delete_B="DELETE FROM BOARD WHERE BID=?";
    
    final String sql_selectAll_BOARD_COUNT="SELECT COUNT(*) AS CNT FROM BOARD";
@@ -656,8 +656,9 @@ public class BoardDAO {
       conn=JDBCUtil.connect();
       try {
          pstmt=conn.prepareStatement(sql_update_B);
-         pstmt.setString(1, bvo.getBcontent());
-         pstmt.setInt(2, bvo.getBid());
+         pstmt.setString(1, bvo.getBtitle());
+         pstmt.setString(2, bvo.getBcontent());
+         pstmt.setInt(3,bvo.getBid());
          pstmt.executeUpdate();
       } catch (SQLException e) {
          e.printStackTrace();

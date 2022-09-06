@@ -180,13 +180,16 @@ float : right;}
                            </div>
                            <!-- 게시글 콘텐츠 끝 -->
                          <!-- 하단 버튼바 시작 -->
+                         	<c:if test="${member == null}">
+                         		<p style="float: right;">글 작성은 로그인 후 이용해 주세요</p>
+                         	</c:if>
 							<c:if test="${member != null}">
     <div class=list_bottom_btnbox>
                               <div style="float: right;">
                                  <a href="communityForm.jsp"><button>글 작성하기</button></a>
                               </div>
                            </div>
-</c:if>
+							</c:if>
 
                            <!-- 페이지 갯수 로직 필요 -->
                            <ul class="pagination">

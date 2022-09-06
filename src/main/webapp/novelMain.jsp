@@ -29,21 +29,28 @@
 <!-- header section-->
 <bb:header/>
 <!-- end of header section-->
-<div class="searchform">
-   <form action="novelMain.do">
-      <table class="search-table"style="border:none;">
-      <tr>
-          <td  style="border:none;" ><select class="search-td1" name="searchCondition">
-            <option value="ntitle">소설명</option>
-            <option value="nwriter">작가</option>
-            <option value="ngenre">장르</option>
-         </select></td>
-         <td style="border:none;"><input type="text" placeholder="작품명, 작가, 장르를 검색해 보세요." name="searchContent"></td>
-         <td style="border:none;"><input type="submit"class="search-td2" value="검색"></td>
-       <tr>
-       </table>
-   </form>      
-</div>
+	<div class="searchform" style="margin-top: 3%;">
+		<form action="novelMain.do">
+			<div id=search-bar-main>
+				<table class="search-table" style="border: none;">
+					<tr>
+						<td style="border: none;"><select class="search-td1"
+							name="searchCondition" style="width: 40%; background-color:#EFF2FB;">
+								<option value="ntitle" style="">소설명</option>
+								<option value="nwriter">작가</option>
+								<option value="ngenre">장르</option>
+						</select></td>
+						<td style="border: none; "><input type="text"
+							placeholder="작품명, 작가, 장르를 검색해 보세요." name="searchContent"
+							style="width: 130%;background-color:#EFF2FB;"></td>
+						<td style="border: none;"><input type="submit"
+							class="search-td2" value="검색" style="margin-left: 30%; border:1.5px solid #aaa; background-color:#EFF2FB;"></td>
+					<tr>
+				</table>
+			</div>
+		</form>
+	</div>
+
    
     
 <div class="buster-light">
@@ -51,7 +58,8 @@
    <div class="container">
       <div class="row ipad-width">
          <div class="col-md-81 col-sm-12 col-xs-12">
-
+			<h4> 총 ${datas_size.size()} 개의 작품 </h4>
+			<hr>
             <div class="flex-wrap-movielist">
             <c:forEach var="n" items="${datas}" begin="0" end="20" step="1">
                   <div class="movie-item-style-2 movie-item-style-1">
@@ -68,7 +76,6 @@
                </c:forEach>               
                   
             </div>         
-            				${begin} ${end}
                            <ul class="pagination">
                               
                               <c:if test="${100<=begin}">

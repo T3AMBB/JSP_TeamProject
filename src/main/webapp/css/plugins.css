@@ -2567,7 +2567,7 @@
 .slick-dots li button:focus:before
 {
     opacity: 1;
-    background-color: #dcf836;
+    background-color: #ffd200;
 }
 .slick-dots li button:before
 {
@@ -2579,7 +2579,7 @@
     border-radius: 50%;
     width: 10px;
     height: 10px;
-    background-color: white;
+    background-color: darkgrey;
     content: '';
     text-align: center;
     opacity: 1;
@@ -2591,7 +2591,7 @@
 {
     opacity: 1;
     // color: black;
-    background-color: #dcf836;
+    background-color: firebrick;
 }
 
 /* Slider */

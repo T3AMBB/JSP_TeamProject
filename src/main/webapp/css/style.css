@@ -31,18 +31,27 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+ @font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+   }
+  
 .search-td1{
 	width:auto;
 	margin-inline-start:auto;
-	background-color:#233a50;
-	color:#abb7c4;
+	background-color:skyblue;
+	color:black;
+	border-radius:0.5rem;
 }
 .search-td2{
 	width:auto;
 	margin-inline-start:auto;
-	background-color:#233a50;
-	color:#abb7c4;
-	font-size:medium;
+	background-color:skyblue;
+	color:black;
+	font-size:large;
+	border-radius:0.5rem;
 }
 @media print {
   *,
@@ -1124,6 +1133,7 @@ input[type="color"],
   -moz-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s 0.3s ease-out;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s 0.3s ease-out;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s 0.3s ease-out;
+  border-radius:0.25rem;
 }
 select:focus,
 textarea:focus,
@@ -2041,7 +2051,7 @@ tbody.collapse.in {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555555;
-  background-color: #06121e;
+  background-color: #dcf836;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -2948,7 +2958,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: 'Cafe24Ssurround';
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -3075,7 +3085,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -3709,7 +3719,7 @@ button,
 input,
 select,
 textarea {
-  font-family: 'OpenSans', sans-serif;
+    font-family: 'Cafe24Ssurround';
   line-height: 1.5;
 }
 h1,
@@ -3718,10 +3728,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'OpenSans', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-weight: 700;
   clear: both;
   line-height: 1;
+   margin-top:3%;
 }
 h1 {
   font-size: 32px;
@@ -3788,7 +3799,7 @@ blockquote small {
   color: #333;
   font-size: 15px;
   font-size: 1.5rem;
-  font-family: "Noto Sans", sans-serif;
+font-family: 'Cafe24Ssurround';
   line-height: 1.6;
 }
 blockquote em,
@@ -3810,7 +3821,7 @@ tt,
 var,
 samp,
 pre {
-  font-family: Inconsolata, monospace;
+font-family: 'Cafe24Ssurround';
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
@@ -3925,7 +3936,7 @@ td {
 img {
   -ms-interpolation-mode: bicubic;
   border: 0;
-  
+    border-radius: 1rem;  
   max-width: 100%;
   vertical-align: middle;
 }
@@ -3939,21 +3950,25 @@ del {
 /* Placeholder text color -- selectors need to be separate to work. */
 ::-webkit-input-placeholder {
   color: rgba(51, 51, 51, 0.7);
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Cafe24Ssurround';
+
 }
 :-moz-placeholder {
   color: rgba(51, 51, 51, 0.7);
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Cafe24Ssurround';
+
 }
 ::-moz-placeholder {
   color: rgba(51, 51, 51, 0.7);
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Cafe24Ssurround';
+
   opacity: 1;
   /* Since FF19 lowers the opacity of the placeholder by default */
 }
 :-ms-input-placeholder {
   color: rgba(51, 51, 51, 0.7);
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Cafe24Ssurround';
+
 }
 textarea {
   max-width: 100%;
@@ -4031,11 +4046,11 @@ textarea {
   overflow: hidden;
 }
 select {
-  border-radius: 0 !important;
-  -webkit-border-radius: 0 !important;
+  border-radius: 0.5rem !important;
+  -webkit-border-radius: 0.5rem !important;
 }
 p {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: 300;
@@ -4048,7 +4063,7 @@ ul {
 }
 /*flex box*/
 .bd-hd {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 36px;
   color: #ffffff;
   font-weight: 700;
@@ -4056,7 +4071,7 @@ ul {
   margin-bottom: 25px;
 }
 .bd-hd span {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 24px;
   color: #4f5b68;
   font-weight: 300;
@@ -4098,7 +4113,7 @@ ul {
   margin-right: 30px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  border-radius: 5px;
+  border-radius: 1rem;
 }
 @media (max-width: 767px) {
   .movie-items .movie-item {
@@ -4108,6 +4123,7 @@ ul {
 }
 .movie-items .movie-item .mv-img {
   position: relative;
+  border-radius: 1rem;
 }
 .movie-items .movie-item .mv-img:after {
   box-shadow: inset -5px -50px 100px -15px #000000;
@@ -4121,6 +4137,8 @@ ul {
   width: 100%;
   height: 100%;
   content: "";
+  border-radius: 1rem;
+  
 }
 .movie-items .movie-item img {
   width: 100%;
@@ -4128,6 +4146,8 @@ ul {
   -moz-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
+    border-radius: 0.25rem;
+  
 }
 .movie-items .movie-item .title-in {
   display: flex;
@@ -4135,9 +4155,12 @@ ul {
   align-items: flex-start;
   margin-left: 30px;
   margin-bottom: 20px;
+  
   bottom: 0;
   left: 0;
   position: absolute;
+    border-radius: 0.25rem;
+  
 }
 @media (max-width: 767px) {
   .movie-items .movie-item .title-in {
@@ -4145,11 +4168,12 @@ ul {
   }
 }
 .movie-items .movie-item .title-in h6 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
+ 
 }
 .movie-items .movie-item .title-in p {
   font-size: 12px;
@@ -4186,7 +4210,7 @@ ul {
   transition: all 0.5s ease-out;
 }
 .movie-items .movie-item .hvr-inner a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -4234,7 +4258,7 @@ ul {
   border-radius: 3px;
 }
 .cate span a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #ffffff;
   font-weight: 700;
@@ -4306,7 +4330,7 @@ ul {
   margin-bottom: 10px;
 }
 .movie-item-style-2 .mv-item-infor h6 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -4364,8 +4388,8 @@ ul {
 .movie-item-style-1 .hvr-inner {
   position: absolute;
   top: 0;
-  background-color: #dd003f;
-  padding: 8px 15px;
+  background-color: #ffd200;
+  padding: 2%;
   text-align: center;
   margin-left: 30px;
   margin-top: 110px;
@@ -4390,7 +4414,7 @@ ul {
   }
 }
 .movie-item-style-1 .hvr-inner a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -4546,8 +4570,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
-  border-top: 1px solid #405266;
-  border-bottom: 1px solid #405266;
+  border:0.1rem solid darkgrey;
 }
 @media (max-width: 767px) {
   .topbar-filter {
@@ -4570,7 +4593,7 @@ ul {
 }
 .topbar-filter label,
 .topbar-filter select {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: 300;
@@ -4595,7 +4618,7 @@ ul {
   }
 }
 .topbar-filter option {
-  background-color: #020d18;
+  background-color: white;
 }
 .topbar-filter .list,
 .topbar-filter .grid {
@@ -4640,7 +4663,7 @@ ul {
 }
 .topbar-filter .pagination2 span,
 .topbar-filter .pagination2 a {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: 300;
@@ -4681,7 +4704,7 @@ ul {
   margin-bottom: 25px;
 }
 .title-hd h2 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 24px;
   color: #ffffff;
   font-weight: bold;
@@ -4693,7 +4716,7 @@ ul {
   }
 }
 .title-hd a.viewall {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -4707,7 +4730,7 @@ ul {
   color: #dcf836;
 }
 .title-hd h3 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 18px;
   color: #ffffff;
   font-weight: bold;
@@ -4726,7 +4749,7 @@ ul {
   margin-top: 30px;
 }
 .title-hd-sm h4 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -4784,7 +4807,7 @@ ul {
 .tabs ul.tab-links li a,
 .tabs ul.tab-links-2 li a,
 .tabs ul.tab-links-3 li a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: black;
   font-weight: bold;
@@ -4890,7 +4913,7 @@ ul {
   }
 }
 .trailers .trailer-infor .desc {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -4898,7 +4921,7 @@ ul {
   margin-bottom: 0;
 }
 .trailers .trailer-infor p {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -4955,12 +4978,12 @@ ul {
 }
 .trailers .videos .thumb-ft .slick-prev::before {
   content: '\f126';
-  font-family: "Ionicons";
+font-family: 'Cafe24Ssurround';
   font-size: 24px;
 }
 .trailers .videos .thumb-ft .slick-next::before {
   content: '\f123';
-  font-family: "Ionicons";
+font-family: 'Cafe24Ssurround';
   font-size: 24px;
 }
 .trailers .videos .thumb-ft .slick-next::before:hover {
@@ -5024,12 +5047,12 @@ ul {
 }
 .trailers .video-style-2 .slider-nav .slick-prev::before {
   content: '\f124';
-  font-family: "Ionicons";
+font-family: 'Cafe24Ssurround';
   font-size: 24px;
 }
 .trailers .video-style-2 .slider-nav .slick-next::before {
   content: '\f125';
-  font-family: "Ionicons";
+font-family: 'Cafe24Ssurround';
   font-size: 24px;
 }
 .trailers .video-style-2 .slider-nav .slick-next::before:hover {
@@ -5073,7 +5096,7 @@ ul {
     vertical-align: middle;
 }
 .sidebar .sb-title {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 18px;
   color: #ffffff;
   font-weight: bold;
@@ -5095,14 +5118,14 @@ ul {
   border-radius: 3px;
 }
 .sidebar .celebrities .celeb-item .celeb-author h6 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
   text-transform: none;
 }
 .sidebar .celebrities .celeb-item .celeb-author span {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -5113,7 +5136,7 @@ ul {
   color: #dcf836;
 }
 .sidebar .celebrities a.btn {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -5126,7 +5149,7 @@ ul {
   color: #dcf836;
 }
 .sidebar .sb-search input {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -5143,7 +5166,7 @@ ul {
   margin-bottom: 15px;
 }
 .sidebar .sb-cate ul li a {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: 300;
@@ -5162,7 +5185,7 @@ ul {
   margin-bottom: 15px;
 }
 .sidebar .sb-recentpost .recent-item span {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 48px;
   color: #4f5b68;
   font-weight: 300;
@@ -5173,7 +5196,7 @@ ul {
   width: 70%;
 }
 .sidebar .sb-recentpost .recent-item h6 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #4280bf;
   font-weight: bold;
@@ -5198,7 +5221,7 @@ ul {
   background-color: #152a3e;
 }
 .sidebar .sb-tags .tag-items a {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: 300;
@@ -5226,7 +5249,7 @@ ul {
   margin-bottom: 60px;
 }
 .time {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -5350,7 +5373,7 @@ ul {
   margin-right: 15px;
 }
 .pagination li a {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: 300;
@@ -5377,7 +5400,7 @@ ul {
   margin-bottom: 15px;
 }
 .blog-it-infor h3 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 18px;
   color: #4280bf;
   font-weight: bold;
@@ -5419,7 +5442,7 @@ ul {
   font-size: 22px;
 }
 .blog-detail-ct h1 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 36px;
   color: #ffffff;
   font-weight: 700;
@@ -5437,7 +5460,7 @@ ul {
   border-radius: 5px;
 }
 .blog-detail-ct h4 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 18px;
   color: #ffffff;
   font-weight: bold;
@@ -5494,7 +5517,7 @@ ul {
   justify-content: flex-start;
 }
 .blog-detail-ct .share-tag .right-it a {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: 300;
@@ -5532,7 +5555,7 @@ ul {
   margin-right: 10px;
 }
 .blog-detail-ct .cmt-item h6 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -5564,7 +5587,7 @@ ul {
 }
 .blog-detail-ct .comment-form form input,
 .blog-detail-ct .comment-form form textarea {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -5586,15 +5609,15 @@ ul {
   padding: 15px;
 }
 .blog-detail-ct .comment-form form input.submit {
-  background-color: #dd003f;
+  background-color: #ffd200;
   padding: 0 45px;
   height: 46px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  font-family: 'Dosis', sans-serif;
-  font-size: 14px;
-  color: #ffffff;
+  font-family: 'Cafe24Ssurround';
+  font-size: 22px;
+  color: black;
   font-weight: bold;
   text-transform: uppercase;
   border: none;
@@ -5615,7 +5638,7 @@ ul {
   padding-right: 15px;
 }
 .latestnew .morenew .more-items .more-it h6 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #4280bf;
   font-weight: bold;
@@ -5657,7 +5680,7 @@ ul {
   padding-top: 170px;
 }
 .hero h1 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 36px;
   color: black;
   font-weight: 700;
@@ -5665,7 +5688,7 @@ ul {
   margin-bottom: 20px;
 }
 .h1h1{
-	 font-family: 'Dosis', sans-serif;
+	 font-family: 'Cafe24Ssurround';
   font-size: 36px;
   color: black;
   font-weight: 700;
@@ -5681,7 +5704,7 @@ ul {
 .hero ul.breadcumb li,
 .hero ul.breadcumb a {
   display: inline-block;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: 300;
@@ -5764,7 +5787,7 @@ ul {
 }
 .landing-hero h2 {
   color: #fff;
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 48px;
   line-height: 56px;
 }
@@ -5789,7 +5812,7 @@ ul {
   padding: 145px;
 }
 .landing-version h2 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   margin: 90px 0 15px;
 }
 .landing-version .redbtn {
@@ -5804,8 +5827,8 @@ ul {
   color: #fff;
 }
 .redbtn {
-  font-family: 'Dosis', sans-serif;
-  font-size: 14px;
+  font-family: 'Cafe24Ssurround';
+  font-size: 25px;
   color: #abb7c4;
   font-weight: bold;
   text-transform: uppercase;
@@ -5820,7 +5843,7 @@ ul {
   margin-right: 10px;
 }
 .yellowbtn {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #020d18;
   font-weight: bold;
@@ -5880,7 +5903,7 @@ ul {
   margin-bottom: 15px;
 }
 .user-information ul li a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -5900,8 +5923,8 @@ ul {
   padding-left: 25px;
 }
 .page-single {
-  background-color: #020d18;
-  padding: 75px 0;
+/*   background-color: #020d18;
+ */  padding: 30px 0;
 }
 .social-btn {
   margin-bottom: 40px;
@@ -5920,7 +5943,7 @@ ul {
   }
 }
 .social-btn a.parent-btn {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #dd003f;
   font-weight: bold;
@@ -6028,8 +6051,8 @@ ul {
   padding: 18px;
   display: flex;
   flex-direction: column;
-  background-color: #ffd220;
-  
+/*    background-color: #ffd220;
+ */   
 }
 .movie-single .movie-img .movie-btn a,
 .movie-single .mv-ceb .movie-btn a {
@@ -6041,7 +6064,8 @@ ul {
 }
 .movie-single .movie-img .movie-btn .redbtn:hover,
 .movie-single .mv-ceb .movie-btn .redbtn:hover {
-  color: #ffffff;
+  color: black;
+  background-color : #EFF2FB;
 }
 .movie-single .movie-single-ct .movie-rate {
   display: -webkit-flex;
@@ -6050,9 +6074,6 @@ ul {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border-top: 1px solid #405266;
-  border-bottom: 1px solid #405266;
-  margin-bottom: 70px;
 }
 @media (max-width: 767px) {
   .movie-single .movie-single-ct .movie-rate {
@@ -6131,15 +6152,15 @@ ul {
   color: #f5b50a;
 }
 .movie-single .movie-single-ct .tab h3 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 18px;
-  color: #abb7c4;
-  font-weight: bold;
+/*   color: #abb7c4;
+ font-weight: bold; */
   text-transform: none;
   margin-bottom: 15px;
 }
 .movie-single .movie-single-ct .tab h2 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 18px;
   color: #4280bf;
   font-weight: bold;
@@ -6261,14 +6282,14 @@ ul {
   margin-top: 15px;
 }
 .movie-single .movie-single-ct .mvsingle-item .vd-infor h6 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
   text-transform: none;
 }
 .movie-single .movie-single-ct .mvsingle-item .vd-infor p.time {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 400;
@@ -6316,7 +6337,7 @@ ul {
   justify-content: flex-start;
 }
 .movie-single .movie-single-ct .mvcast-item .cast-it .cast-left h4 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -6343,7 +6364,7 @@ ul {
   width: 100%;
 }
 .movie-single .movie-single-ct .mvcast-item .cast-it .series-it a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 18px;
   color: #ffffff;
   font-weight: bold;
@@ -6402,7 +6423,7 @@ ul {
   }
 }
 .movie-single .sb-it h6 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -6464,7 +6485,7 @@ ul {
   margin-bottom: 15px;
 }
 .form-style-1 label {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -6472,7 +6493,7 @@ ul {
   margin-bottom: 10px;
 }
 .form-style-123 label {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -6481,7 +6502,7 @@ ul {
 }
 .form-style-1 input,
 .form-style-1 select {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -6495,7 +6516,7 @@ ul {
 }
 .form-style-123 input,
 .form-style-123 select {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -6533,16 +6554,16 @@ ul {
   }
 }
 .form-style-1 input.submit {
-  font-family: 'Dosis', sans-serif;
-  font-size: 14px;
+  font-family: 'Cafe24Ssurround';
+  font-size: 20px;
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
-  background: #dd003f;
+  background: darkred;
   width: 100%;
 }
 .form-style-123 input.submit {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -6571,7 +6592,7 @@ ul {
   background-color: #233a50;
 }
 .form-style-1 .group-ip .ui.multiple.dropdown > .text {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -6579,7 +6600,7 @@ ul {
   margin-top: 8px;
 }
 .form-style-1 .group-ip .ui.multiple.dropdown .menu > .item {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -6587,7 +6608,7 @@ ul {
   border-top: 1px solid #405266;
 }
 .form-style-1 .group-ip .ui.multiple.dropdown > .label {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #ffffff;
   font-weight: 300;
@@ -6610,7 +6631,7 @@ ul {
   filter: alpha(opacity=100);
 }
 .form-style-1 .group-ip .ui.dropdown > .dropdown.icon {
-  font-family: "Ionicons";
+font-family: 'Cafe24Ssurround';
   margin-top: -5px;
 }
 .form-style-1 .group-ip i.icon.dropdown:before {
@@ -6619,7 +6640,7 @@ ul {
 }
 .form-style-1 .group-ip i.icon.delete:before {
   content: "\f12a";
-  font-family: "Ionicons";
+font-family: 'Cafe24Ssurround';
 }
 .form-style-1 .group-ip .ui.label > .delete.icon {
   font-size: 8px;
@@ -6628,7 +6649,7 @@ ul {
   padding: 30px;
 }
 .user-pro h4 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -6672,7 +6693,7 @@ ul {
   margin-top: 15px;
 }
 .userrate h6 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
@@ -6714,14 +6735,14 @@ ul {
   margin-bottom: 5px;
 }
 .celebrity-items .ceb-item h2 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 24px;
   color: #ffffff;
   font-weight: 700;
   text-transform: none;
 }
 .celebrity-items .ceb-item span {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: #abb7c4;
   color: #abb7c4;
   font-weight: 300;
@@ -6769,14 +6790,14 @@ ul {
   width: 100%;
 }
 .ceb-item-style-2 h2 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 18px;
   color: #ffffff;
   font-weight: 700;
   text-transform: none;
 }
 .ceb-item-style-2 span {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -6819,7 +6840,7 @@ p.ceb-single {
   margin-bottom: 145px;
 }
 .middle-content h1 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 60px;
   color: #ffffff;
   font-weight: 400;
@@ -6840,7 +6861,7 @@ p.ceb-single {
   margin-bottom: 250px;
 }
 .left-content h1 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 48px;
   color: #ffffff;
   font-weight: 700;
@@ -6854,7 +6875,7 @@ p.ceb-single {
   margin-top: -115px;
 }
 .left-content h3 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 20px;
   color: #ffffff;
   font-weight: 700;
@@ -6879,7 +6900,7 @@ p.ceb-single {
   }
 }
 .left-content form .email {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -6944,7 +6965,7 @@ p.ceb-single {
   padding-top: 40px;
 }
 .left-content .coming-ct .it-time span {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 60px;
   color: #dcf836;
   font-weight: 500;
@@ -6953,7 +6974,7 @@ p.ceb-single {
   margin-bottom: 10px;
 }
 .left-content .coming-ct .it-time p {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 20px;
   color: #ffffff;
   font-weight: 400;
@@ -7027,7 +7048,7 @@ p.ceb-single {
   }
 }
 .overlay .login-content h3 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 36px;
   color: #222222;
   font-weight: 700;
@@ -7048,7 +7069,7 @@ p.ceb-single {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 25px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: #abb7c4;
   color: #222222;
   font-weight: 600;
@@ -7071,7 +7092,7 @@ p.ceb-single {
   position: absolute;
 }
 .overlay .login-content label {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #222222;
   font-weight: bold;
@@ -7085,7 +7106,7 @@ p.ceb-single {
   }
 }
 .overlay .login-content label input {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #222222;
   font-weight: bold;
@@ -7095,14 +7116,14 @@ p.ceb-single {
   border: 1px solid #e1e1e1;
 }
 .overlay .login-content label input::-webkit-input-placeholder {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #222222;
   font-weight: bold;
   text-transform: capitalize;
 }
 .overlay .login-content button {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -7115,7 +7136,7 @@ p.ceb-single {
 }
 .overlay .login-content p {
   color: #222222;
-  margin-top: 35px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 @media (max-width: 767px) {
@@ -7141,7 +7162,7 @@ p.ceb-single {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 16px;
   color: #ffffff;
   font-weight: 700;
@@ -7211,7 +7232,7 @@ p.ceb-single {
   justify-content: flex-end;
 }
 .slider .social-link p {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -7262,7 +7283,7 @@ p.ceb-single {
   }
 }
 .sliderv2 .movie-item .title-in h1 a {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 60px;
   color: #ffffff;
   font-weight: 700;
@@ -7270,7 +7291,7 @@ p.ceb-single {
   line-height: 60px;
 }
 .sliderv2 .movie-item .title-in h1 a span {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 36px;
   color: #abb7c4;
   font-weight: 300;
@@ -7301,7 +7322,7 @@ p.ceb-single {
   color: #ffffff;
 }
 .sliderv2 .movie-item .title-in .btn-transform:hover .hvrbtn {
-  background-color: #020d18;
+  background-color: #dcf836;
   color: #dcf836;
 }
 .sliderv2 .movie-item .title-in .mv-details {
@@ -7372,7 +7393,7 @@ p.ceb-single {
 }
 .slider-single-item .slick-next:before {
   content: '\f125';
-  font-family: "Ionicons";
+font-family: 'Cafe24Ssurround';
   font-size: 40px;
 }
 .sliderv3 {
@@ -7514,8 +7535,8 @@ p.ceb-single {
   text-align: center;
   display: block;
   backface-visibility: hidden;
-  transition: transform 0.5s ease;
-  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: transform 10s ease;
+  -webkit-transition: -webkit-transform 10s ease;
   text-transform: uppercase;
 }
 .btn-transform.transform-vertical .item-1 {
@@ -7645,8 +7666,9 @@ p.ceb-single {
   background-color: #fff;
 }
 .buster-light .topbar-filter {
-  background-color: #e4eaf0;
-  border: none;
+  background-color: white;
+  border: 1px solid darkgrey;
+  border-radius: 1rem;
 }
 .buster-light .topbar-filter label {
   color: #9ca9b7;
@@ -7754,8 +7776,10 @@ p.ceb-single {
   color: #dd003f;
 }
 .buster-light .form-style-1 {
-  background-color: #e4eaf0;
+  background-color: beige;
   border: none;
+  border-radius:0.5rem;
+  margin-bottom: 7%;
 }
 .buster-light .form-style-123 {
   background-color: #e4eaf0;
@@ -7842,18 +7866,18 @@ p.ceb-single {
 }
 .buster-light .pagination li a:hover {
   color: #dcf836;
-  background-color: #020d18;
+  background-color: #dcf836;
 }
 .buster-light .pagination li.active a {
   color: #dcf836;
-  background-color: #020d18;
+  background-color: #dcf836;
   border: none;
 }
 .buster-light .blog-detail-ct h1,
 .buster-light .blog-detail-ct h4,
 .buster-light .blog-detail-ct h6 a,
 .buster-light .blog-detail-ct p {
-  color: #020d18;
+  color: black;
 }
 .buster-light .blog-detail-ct .time {
   color: #9ca9b7;
@@ -7884,14 +7908,15 @@ p.ceb-single {
   border-color: #dd003f;
 }
 .buster-light .userfav_list .movie-item-style-2 .mv-item-infor .describe {
-  color: #020d18;
+  color: #ffd200;
 }
 .buster-light .userfav_list .movie-item-style-2 .mv-item-infor p:not(a) {
   color: #9ca9b7;
 }
 .buster-light .user-information {
-  background-color: #e4eaf0;
+  background-color: beige;
   border: none;
+  border-radius:0.5rem;
 }
 .buster-light .user-information .user-fav {
   border-color: #d0dae4;
@@ -7938,7 +7963,7 @@ header {
 }
 @media (max-width: 991px) {
   header {
-    background-color: #0f2133;
+    background-color: #ffd200;
   }
 }
 header .navbar-default {
@@ -7986,8 +8011,8 @@ header .navbar-default .navbar-nav {
   list-style: none;
 }
 header .navbar-default .navbar-nav li a {
-  font-family: 'Dosis', sans-serif;
-  font-size: 14px;
+  font-family: 'Cafe24Ssurround';
+  font-size: 26px;
   color: black;
   font-weight: bold;
   text-transform: uppercase;
@@ -8073,7 +8098,7 @@ header .navbar-default .navbar-nav .dropdown.first.open a {
   height: 46px;
   border: none;
   background-color: #233a50 !important;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: #abb7c4;
   color:white;
   font-weight: 300;
@@ -8081,7 +8106,8 @@ header .navbar-default .navbar-nav .dropdown.first.open a {
 }
  .top-search select {
   width: 20%;
-  border-right: 1px solid #020d18;
+  border-right: 0.5px solid black;
+  border-radius: 0.5rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   /* Firefox */
@@ -8288,7 +8314,7 @@ footer {
   background-size: cover;
 }
 footer .flex-parent-ft {
-  padding: 80px 0 60px 0;
+  padding: 60px 0 60px 0;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -8311,7 +8337,7 @@ footer .flex-parent-ft {
   }
 }
 footer .flex-parent-ft .flex-child-ft img {
-  margin-bottom: 60px;
+  margin-bottom: 0px;
 }
 footer .flex-parent-ft .flex-child-ft p {
   margin-bottom: 15px;
@@ -8321,7 +8347,7 @@ footer .flex-parent-ft .flex-child-ft p a {
   font-size: 18px;
 }
 footer .flex-parent-ft .flex-child-ft h4 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 18px;
   color: #ffffff;
   font-weight: bold;
@@ -8336,7 +8362,7 @@ footer .flex-parent-ft .flex-child-ft ul li {
   margin-bottom: 5px;
 }
 footer .flex-parent-ft .flex-child-ft ul li a {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #abb7c4;
   font-weight: regular;
@@ -8346,7 +8372,7 @@ footer .flex-parent-ft .flex-child-ft ul li a:hover {
   color: #dcf836;
 }
 footer .flex-parent-ft .flex-child-ft a.btn {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 14px;
   color: #dd003f;
   font-weight: bold;
@@ -8356,7 +8382,7 @@ footer .flex-parent-ft .flex-child-ft form {
   margin-bottom: 20px;
 }
 footer .flex-parent-ft .flex-child-ft form input {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-size: 12px;
   color: #abb7c4;
   font-weight: 300;
@@ -8425,7 +8451,7 @@ footer.full-width-ft .ft-copyright {
   text-transform: uppercase;
   margin-bottom: 0;
   color: #8c9296;
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Cafe24Ssurround';
   font-weight: 700;
 }
 .formform{
@@ -8463,22 +8489,22 @@ footer.full-width-ft .ft-copyright {
    display: none;
    overflow: hidden;
    font-size: 14px;
-   background-color: #f4f4f2;
+/*    background-color: #f4f4f2;
    padding: 27px 0;
-   border: 1px solid black;
+    border: 1px solid black; */
 }
 
 .rrep {
-   border: 1px solid red;
-   margin-left: 5%;
+/*    border: 1px solid red;
+ */   margin-left: 5%;
 }
 
 .anw::before {
    display: inline-block;
    font-size: 14px;
    font-weight: bold;
-   color: #666;
-   margin: 0 5px;
+/*    color: #666;
+ */   margin: 0 5px;
 }
 
 .arrow-wrap {
@@ -8539,5 +8565,20 @@ footer.full-width-ft .ft-copyright {
     border: solid 1.5px #D3D3D3;
     border-radius: 5px;
     font-size: 16px;
-    resize: none;
+    resize: none; 
 }
+/* added part header section */
+.findpw{	
+	display : inline-block;
+	border: 1px solid black; 
+	border-radius:0.25rem; 
+	padding : 1%;
+	background-color : rgba(0,0,0,.05);
+}
+
+.login-btn{
+	display : inline-block;
+	
+	
+}
+

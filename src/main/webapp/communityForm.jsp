@@ -42,9 +42,9 @@
 		<div style="margin-top:1%;">!음란물, 차별, 비하, 혐오 및 초상권, 저작권 침해 게시물은 민, 형사상의 책임을 질 수 있습니다. </div>
 		</div>
 			<form action="InsertB" method="post" enctype="multipart/form-data">
-				<input type="text" name="btitle" placeholder="제목을 입력해주세요">
-				  <textarea name="bcontent" id="editor" style="height: 500px;"></textarea>
-				 <input type="file" name="bimg" placeholder="제목을 입력해주세요" onchange="loadFile(this)">
+				<input type="text" name="btitle" placeholder="제목을 입력해주세요" style="margin-bottom:1%;">
+				  <textarea name="bcontent" id="editor" style="height: 500px; margin-bottom:1%;"></textarea>
+				 <input type="file" name="bimg" placeholder="이미지파일 업로드" onchange="loadFile(this)" >
 				 <img alt="미리보기" id="preview" />
 				  
 				  <input type="submit" value="작성 완료" style="float:right; margin-top:0.5%;">

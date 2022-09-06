@@ -27,7 +27,7 @@
             <div class="row">
                <label>
                     비밀번호
-                    <input type="password" name="mpw" placeholder="******" id="mpw" required />
+                    <input type="password" name="mpw" placeholder="******" id="mpw" style="font: icon;"required />
                 </label>
             </div>
             <div class="row">

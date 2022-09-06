@@ -56,7 +56,7 @@ public class MemberDAO {
 	      try {
 	         pstmt = conn.prepareStatement(sql_update_MPW); 
 	         pstmt.setString(1, mvo.getMpw());
-	     //   pstmt.setString(2, mvo.getMid());
+	        pstmt.setString(2, mvo.getMid());
 	         int res = pstmt.executeUpdate();
 	         if (res == 0) {
 	            System.out.println("로그 : update_MPW 실패");

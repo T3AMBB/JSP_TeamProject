@@ -11,9 +11,7 @@
    display: inline-block;
    width : 100%;
 /*    border : 1px solid black; */   
-
 }
-
 .btn_view {
    display: inline-block;
    border-color: #29367c;
@@ -21,7 +19,6 @@
    margin-right: 5px;
    border-radius: 0.5rem;
 }
-
 .btn_write {
    display: inline-block;
    border-color: red;
@@ -33,7 +30,6 @@
 float :left;}
 .fr{
 float : right;}
-
 </style>
 <!-- Basic need -->
 <title>커뮤니티</title>
@@ -41,8 +37,6 @@ float : right;}
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
-<link rel="shorycut icon" href="images/favicon.png" type="images/png">
-   <link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="profile" href="#">
 
 <!--Google Font-->
@@ -118,7 +112,7 @@ float : right;}
                                                 <c:if test="${b.role eq 'admin'}">
                                                 <tr class="notice_fix">
                                                 
-                                                   <td>${b.bid}</td>
+                                                   <td><a>${b.bid}</a></td>
                                                    <td>${b.mid}</td>
                                                    <c:choose>
                                                    <c:when test="${b.role eq 'admin'}">
@@ -127,7 +121,7 @@ float : right;}
                                                       href="communityBoard.do?bid=${b.bid}">
                                                          <b>&lt공지&gt</b>${b.btitle} </a></td>
                                                          </c:when>
-                                                   <c:when test="${b.role eq 'MVP'}">
+                                                         <c:when test="${b.role eq 'MVP'}">
                                                    <td class="subject"><strong class="FG01">
                                                    </strong><a
                                                       href="communityBoard.do?bid=${b.bid}" style="color:skyblue;">
@@ -148,15 +142,52 @@ float : right;}
                                           </ul>
                                        </tbody>
                                        
+                                       <tbody>
+                                          <ul class="noticeList" id="notice-list">
+                                          
+                                             <c:forEach var="n" items="${datas}" begin="0" end="4"
+                                                step="1">
+                                               
+                                                <c:set var="b" value="${n.boardVO}"/>
+                                                <c:if test="${b.role != 'admin'}">
+                                                <tr class="notice_fix">
+                                                
+                                                   <td><a>${b.bid}</a></td>
+                                                   <td>${b.mid}</td>
+                                                   <c:choose>
+                                                   <c:when test="${b.role eq 'admin'}">
+                                                   <td class="subject"><strong class="FG01">
+                                                   </strong><a
+                                                      href="communityBoard.do?bid=${b.bid}">
+                                                         <b>&lt공지&gt</b>${b.btitle} </a></td>
+                                                         </c:when>
+                                                         <c:when test="${b.role eq 'MVP'}">
+                                                   <td class="subject"><strong class="FG01">
+                                                   </strong><a
+                                                      href="communityBoard.do?bid=${b.bid}" style="color:skyblue;">
+                                                         <b>&lt★MVP★&gt</b>${b.btitle} </a></td>
+                                                         </c:when>
+                                                   <c:otherwise>
+                                                   <td class="subject"><strong class="FG01">
+                                                   </strong><a
+                                                      href="communityBoard.do?bid=${b.bid}">
+                                                         ${b.btitle} </a></td>
+                                                         </c:otherwise> 
+                                                         </c:choose>
+                                                   <td>${b.cnt_l}</td>
+                                                   <td>${b.bdate}</td>
+                                                </tr>
+                                                </c:if>
+                                             </c:forEach>
+                                          </ul>
+                                       </tbody>
+  
                                     </table>
                                  </div>
                               </div>
                            </div>
                            <!-- 게시글 콘텐츠 끝 -->
                          <!-- 하단 버튼바 시작 -->
-                         <c:if test="${member == null}">
-                         		<p style="float: right;">글 작성은 로그인 후 이용해 주세요</p>
-                         	</c:if>
 							<c:if test="${member != null}">
     <div class=list_bottom_btnbox>
                               <div style="float: right;">

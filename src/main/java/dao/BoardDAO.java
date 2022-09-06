@@ -57,7 +57,7 @@ public class BoardDAO {
    // 대댓글 전체 출력 = 해당 댓글과 맞는 대댓글  
 
    final String sql_insert_B="INSERT INTO BOARD VALUES((SELECT NVL(MAX(BID),1000)+1 FROM BOARD),?,?,TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI'),?,?)";
-   final String sql_update_B="UPDATE BOARD SET TITLE=?,CONTENT=? WHERE BID=?";
+   final String sql_update_B="UPDATE BOARD SET BCONTENT=? WHERE BID=?";
    final String sql_delete_B="DELETE FROM BOARD WHERE BID=?";
    
    final String sql_selectAll_BOARD_COUNT="SELECT COUNT(*) AS CNT FROM BOARD";
@@ -656,9 +656,8 @@ public class BoardDAO {
       conn=JDBCUtil.connect();
       try {
          pstmt=conn.prepareStatement(sql_update_B);
-         pstmt.setString(1, bvo.getBtitle());
-         pstmt.setString(2, bvo.getBcontent());
-         pstmt.setInt(3,bvo.getBid());
+         pstmt.setString(1, bvo.getBcontent());
+         pstmt.setInt(2, bvo.getBid());
          pstmt.executeUpdate();
       } catch (SQLException e) {
          e.printStackTrace();

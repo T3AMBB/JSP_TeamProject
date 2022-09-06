@@ -47,7 +47,7 @@
 									<c:set var="b" value="${n.boardVO}" />
 
 
-									<b>${b.btitle} (댓글수 출력)</b>
+									<b>${b.btitle} </b>
 								</h2>
 								<c:if test="${member==null}">
 								<p style="float: right;">추천, 비추천, 신고 기능은 로그인 후 이용해주세요</p>
@@ -58,6 +58,7 @@
 									<a>작성자 : ${b.mid} |</a> <span class="rcd">추천수
 										:${b.cnt_l}</span> <span class="Nrcd">비추천수 : ${b.cnt_n}</span> <span
 										class="time" style="float: right;">작성시간:${b.bdate}</span>
+								<bb:cboard midCheck="${b.mid}" type="bmsg" bid="${b.bid}"/>
 								</div>
 							</div>
 							<img src="images/${b.bimg}" alt="${b.bimg}">
@@ -190,7 +191,6 @@
 
 							<!-- comment items -->
 							<div class="comments">
-								<h4>(댓글개수)</h4>
 								<hr>
 								
 								<!-- comment form -->
@@ -472,6 +472,13 @@ window.addEventListener("scroll", (event) => {
 </script>
 </c:if>
 
+<script type="text/javascript">
+	$(".que1").click(function() {
+		$(this).next(".anw1").stop().slideToggle(300);
+		$(this).toggleClass('on').siblings().removeClass('on');
+		$(this).next(".anw1").siblings(".anw1").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
+	});
+</script>
 <script type="text/javascript">
 	$(".que2").click(function() {
 		$(this).next(".anw2").stop().slideToggle(300);

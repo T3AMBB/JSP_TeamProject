@@ -28,13 +28,13 @@
 		</c:when>
 		
 		<c:when test="${type=='rmsg'}">
-			<a href="deleteR.do?rid=${rid}&bid=${bid}">[삭제]</a> &nbsp;
+			<a href="deleteR.do?rid=${rid}&bid=${bid}"><button>삭제</button></a> &nbsp;
 		<div class="que2">
-	<button> 수정하기 </button>
+	<button> 수정 </button>
 	</div>
 	<div class="anw2" style="display: none; ">
 	<form action="updateR.do" name="updateRform">
-			<textarea name="content" placeholder="댓글입력"></textarea>
+			<textarea name="content" placeholder="수정할 내용 입력"></textarea>
 		<input type="hidden" value="${rid}" name="rid">
 		<input type="hidden" value="${content}" name="content">
 		<input type="hidden" value="${bid}" name="bid">
@@ -44,13 +44,13 @@
 		</c:when>
 	
 		<c:when test="${type=='rrmsg'}">
-			<a href="deleteRR.do?rrid=${rrid}&bid=${bid}">[삭제]</a> &nbsp;
+			<a href="deleteRR.do?rrid=${rrid}&bid=${bid}"><button>삭제</button></a> &nbsp;
 			<div class="que3">
-	<button> 수정하기 </button>
+	<button> 수정 </button>
 	</div>
 	 <div class="anw3" style="display: none; "> 
 	<form action="updateRR.do" name="updateRRform">
-			<textarea name="content" placeholder="댓글입력"></textarea>
+			<textarea name="content" placeholder="수정할 내용 입력"></textarea>
 		<input type="hidden" value="${rrid}" name="rrid">
 		<input type="hidden" value="${content}" name="content">
 		<input type="hidden" value="${bid}" name="bid">

@@ -13,7 +13,7 @@
 	
 	<br>
 	
-	<a href="deleteO.do?oid=${oid}&nid=${nid}">[삭제]</a> &nbsp;
+	<a href="deleteO.do?oid=${oid}&nid=${nid}"><button>삭제</button></a> &nbsp;
 	<div class="que2">
 	<button id="edit-btn"> 수정하기 </button>
 	</div>

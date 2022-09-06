@@ -34,7 +34,7 @@
                <div class="remember">
                <div>
                </div>
-                 <a class="nav-link" href="#" data-toggle="modal" data-target="#login">비밀번호찾기</a>
+                 <a class="nav-link" href="#" data-toggle="modal" data-target=".modal">비밀번호찾기</a>
                </div>
             </div>
            <div class="row">
@@ -282,41 +282,6 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
     </script>
 <!-- 카카오 스크립트 종료 -->
 <!-- 문자 API -->
-<script type="text/javascript">
-function sms(){
-	   var mid=$("#mid").val(); // id=mid의 value값
-	   $.ajax({
-	      type: 'GET', 
-	      url: 'Sms?mid='+mid, //사용자가 입력한 값을 확보한 상태 > DB한테 물어볼 예정 "mid라는 값이 DB에 이미 있어?" => DAO(M)로 가야함 > 이제 C가(서블릿) 작업을 할 차례구나! 
-	      data: {"mid":mid},
-	      success: function(result){ // 성공했을 때
-	         
-	         console.log("로그1 ["+result+"] succes");
-	         if(result==0){ // 가입된회원
-	        
-		         $(".result1").text("가입된 휴대전화로 임시비밀번호 전송되었습니다.");
-		            $(".result1").css("color","blue");
-		            
-		            document.getElementById("btu").disabled=true;
-		            console.log("로그2 ["+result+"] succes");
-	         }else{ // 중복, 사용불가
-	        	 $(".result1").text("가입된 회원이 아닙니다.");
-		         $(".result1").css("color","red");
-		       //  $(".result2").val(result);
-		         
-		         console.log("로그3 ["+result+"] succes");
-		            //document.getElementById("btu").disabled=false;            
-	         }
-	      },
-	      error: function(request, status, error){
-	         console.log("code: "+request.status);
-	         console.log("message: "+request.responseText);
-	         console.log("error: "+error);
-	      }
-	   });
-	}
-
-</script> 
 
 <script type="text/javascript">
 if(${logoutValue}==100){

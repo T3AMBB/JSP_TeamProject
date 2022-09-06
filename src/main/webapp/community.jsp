@@ -116,19 +116,25 @@ float : right;}
                                                 <c:if test="${b.role eq 'admin'}">
                                                 <tr class="notice_fix">
                                                 
-                                                   <td><a href="communityBoard.do?bid=${b.bid}">${b.bid}</a></td>
+                                                   <td>${b.bid}</td>
                                                    <td>${b.mid}</td>
                                                    <c:choose>
                                                    <c:when test="${b.role eq 'admin'}">
                                                    <td class="subject"><strong class="FG01">
                                                    </strong><a
-                                                      href="javascript:counsel.noticeList.goDetail('35940')">
+                                                      href="communityBoard.do?bid=${b.bid}">
                                                          <b>&lt공지&gt</b>${b.btitle} </a></td>
+                                                         </c:when>
+                                                   <c:when test="${b.role eq 'MVP'}">
+                                                   <td class="subject"><strong class="FG01">
+                                                   </strong><a
+                                                      href="communityBoard.do?bid=${b.bid}" style="color:skyblue;">
+                                                         <b>&lt★MVP★&gt</b>${b.btitle} </a></td>
                                                          </c:when>
                                                    <c:otherwise>
                                                    <td class="subject"><strong class="FG01">
                                                    </strong><a
-                                                      href="javascript:counsel.noticeList.goDetail('35940')">
+                                                      href="communityBoard.do?bid=${b.bid}">
                                                          ${b.btitle} </a></td>
                                                          </c:otherwise> 
                                                          </c:choose>
@@ -140,47 +146,13 @@ float : right;}
                                           </ul>
                                        </tbody>
                                        
-                                       <tbody>
-                                          <ul class="noticeList" id="notice-list">
-                                          
-                                             <c:forEach var="n" items="${datas}" begin="0" end="4"
-                                                step="1">
-                                               
-                                                <c:set var="b" value="${n.boardVO}"/>
-                                                <c:if test="${b.role != 'admin'}">
-                                                <tr class="notice_fix">
-                                                
-                                                   <td><a href="communityBoard.do?bid=${b.bid}">${b.bid}</a></td>
-                                                   <td>${b.mid}</td>
-                                                   <c:choose>
-                                                   <c:when test="${b.role eq 'admin'}">
-                                                   <td class="subject"><strong class="FG01">
-                                                   </strong><a
-                                                      href="javascript:counsel.noticeList.goDetail('35940')">
-                                                         <b>&lt공지&gt</b>${b.btitle} </a></td>
-                                                         </c:when>
-                                                   <c:otherwise>
-                                                   <td class="subject"><strong class="FG01">
-                                                   </strong><a
-                                                      href="javascript:counsel.noticeList.goDetail('35940')">
-                                                         ${b.btitle} </a></td>
-                                                         </c:otherwise> 
-                                                         </c:choose>
-                                                   <td>${b.cnt_l}</td>
-                                                   <td>${b.bdate}</td>
-                                                </tr>
-                                                </c:if>
-                                             </c:forEach>
-                                          </ul>
-                                       </tbody>
-  
                                     </table>
                                  </div>
                               </div>
                            </div>
                            <!-- 게시글 콘텐츠 끝 -->
                          <!-- 하단 버튼바 시작 -->
-                         	<c:if test="${member == null}">
+                         <c:if test="${member == null}">
                          		<p style="float: right;">글 작성은 로그인 후 이용해 주세요</p>
                          	</c:if>
 							<c:if test="${member != null}">
@@ -189,7 +161,7 @@ float : right;}
                                  <a href="communityForm.jsp"><button>글 작성하기</button></a>
                               </div>
                            </div>
-							</c:if>
+</c:if>
 
                            <!-- 페이지 갯수 로직 필요 -->
                            <ul class="pagination">

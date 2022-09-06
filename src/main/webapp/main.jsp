@@ -280,13 +280,13 @@
 			<div class=title-header style="font-size: 33px; text-align: center; margin-bottom:2%;"><span>&lt&nbsp;이달의
 				추천왕&nbsp;&gt</span>
 			</div>
+			${bdatas}
 			<div class="flex-wrap-movielist12 user-fav-list12">
 				<c:forEach var="b" items="${bdatas}" begin="0" end="3" step="1">
-					<div class="movie-item-style-2">
+					<div class="movie-item-style-2" style="padding:40px;">
 						<div class="mv-item-infor">
 							<div OnClick="communityBoard.do?bid=${b.bid}" style="cursor:pointer;" >
-							<h2>
-							작성자 : ${b.mid}</h2>
+							<h2>작성자 : ${b.mid}</h2>
 							</div>
 							<h3>추천수 : ${b.cnt_l}</h3>
 							<hr>
@@ -307,6 +307,42 @@
 		<bb:footer />
 		<!-- end of footer section-->
 </body>
+<script type="text/javascript">
+function sms(){
+	   var mid=$("#mid").val(); // id=mid의 value값
+	   $.ajax({
+	      type: 'GET', 
+	      url: 'Sms?mid='+mid, //사용자가 입력한 값을 확보한 상태 > DB한테 물어볼 예정 "mid라는 값이 DB에 이미 있어?" => DAO(M)로 가야함 > 이제 C가(서블릿) 작업을 할 차례구나! 
+	      data: {mid:mid},
+	      success: function(result){ // 성공했을 때
+	         
+	         console.log("로그1 ["+result+"] succes");
+	         if(result==0){ // 가입된회원
+	        
+		         $(".result1").text("가입된 휴대전화로 임시비밀번호 전송되었습니다.");
+		            $(".result1").css("color","blue");
+		            
+		            document.getElementById("btu").disabled=true;
+		            console.log("로그2 ["+result+"] succes");
+	         }else{ // 중복, 사용불가
+	        	 $(".result1").text("가입된 회원이 아닙니다.");
+		         $(".result1").css("color","red");
+		       //  $(".result2").val(result);
+		         
+		         console.log("로그3 ["+result+"] succes");
+		            //document.getElementById("btu").disabled=false;            
+	         }
+	      },
+	      error: function(request, status, error){
+	         console.log("code: "+request.status);
+	         console.log("message: "+request.responseText);
+	         console.log("error: "+error);
+	      }
+	   });
+	}
+
+</script> 
+
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>

@@ -11,11 +11,10 @@
    crossorigin="anonymous"></script>
    
 <c:if test="${member.nickname==midCheck}">
-	<br>
-	<c:choose>
-		<c:when test="${type=='bmsg'}">
+   <c:choose>
+   <c:when test="${type=='bmsg'}">
 			<a href="deleteB.do?bid=${bid}"><button>삭제</button></a> &nbsp;
-		<div class="que1">
+		<div class="que1" style="display:inline-block;">
 	<button>수정</button>
 	</div>
 	<div class="anw1" style="display: none; ">
@@ -26,38 +25,59 @@
 	</form>
 	</div>
 		</c:when>
-		
-		<c:when test="${type=='rmsg'}">
-			<a href="deleteR.do?rid=${rid}&bid=${bid}"><button>삭제</button></a> &nbsp;
-		<div class="que2">
-	<button> 수정 </button>
-	</div>
-	<div class="anw2" style="display: none; ">
-	<form action="updateR.do" name="updateRform">
-			<textarea name="content" placeholder="수정할 내용 입력"></textarea>
-		<input type="hidden" value="${rid}" name="rid">
-		<input type="hidden" value="${content}" name="content">
-		<input type="hidden" value="${bid}" name="bid">
-		<input type="submit" value="수정완료" />
-	</form>
-	</div>
-		</c:when>
-	
-		<c:when test="${type=='rrmsg'}">
-			<a href="deleteRR.do?rrid=${rrid}&bid=${bid}"><button>삭제</button></a> &nbsp;
-			<div class="que3">
-	<button> 수정 </button>
-	</div>
-	 <div class="anw3" style="display: none; "> 
-	<form action="updateRR.do" name="updateRRform">
-			<textarea name="content" placeholder="수정할 내용 입력"></textarea>
-		<input type="hidden" value="${rrid}" name="rrid">
-		<input type="hidden" value="${content}" name="content">
-		<input type="hidden" value="${bid}" name="bid">
-		<input type="submit" value="수정완료" />
-	</form>
-	 </div> 
-		</c:when>
-	</c:choose>	
+      <c:when test="${type=='rmsg'}">
+         <a href="deleteR.do?rid=${rid}&bid=${bid}"><button>삭제</button></a> &nbsp;
+      <div class="que2"style="display:inline-block;">
+   <button>수정</button>
+   </div>
+   <div class="anw2" style="display: none; ">
+   <form action="updateR.do" name="updateRform">
+         <textarea name="content" placeholder="수정할 내용 입력"></textarea>
+      <input type="hidden" value="${rid}" name="rid">
+      <input type="hidden" value="${content}" name="content">
+      <input type="hidden" value="${bid}" name="bid">
+      <input type="submit" value="수정완료" style="float:right;"/>
+   </form>
+   </div>
+      </c:when>
+   
+      <c:when test="${type=='rrmsg'}">
+   <a href="deleteRR.do?rrid=${rrid}&bid=${bid}"><button>삭제</button></a> &nbsp;    
+         <div class="que3"style="display:inline-block;">
+   <button>수정</button>
+   </div>
+    <div class="anw3" style="display: none; "> 
+   <form action="updateRR.do" name="updateRRform">
+         <textarea name="content" placeholder="수정할 내용입력"></textarea>
+      <input type="hidden" value="${rrid}" name="rrid">
+      <input type="hidden" value="${content}" name="content">
+      <input type="hidden" value="${bid}" name="bid">
+      <input type="submit" value="수정완료" style="float:right;"/>
+   </form>
+    </div> 
+      </c:when>
+   </c:choose>   
 </c:if>
+
+
+<script type="text/javascript">
+
+   $(document).ready(function() {
+         $(".edit-btn").click(function() {
+            $(this).next(".comment-text").toggle();   
+         });
+   });
+   
+
+</script>
+<script type="text/javascript">
+
+   $(document).ready(function() {
+         $("#edit-btn1").click(function() {
+            $("#comment-text1").toggle();   
+         });
+   });
+   
+
+</script>
 

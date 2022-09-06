@@ -47,13 +47,10 @@
 									<c:set var="b" value="${n.boardVO}" />
 
 
-									<b>${b.btitle} (댓글수 출력)</b>
+									<b>${b.btitle} </b>
 								</h2>
 								<div class="cncjs" style="display: inline-block; float: right;">
-									<i class="fa-solid fa-thumbs-up"></i> <i
-										class="fa-regular fa-thumbs-up"></i> <a>추천<i
-										class="fa-solid fa-thumbs-up" style="font-size: 22px;"> </i></a> <i
-										class="fa-regular fa-thumbs-up" style="font-size: 22px;"></i>
+								<bb:cboard midCheck="${b.mid}" type="bmsg" bid="${b.bid}"/>
 								</div>
 
 								<div>
@@ -64,10 +61,9 @@
 										class="time" style="float: right;">작성시간:${b.bdate}</span>
 								</div>
 							</div>
-							<img src="images/${b.bimg}" alt="${b.bimg}">
-
-								<p>
 								${b.bcontent}
+							<img src="images/${b.bimg}" alt="${b.bimg}">
+								<p>
 								<!--게시글 작성에서 받아온 게시글 (리뷰)-->
 							</p>
 							<hr style="border: 1px solid black;">
@@ -123,9 +119,7 @@
 
 							<!-- comment items -->
 							<div class="comments">
-								<h4> (댓글개수)</h4>
-								<hr>
-								<br>
+							
 							<!-- comment form -->
 							<div class="comment-form">
 								<h4>댓글을 남겨주세요</h4>
@@ -378,6 +372,13 @@
 		}
 	</script>
 </body>
+<script type="text/javascript">
+		$(".que1").click(function() {
+			$(this).next(".anw1").stop().slideToggle(300);
+			$(this).toggleClass('on').siblings().removeClass('on');
+			$(this).next(".anw1").siblings(".anw1").slideUp(300); // 1개씩 펼치기 (다른거 펼치면 기존 접히는 로직)
+		});
+	</script>
 <script type="text/javascript">
 		$(".que2").click(function() {
 			$(this).next(".anw2").stop().slideToggle(300);

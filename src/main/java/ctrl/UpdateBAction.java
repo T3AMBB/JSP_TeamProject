@@ -14,7 +14,6 @@ public class UpdateBAction implements Action{
 		BoardDAO dao = new BoardDAO();
 		BoardVO vo = new BoardVO();
 		
-		vo.setBtitle(request.getParameter("btitle")); // 수정할 게시글 제목
 		vo.setBcontent(request.getParameter("bcontent")); // 수정할 게시글 내용
 		vo.setBid(Integer.parseInt(request.getParameter("bid"))); // 수정할 게시글 번호
 		

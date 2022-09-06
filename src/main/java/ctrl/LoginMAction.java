@@ -27,6 +27,7 @@ public class LoginMAction implements Action{
 			member.setNickname(vo.getNickname()); // 접속한 사람의 닉네임
 			member.setRole(vo.getRole()); // 접속한 사람의 역할
 			session.setAttribute("member", member);
+			session.setAttribute("mpw", vo.getMpw());
 		}
 		else {
 			System.out.println("로그: 로그인");

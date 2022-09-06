@@ -29,7 +29,7 @@
     <div class="login-content">
         <a href="#" class="close">x</a>
         <h3>회원탈퇴</h3>
-        <form action="deleteM.do" method="post"> 
+        <form action="deleteM.do" method="post" onsubmit="return false;"> 
            <div class="row">
                <label>
                     아이디
@@ -37,7 +37,8 @@
                 </label>
                <label>
                     비밀번호 입력
-                    <input type="password" name="mpw" id="mpw" placeholder="비밀번호 입력해주세요." required="required" />
+                    <input type="password" name="mpw" id="mpw" onchange="DeletePw()" placeholder="비밀번호 입력해주세요." required="required" />
+                    <span class="result3"></span>
                 </label>
            </div>
            <div class="row">
@@ -102,24 +103,26 @@
                      </div>
                   </div>   
                </form>
-               <form action="updateM.do" class="password">
+               <form action="updateM.do" class="password" onsubmit="return false;">
                   <h4>비밀번호 변경</h4>
                   <div class="row">
                      <div class="col-md-6 form-it">
                         <label>현재 비밀번호</label>
-                        <input type="text" placeholder="**********">
+                        <input type="text" id="mpw0" placeholder="**********" onchange="checkPw1()">
+                        <span class="result1"></span>
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-md-6 form-it">
                         <label>새 비밀번호</label>
-                        <input type="text" placeholder="***************">
+                        <input type="text" id="mpw1" placeholder="***************" onchange="checkPw()">
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-md-6 form-it">
                         <label>새 비밀번호 확인</label>
-                        <input type="text" placeholder="*************** ">
+                        <input type="text" id="mpw2" name="mpw" placeholder="*************** " onchange="checkPw2()">
+                     <span class="result2"></span>
                      </div>
                   </div>
                   <div class="row">
@@ -143,6 +146,20 @@
 <script src="js/plugins2.js"></script>
 <script src="js/custom.js"></script>
 <script type="text/javascript">
+function DeletePw(){
+	var mpw = '<%=(String)session.getAttribute("mpw")%>';
+	console.log("mpw 값 " + mpw);
+	var mpw2 = $("#mpw").val();
+	console.log("mpw2 값 " + mpw2);
+    if(mpw != mpw2){
+		$(".result3").text("비밀번호가 불일치합니다.");
+		$(".result3").css("color","red");
+	}
+    else{
+		$(".result3").text("비밀번호가 일치합니다.");
+		$(".result3").css("color","blue");
+    }
+}
 function deleteM(){
 	   var mid=$("#mid").val();  // id=mid의 value값
 	   $.ajax({
@@ -161,6 +178,45 @@ function deleteM(){
 	   });
 	}
 
+function checkPw1(){
+	var mpw = '<%=(String)session.getAttribute("mpw")%>';
+	console.log(mpw);
+	var mpw2 = $("#mpw0").val();
+    if(mpw != mpw2){
+		$(".result1").text("비밀번호가 불일치합니다.");
+		$(".result1").css("color","red");
+	}
+    else{
+		$(".result1").text("비밀번호가 일치합니다.");
+		$(".result1").css("color","blue");
+    }
+}
+function checkPw2(){
+	var mpw1 = $("#mpw1").val();
+	var mpw2 = $("#mpw2").val();
+	console.log("mpw1" + mpw1);
+	console.log("mpw2" + mpw2);
+
+	if(mpw1 != mpw2){
+		$(".result2").text("비밀번호가 불일치합니다.");
+		$(".result2").css("color","blue");
+	}
+	else {
+		$(".result2").text("비밀번호가 일치합니다.");
+		$(".result2").css("color","blue");
+	}
+}
+function checkPw(){
+	var mpw = $("#mpw1").val();
+	var mpw2 = $("#mpw2").val();
+	console.log(mpw1);
+	console.log(mpw2);
+    var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{5,25}$/;
+    if(!pwdCheck.test(mpw1)){
+		$(".result2").text("비밀번호는 영문자 + 숫자+ 특수문자 조합으로 5~25자리 사용해야 합니다.");
+		$(".result2").css("color","blue");
+    }
+}
 </script>        
 </body>
 </html>

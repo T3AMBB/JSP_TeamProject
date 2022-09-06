@@ -49,7 +49,6 @@
 					
 				</div>
 			</div>
-			${datas}
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
 					<p><span>${fn:length(datas)}</span>개의 게시글을 작성하셨습니다.</p>
@@ -66,11 +65,7 @@
 					</div>
 				</div>
 				</c:forEach>
-				
-				<div class="topbar-filter">
-					<a href=><label>더보기</label></a>
-					
-				</div>
+			
 			</div>
 		</div>
 	</div>

@@ -9,26 +9,20 @@
 
 
 <c:if test="${member.nickname==midCheck}">
-	
-	
 	<br>
-	
 	<a href="deleteO.do?oid=${oid}&nid=${nid}"><button>삭제</button></a> &nbsp;
-	<div class="que2">
-	<button id="edit-btn"> 수정하기 </button>
+	<div class="que2"  style=“display:inline-block;”>
+	<button id="edit-btn">수정</button>
 	</div>
 	<div class="anw2" style="display: none; ">
 	<form action="updateO.do?" name="updateOform">
-			<textarea name="ocontent" placeholder="댓글입력"></textarea>
+			<textarea name="ocontent" placeholder="수정할 내용 입력"></textarea>
 		<input type="hidden" value="${oid}" name="oid">
 		<input type="hidden" value="${nid}" name="nid">
 		<input type="hidden" value="${ocontent}" name="ocontent">
 		<input type="submit" value="수정완료" />
 	</form>
 	</div>
-	
-	
-	<!--  <input type="submit" value="수정" /> -->
 </c:if>
 
 

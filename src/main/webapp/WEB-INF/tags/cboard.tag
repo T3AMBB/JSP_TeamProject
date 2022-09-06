@@ -24,6 +24,7 @@
 		<input type="submit" value="수정완료" />
 	</form>
 	</div>
+	
 		</c:when>
       <c:when test="${type=='rmsg'}">
          <a href="deleteR.do?rid=${rid}&bid=${bid}"><button>삭제</button></a> &nbsp;
@@ -58,26 +59,4 @@
       </c:when>
    </c:choose>   
 </c:if>
-
-
-<script type="text/javascript">
-
-   $(document).ready(function() {
-         $(".edit-btn").click(function() {
-            $(this).next(".comment-text").toggle();   
-         });
-   });
-   
-
-</script>
-<script type="text/javascript">
-
-   $(document).ready(function() {
-         $("#edit-btn1").click(function() {
-            $("#comment-text1").toggle();   
-         });
-   });
-   
-
-</script>
 

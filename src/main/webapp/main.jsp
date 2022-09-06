@@ -280,7 +280,6 @@
 			<div class=title-header style="font-size: 33px; text-align: center; margin-bottom:2%;"><span>&lt&nbsp;이달의
 				추천왕&nbsp;&gt</span>
 			</div>
-			${bdatas}
 			<div class="flex-wrap-movielist12 user-fav-list12">
 				<c:forEach var="b" items="${bdatas}" begin="0" end="3" step="1">
 					<div class="movie-item-style-2" style="padding:40px;">

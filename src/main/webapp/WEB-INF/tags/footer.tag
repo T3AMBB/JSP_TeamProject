@@ -23,15 +23,15 @@
 			<div class="flex-child-ft item5">
 				<h4>유의사항</h4>
 				<p> 북스터는 소설 커뮤니티 사이트로 소설에 대한 이유없는 <br>
-				    비판 혹은커뮤니티 게시글에 대해 악성댓글 및 의도적인<br>
-				    별점테러는 사이트 이용 제재대상이 될 수 있으니이 점<br>
+				    비판 혹은 커뮤니티 게시글에 대해 악성댓글 및 의도적인<br>
+				    별점테러는 사이트 이용 제재대상이 될 수 있으니 이 점<br>
 				    유의해주시기 바랍니다.</p>
 			</div>
 		</div>
 	</div>
 	<div class="ft-copyright">
 		<div class="ft-left">
-			<p>Â© 2017 Blockbuster. All Rights Reserved. Designed by leehari.</p>
+			<p>Copyright ⓒ BB INC.  All Right Reserved.</p>
 		</div>
 		<div class="backtotop">
 			<p><a href="#" id="back-to-top">Back to top  <i class="ion-ios-arrow-thin-up"></i></a></p>

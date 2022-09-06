@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.NovelDAO;
 import dao.OpinionDAO;
+import vo.MemberVO;
 import vo.NovelVO;
 import vo.OpinionVO;
 
@@ -14,6 +16,7 @@ public class NovelBoardAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session=request.getSession();
 		ArrayList<OpinionVO> datas = new ArrayList<OpinionVO>();
 		ArrayList<OpinionVO> datas_size = new ArrayList<OpinionVO>();
 		ActionForward forward = null;
@@ -22,6 +25,17 @@ public class NovelBoardAction implements Action{
 		OpinionDAO oDAO = new OpinionDAO();
 		OpinionVO oVO = new OpinionVO();
 		String cnt = request.getParameter("cnt");
+		
+		MemberVO mvo = new MemberVO();
+//		System.out.println("로그 세션: "+session.getAttribute("member"));
+		
+		if(session.getAttribute("member")==null) {
+			mvo.setMname("");
+		} else {
+			mvo = (MemberVO)session.getAttribute("member");
+		}
+		
+		boolean flag = true;
 		
 		if(cnt==null) {
 			cnt="5";
@@ -36,6 +50,15 @@ public class NovelBoardAction implements Action{
 		oVO.setCnt(Integer.parseInt(cnt));
 		datas = oDAO.selectAll_novelBoard(oVO);
 		datas_size = oDAO.selectAll_O(oVO);
+		
+		for(OpinionVO v:datas_size) {
+			System.out.println(v.getMid());
+			System.out.println(mvo.getNickname());
+			if(v.getMid().equals(mvo.getNickname())) {
+				flag = false;
+			}
+		}
+		
 //		System.out.println(datas);
 		if(vo != null) {
 			request.setAttribute("data", dao.selectOne_N(vo));
@@ -48,6 +71,8 @@ public class NovelBoardAction implements Action{
 		else {
 			throw new Exception("novelSelectOne 오류");
 		}
+		System.out.println(flag);
+		request.setAttribute("flag", flag);
 		request.setAttribute("cnt", cnt);
 		request.setAttribute("nud", request.getParameter("nid"));
 			

@@ -93,9 +93,14 @@
 									<hr>
 									<br>
 									<h3 style="margin-left: -2%;">[리뷰] &nbsp;
-										${datas_size}개</h3>
+										${datas_size}개
+										<c:if test="${!flag}">
+											<span style="float:right">리뷰를 작성을 완료한 작품입니다.</span>
+										</c:if>
+									</h3>
 									<div class="row">
 										<c:if test="${member != null}">
+											<c:if test="${flag}">
 											<div class="rv-hd">
 												<div class="div"></div>
 												<br> <br>
@@ -119,10 +124,12 @@
 														<textarea rows="40" cols="100"
 															placeholder="리뷰를 작성해주세요 최대 500자" name="ocontent"
 															style="height: 100px;"></textarea>
-														<input type="submit" value="리뷰등록" class="redbtn">
+														
+														<input type="submit" value="리뷰등록" class="redbtn">	
 													</form>
 												</div>
 											</div>
+											</c:if>
 										</c:if>
 										<c:if test="${member == null}">
 											<div class="rv-hd">
@@ -139,9 +146,11 @@
 																readonly>
 							            					</textarea>
 															<c:if test="${member != null}">
-															<input type="submit" value="리뷰등록" class="redbtn"
-																style="display: inline-block; margin-left: 5px; margin-top: 15px;">
+																<input type="submit" value="리뷰등록" class="redbtn"
+																	style="display: inline-block; margin-left: 5px; margin-top: 15px;">
+																
 															</c:if>
+															
 														</div>
 														<br>
 													</form>

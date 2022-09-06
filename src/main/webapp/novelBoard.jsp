@@ -208,6 +208,35 @@
 	<script src="js/plugins2.js"></script>
 	<script src="js/custom.js"></script>
 </body>
+
+<c:if test="${opinion}">
+
+<script type="text/javascript">
+window.addEventListener("scroll", (event) => {
+    let scrollY = this.scrollY;
+    let scrollX = this.scrollX;
+    console.log(scrollY);
+    console.log(scrollX);
+});
+</script>
+<script type="text/javascript">
+window.addEventListener("scroll", (event) => {
+    let scrollY = this.scrollY;
+    let scrollX = this.scrollX;
+    console.log(scrollY);
+    console.log(scrollX);
+});
+   window.scrollTo({top:470, left:0, behavior:'smooth'});
+</script>
+</c:if>
+<c:if test="${cnt > 5 }">
+<script type="text/javascript">
+   var cnt = ${cnt*180};
+   console.log(cnt);
+   window.scrollTo({top:cnt, left:0, behavior:'smooth'});
+</script>
+</c:if>
+
 <script type="text/javascript">
 	$(".que2").click(function() {
 		$(this).next(".anw2").stop().slideToggle(300);

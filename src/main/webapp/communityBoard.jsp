@@ -445,6 +445,33 @@
 		}
 	</script>
 </body>
+
+<c:if test="${reply}">
+
+<script type="text/javascript">
+window.addEventListener("scroll", (event) => {
+    let scrollY = this.scrollY;
+    let scrollX = this.scrollX;
+    console.log(scrollY);
+    console.log(scrollX);
+});
+   window.scrollTo({top:550, left:0, behavior:'smooth'});
+</script>
+</c:if>
+
+<c:if test="${reply_re}">
+
+<script type="text/javascript">
+window.addEventListener("scroll", (event) => {
+    let scrollY = this.scrollY;
+    let scrollX = this.scrollX;
+    console.log(scrollY);
+    console.log(scrollX);
+});
+   window.scrollTo({top:1000, left:0, behavior:'smooth'});
+</script>
+</c:if>
+
 <script type="text/javascript">
 	$(".que2").click(function() {
 		$(this).next(".anw2").stop().slideToggle(300);

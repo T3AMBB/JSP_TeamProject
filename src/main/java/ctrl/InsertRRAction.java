@@ -36,6 +36,7 @@ public class InsertRRAction implements Action{
 			throw new Exception("insertRR 오류");
 		}
 		
+		request.setAttribute("reply_re", true);
 		request.setAttribute("cnt", request.getParameter("cnt"));
 		request.setAttribute("bid", request.getParameter("bid"));
 		request.setAttribute("rcnt", request.getParameter("rcnt"));

@@ -1,5 +1,7 @@
 package ctrl;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -30,7 +32,11 @@ public class LoginMAction implements Action{
 			session.setAttribute("mpw", vo.getMpw());
 		}
 		else {
-			System.out.println("로그: 로그인");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요.'); history.go(-1);</script>");
+			out.flush();
+			System.out.println("로그인 실패");
 		}
 		
 		ActionForward forward = new ActionForward();

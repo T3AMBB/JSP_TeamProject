@@ -54,15 +54,16 @@
                      <tr>
                         <th style="border-right: none;">비밀번호</th>
                         <td style="border-right: none; ">
-                          <input type="password" name="mpw" id="signup_form_password" maxlength="25" placeholder="영문, 숫자, 특수문자 8~25자리"  required="required" />
-                     
+                          <input type="password" name="mpw" id="signup_form_password" onchange="checkPw()" maxlength="25" placeholder="영문, 숫자, 특수문자 8~25자리"  required="required" />
+                          <span class="result1"></span>
                   </td>
                      </tr>
                     <tr>
                         <th style="border-right: none;">비밀번호확인</th>
                     <td style="border-right: none; ">
-                        <input type="password" id="signup_form_password_re" maxlength="25" placeholder="비밀번호 재입력" required="required" />
-               </td>
+                        <input type="password" id="signup_form_password_re" onchange="checkPw2()" maxlength="25" placeholder="비밀번호 재입력" required="required" />
+	                    <span class="result2"></span>
+				</td>
                      </tr>
                      <tr>
                         <th style="border-right: none;">이름</th>
@@ -111,6 +112,34 @@
 <script src="js/custom.js"></script>
 <script src="js/signUp.js"></script>
 <script type="text/javascript" src="./js/check.js" ></script> 
-
+<script type="text/javascript">
+function checkPw(){
+	var mpw = $("#signup_form_password").val();
+	var mpw2 = $("#signup_form_password_re").val();
+	console.log(mpw);
+	console.log(mpw2);
+    var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{5,25}$/;
+    if(!pwdCheck.test(mpw)){
+		$(".result1").text("비밀번호는 영문자 + 숫자+ 특수문자 조합으로 5~25자리 사용해야 합니다.");
+		$(".result1").css("color","red");
+    }
+    else {
+		$(".result1").text("비밀번호 형식이 올바릅니다.");
+		$(".result1").css("color","blue");
+    }
+}
+function checkPw2(){
+	var mpw = $("#signup_form_password").val();
+	var mpw2 = $("#signup_form_password_re").val();
+    if(mpw != mpw2){
+		$(".result2").text("비밀번호가 불일치합니다.");
+		$(".result2").css("color","red");
+	}
+	else{
+		$(".result2").text("비밀번호가 일치합니다.");
+		$(".result2").css("color","blue");
+	}
+}
+</script>
 </body>
 </html>

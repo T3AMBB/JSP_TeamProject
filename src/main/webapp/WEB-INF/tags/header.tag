@@ -17,7 +17,7 @@
     <div class="login-content">
         <a href="#" class="close">x</a>
         <h3>로그인</h3>
-        <form action="loginM.do" method="post" id="login">
+        <form method="post" id="login" name="f1">
            <div class="row">
                <label>아이디
                     <input type="text" name="mid" placeholder="아이디" id="mid" required />
@@ -38,7 +38,7 @@
                </div>
             </div>
            <div class="row">
-				<input type="submit" value="로그인">
+				<input type="submit" value="로그인" onclick="loginChk()">
            </div>
         </form>
         <div class="row">
@@ -157,6 +157,22 @@
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 
 <script>
+function loginChk() {
+    var form = document.f1;
+    if (!form.mid.value) {
+        alert("아이디를 입력하세요.");
+        form.mid.focus();
+        return;
+    }
+ 
+    if (!form.mpw.value) {
+        alert("비밀번호를 입력하세요.");
+        form.mpw.focus();
+        return;
+    }
+    form.action = "loginM.do";
+    form.submit();
+}
 
 var naverLogin = new naver.LoginWithNaverId(
       {

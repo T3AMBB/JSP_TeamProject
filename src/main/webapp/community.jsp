@@ -83,11 +83,11 @@
                                     <table class="board-list-1s">
                                        <caption></caption>
                                        <colgroup>
-                                          <col style="width: 9%;">
-                                          <col style="width: 9%;">
-                                          <col style="width: 58%;">
-                                          <col style="width: 9%;">
+                                          <col style="width: 8%;">
                                           <col style="width: 15%;">
+                                          <col style="width: 50%;">
+                                          <col style="width: 7%;">
+                                          <col style="width: 20%;">
                                           <!-- 2017-03-10 수정 : colgroup 영역 전체 복사+붙여넣기해주세요(각 항목 간격 수정) -->
                                        </colgroup>
                                        <thead>

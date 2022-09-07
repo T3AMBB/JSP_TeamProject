@@ -155,12 +155,12 @@ public class BoardDAO {
 
       public ArrayList<BoardVO> selectAll_Recommend (BoardVO bvo){
          ArrayList<BoardVO> datas=new ArrayList<BoardVO>();
-         BoardVO data=new BoardVO();
          conn=JDBCUtil.connect();
          try {
             pstmt=conn.prepareStatement(sql_selectAll_Recommend);
             ResultSet rs=pstmt.executeQuery();
             while(rs.next()) {
+               BoardVO data=new BoardVO();
                data.setBid(rs.getInt("BID"));
                data.setBtitle(rs.getString("BTITLE"));
                data.setBcontent(rs.getString("BCONTENT"));

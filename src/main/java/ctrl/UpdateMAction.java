@@ -19,6 +19,8 @@ public class UpdateMAction implements Action{
       HttpSession session=request.getSession();
       MemberVO mvo = (MemberVO)session.getAttribute("member");
       
+      
+      
       vo.setMid(mvo.getMid()); // 현재 접속한 멤버 id
       vo.setMpw(request.getParameter("mpw")); // 수정할 비밀번호
       vo.setNickname(request.getParameter("nickname")); // 수정할 닉네임
@@ -33,7 +35,10 @@ public class UpdateMAction implements Action{
          else {
             throw new Exception("updateMY 오류");
          }
-         
+         session.removeAttribute("member");
+         vo = dao.selectOne_LOGIN(vo);
+         session.setAttribute("member", vo);
+
          return forward;
       }
       else {
@@ -46,6 +51,8 @@ public class UpdateMAction implements Action{
          else {
             throw new Exception("updateMPW 오류");
          }
+         
+         
          
          return forward;
          

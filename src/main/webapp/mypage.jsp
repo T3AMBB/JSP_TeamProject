@@ -32,7 +32,7 @@
         <a href="#" class="close">x</a>
         <h1>회원탈퇴</h1>
         
-        <form action="deleteM.do" method="post" onsubmit="return false;"> 
+        <form action="deleteM.do" method="post"> 
            <div class="row">
                <label>
                     아이디

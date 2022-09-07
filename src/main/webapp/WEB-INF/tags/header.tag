@@ -24,7 +24,6 @@
 				<label>아이디 <input type="text" name="mid" placeholder="아이디"
 					id="mid" required />
 				</label>
-
 				<label> 비밀번호 <input type="password" name="mpw"
 					placeholder="******" id="mpw" style="font: icon;" required />
 				</label>
@@ -65,9 +64,9 @@
 			<div class="modal-body">
 				<div class="row">
 					<form>
-						아이디 <input type="text" name="mid" id="mid" placeholder="아이디 입력"
-							required="required" /> <input type="button" value="아이디 체크"
-							onclick="sms();">
+						아이디 <input type="text" name="mid" id="mid1" placeholder="아이디 입력"
+							required="required" /> <input type="button" value="임시비밀번호 전송"
+							onclick="sms();"style="color: white; background-color: black; border: none; border-radius: 1rem;">
 						<div class="result1"></div>
 					</form>
 
@@ -79,10 +78,11 @@
 
 				</div>
 			</div>
+			
 
 			<!-- Modal footer -->
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" style="color: white; background-color: black; border: none; border-radius: 1rem;">취소</button>
 			</div>
 
 		</div>
@@ -144,7 +144,7 @@
 <br>
 <br>
 <!-- END | Header -->
-
+		
 <!-- 네이버 스크립트 -->
 <script
 	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
@@ -170,7 +170,7 @@ function loginChk() {
 
 var naverLogin = new naver.LoginWithNaverId(
       {
-         clientId: "네이버 키값", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+         clientId: "네이버키값", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
          callbackUrl: "http://localhost:8088/bookster/main.jsp", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
          isPopup: false,
          callbackHandle: true
@@ -224,7 +224,7 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
 <!-- 카카오 스크립트 시작 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
-        window.Kakao.init('카카오 키값');
+        window.Kakao.init('카카오키값');
 
         function kakaoLogin() {
             window.Kakao.Auth.login({
@@ -312,3 +312,4 @@ if(${logoutValue}==100){
        ${logoutValue=99};
  }
 </script>
+

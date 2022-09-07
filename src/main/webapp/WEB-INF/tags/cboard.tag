@@ -10,7 +10,7 @@
    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
    crossorigin="anonymous"></script>
    
-<c:if test="${member.nickname==midCheck}">
+<c:if test="${member.nickname==midCheck or member.role eq 'admin'}">
    <c:choose>
    <c:when test="${type=='bmsg'}">
 			<a href="deleteB.do?bid=${bid}"><button style="color:grey; background-color:gold; border:1px solid gold; border-radius:1rem; width:47px; padding:3px; ">삭제</button></a> &nbsp;

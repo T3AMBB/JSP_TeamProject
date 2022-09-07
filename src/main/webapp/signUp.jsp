@@ -56,14 +56,14 @@
                      <tr>
                         <th style="border-right: none;">비밀번호</th>
                         <td style="border-right: none; ">
-                          <input type="password" name="mpw" id="signup_form_password" onchange="checkPw()" maxlength="25" placeholder="영문, 숫자, 특수문자 8~25자리" style="font: icon;"  required="required" />
+                          <input type="password" name="mpw" id="signup_form_password" onchange="checkPw()" maxlength="25" placeholder="영문, 숫자, 특수문자 5~25자리" style="font: icon;"  required="required" />
                           <span class="result1"></span>
                   </td>
                      </tr>
                     <tr>
                         <th style="border-right: none;">비밀번호확인</th>
                     <td style="border-right: none; ">
-                        <input type="password" id="signup_form_password_re" onchange="checkPw2()" maxlength="25" placeholder="비밀번호 재입력" required="required" />
+                        <input type="password" id="signup_form_password_re" onchange="checkPw2()" maxlength="25" placeholder="비밀번호 재입력" required="required" style="font: icon;"/>
 	                    <span class="result2"></span>
 				</td>
                      </tr>

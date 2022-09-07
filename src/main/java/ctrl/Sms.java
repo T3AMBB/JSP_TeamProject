@@ -40,7 +40,8 @@ public class Sms extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-System.out.println("로그1 ["+request.getParameter("mid")+"]");
+
+		System.out.println("로그1 ["+request.getParameter("mid")+"]");
 		
 		MemberVO mvo=new MemberVO();
 		MemberDAO mdao=new MemberDAO();
@@ -51,6 +52,10 @@ System.out.println("로그1 ["+request.getParameter("mid")+"]");
 		int result=mdao.check(mvo);
 		
 		mvo=mdao.selectOne_MID(mvo);
+		
+		if(mvo==null) {
+			mvo = new MemberVO();
+		}
 		System.out.println(mvo.getMphone());
 		
 		if(mvo!=null) {

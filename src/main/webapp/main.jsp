@@ -27,8 +27,11 @@
 <link rel="stylesheet" href="css/plugins.css">
 <link rel="stylesheet" href="css/style.css">
 
+
 </head>
+
 <body>
+
 	<!-- header section-->
 	<bb:header />
 	<!-- end of header section-->
@@ -308,14 +311,16 @@
 		<!-- footer section-->
 		<bb:footer />
 		<!-- end of footer section-->
+
 </body>
+
 <script type="text/javascript">
 function sms(){
-	   var mid=$("#mid").val(); // id=mid의 value값
+	   var mid=$("#mid1").val(); // id=mid의 value값
 	   $.ajax({
 	      type: 'GET', 
 	      url: 'Sms?mid='+mid, //사용자가 입력한 값을 확보한 상태 > DB한테 물어볼 예정 "mid라는 값이 DB에 이미 있어?" => DAO(M)로 가야함 > 이제 C가(서블릿) 작업을 할 차례구나! 
-	      data: {mid:mid},
+	      data: {"mid":mid},
 	      success: function(result){ // 성공했을 때
 	         
 	         console.log("로그1 ["+result+"] succes");
@@ -344,7 +349,6 @@ function sms(){
 	}
 
 </script> 
-
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>

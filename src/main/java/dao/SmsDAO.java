@@ -12,8 +12,8 @@ import vo.SmsVO;
 public class SmsDAO {
 
 	public int sms(SmsVO vo) {
-		String api_key = "NCSYFTGOOZKWOIMO"; // 회원가입 시 발급받은 api키
-		String api_secret = "CASVKTQXN7U3JG5GDHCTYPXPV9BDWGT9"; // 회원가입 시 발급받은 secret api키
+		String api_key = "api_key"; // 회원가입 시 발급받은 api키
+		String api_secret = "api_secret"; // 회원가입 시 발급받은 secret api키
 		Message coolsms = new Message(api_key, api_secret);
 		
 		Random rd = new Random();
@@ -21,7 +21,7 @@ public class SmsDAO {
 		System.out.println(vo.getPhoneNumber());
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("to", vo.getPhoneNumber()); //받는 사람 번호
-		params.put("from", "01073197577"); //보내는 사람 번호
+		params.put("from", "01053694080"); //보내는 사람 번호
 		params.put("type", "SMS");
 		params.put("text", "임시비밀번호 ["+randMpw+"]");
 		params.put("app_version", "test app 1.2");

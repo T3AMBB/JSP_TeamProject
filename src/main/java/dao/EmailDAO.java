@@ -16,11 +16,10 @@ public class EmailDAO {
    public int email(EmailVO vo) {
 
       String host = "smtp.naver.com"; // 사용할 사이트
-      final String user = "aimee3213@naver.com"; // ID
-      final String password = "asdf1234"; // PW
+      final String user = "네이버 아이디"; // ID
+      final String password = "네이버 비번"; // PW
 
-      // String to = "lisa23@kakao.com"; // 보낼 이메일 주소
-      String to = vo.getEmailAddress();
+      String to = vo.getEmailAddress(); // 보낼 이메일 주소
       
       
       // Get the session object

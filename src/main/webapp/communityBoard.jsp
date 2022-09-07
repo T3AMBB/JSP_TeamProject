@@ -146,12 +146,12 @@
                      <div class="recmd-alert" style="margin-left:42%;">
                         <div class="recmd-N" style="display: inline-block;magin:3%;">
                            <input id="result1" type="text" value="${b.cnt_l}"
-                              style="display: inline-block; width: 40px; height: 40px;"
+                              style="display: inline-block; width: 40px; height: 40px; border:none; text-align:center; background-color:white;"
                               disabled>
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        
                            <input id="result2" type="text" value="${b.cnt_n}"
-                              style="display: inline-block; width: 40px; height: 40px;"
+                              style="display: inline-block; width: 40px; height: 40px; border:none; text-align:center; background-color:white;"
                               disabled>
                         </div>
                    
@@ -228,7 +228,7 @@
 
                                  <div style="padding:20px; margin-bottom: -4%;">
 
-                                    <div style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">${r.mid}</div>
+                                    <div style="display: inline-block; float: left; margin-right: 5%; font-weight: 600; font-size:20px;">${r.mid}</div>
                                     |
                                     <div  style="display: inline-block; border: 1px black;">${r.rcontent} </div>
                                     <div class="time" style="float: right;">${r.rdate}</div>
@@ -240,7 +240,7 @@
 
                               </div>
                               <div class="que">
-                                 <button>대댓글보기</button>
+                                 <button style="color:white; background-color:grey; border:none; border-radius:1rem; width:90px; padding:3px; margin-left:3%;">대댓글보기</button>
                               </div>
                               <!-- 댓글창 종료 -->
 
@@ -253,7 +253,7 @@
                                     <div class="rrep">
                                        <div style="margin-left: 5%;">
                                           <div style="margin: 2%;">
-                                             <div style="display: inline-block; float: left; margin-right: 5%; font-weight: 600;">ㄴ &nbsp;  ${rr.mid}</div>
+                                             <div style="display: inline-block; float: left; margin-right: 5%; font-weight: 600; font-size:18px;">ㄴ &nbsp;  ${rr.mid}</div>
 
                                              <div style="display: inline-block;">| &nbsp; ${rr.rrcontent}
                                              </div>
@@ -261,7 +261,6 @@
                                        <bb:cboard midCheck="${rr.mid}" type="rrmsg"
                                           rrid="${rr.rrid}" />
                                              <br>
-
                                           </div>
                                        </div>
                                     <hr>
@@ -293,7 +292,7 @@
                                  <!-- 대댓글 페이징 -->
 
                               </div>
-                              <br> <br>
+                              <br> 
                            </div>
 
                         </c:forEach>

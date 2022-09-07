@@ -122,9 +122,8 @@
 								</thead>
 								<tbody>
 									<c:forEach var="n" items="${datasL}" begin="0" end="20" step="1">
-									
 										<tr>
-											<td>${n.btitle}</td>
+											<td><a href="communityBoard.do?bid=${n.bid}">${n.btitle}</a></td>
 											<!-- 글제목 mid를 받아와서 href로 글로이동 가능하게 할것인지?-->
 											<td>${n.mid}</td>
 											<!-- 작성자 mid를 받아와서 상세정보보기가 가능하게 할것인지.-->
@@ -154,7 +153,7 @@
 									<c:forEach var="nl" items="${datasR}" begin="0" end="20"
 										step="1">
 										<tr>
-											<td>${nl.btitle}</td>
+											<td><a href="communityBoard.do?bid=${nl.bid}">${nl.btitle}</a></td>
 											<!-- 글제목 -->
 											<td>${nl.mid}</td>
 											<td>${nl.bcnt}</td>

@@ -1,149 +1,141 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous">
-</script> <!-- jQuery 안에 ajax가 있으므로 CDN방식으로 jQuery 사용 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous">
+</script>
+<!-- jQuery 안에 ajax가 있으므로 CDN방식으로 jQuery 사용 -->
 
 <!--preloading-->
 <div id="preloader">
-    <img class="logo" src="images/logo1.png" alt="" width="119" height="58">
-    <div id="status">
-        <span></span>
-        <span></span>
-    </div>
+	<img class="logo" src="images/logo1.png" alt="" width="119" height="58">
+	<div id="status">
+		<span></span> <span></span>
+	</div>
 </div>
 <!--end of preloading-->
 <!--login form popup-->
 <div class="login-wrapper" id="login-content">
-    <div class="login-content">
-        <a href="#" class="close">x</a>
-        <h3>로그인</h3>
-        <form method="post" id="login" name="f1">
-           <div class="row">
-               <label>아이디
-                    <input type="text" name="mid" placeholder="아이디" id="mid" required />
-               </label>
-           </div>
-           
-            <div class="row">
-               <label>
-                    비밀번호
-                    <input type="password" name="mpw" placeholder="******" id="mpw" style="font: icon;"required />
-                </label>
-            </div>
-            <div class="row">
-               <div class="remember">
-               <div>
-               </div>
-                 <a class="nav-link" href="#" data-toggle="modal" data-target=".modal">비밀번호찾기</a>
-               </div>
-            </div>
-           <div class="row">
-				<input type="submit" value="로그인" onclick="loginChk()">
-           </div>
-        </form>
-        <div class="row">
-           <p>간편하게 SNS 로그인</p>
-            <div class="social-btn-2">
-               <a href="javascript:kakaoLogin();"><img src="images/kakao.png" alt="카카오 로그인"/></a>
-            <a id="naverIdLogin_loginButton" href="javascript:void(0)"><img src="images/naver.png" alt="네이버 로그인"/></a>
-            </div>
-        </div>
-    </div>
+	<div class="login-content">
+		<a href="#" class="close">x</a>
+		<h3>로그인</h3>
+		<form method="post" id="login" name="f1">
+			<div class="row">
+				<label>아이디 <input type="text" name="mid" placeholder="아이디"
+					id="mid" required />
+				</label>
+
+				<label> 비밀번호 <input type="password" name="mpw"
+					placeholder="******" id="mpw" style="font: icon;" required />
+				</label>
+			</div>
+			<div>
+				<div class="remember" style="float:left">
+					<a class="nav-link" href="#" data-toggle="modal"
+						data-target=".modal" style="display: inline-block;">비밀번호찾기</a>
+				</div>
+				<input type="submit" value="로그인" onclick="loginChk()"
+					style="color: white; background-color: black; border: none; border-radius: 1rem; width: 71px; padding: 3px; display: inline-block; float : right;">
+			</div>
+		</form>
+		<br><br>
+		<div style="text-align:center;">
+		<hr>
+			<p>간편하게 SNS 로그인</p>
+			<div class="social-btn-2">
+				<a href="javascript:kakaoLogin();"><img src="images/kakao.png"
+					alt="카카오 로그인" /></a> <a id="naverIdLogin_loginButton"
+					href="javascript:void(0)"><img src="images/naver.png"
+					alt="네이버 로그인" /></a>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- 비밀번호 찾기 -->
 <div class="modal" id="login">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		
-		      <!-- Modal Header -->
-		      <div class="modal-header">
-		        <h4 class="modal-title">비밀번호 찾기</h4>
-		      </div>
-		
-		      <!-- Modal body -->
-		      <div class="modal-body">
-           		<div class="row">
-               <form>
-                    아이디
-                    <input type="text" name="mid" id="mid" placeholder="아이디 입력" required="required" />
-                    <input type="button" value="아이디 체크" onclick="sms();">
-                    <div class="result1"></div>
-                    </form>
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">비밀번호 찾기</h4>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<div class="row">
+					<form>
+						아이디 <input type="text" name="mid" id="mid" placeholder="아이디 입력"
+							required="required" /> <input type="button" value="아이디 체크"
+							onclick="sms();">
+						<div class="result1"></div>
+					</form>
 
 
 
 
 
-                    
-               
-         	 	 </div>
-		      </div>
-		
-		      <!-- Modal footer -->
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
-		      </div>
-		
-		    </div>
-		  </div>
+
+
+				</div>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+			</div>
+
 		</div>
+	</div>
+</div>
 
 <!--end of login form popup-->
 <!-- BEGIN | Header -->
 <header class="ht-header">
-   <div class="container">
-      <nav class="navbar navbar-default navbar-custom">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header logo">
-                <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                   <span class="sr-only">Toggle navigation</span>
-                   <div id="nav-icon1">
-                     <span></span>
-                     <span></span>
-                     <span></span>
-                  </div>
-                </div>
-                <a href="main.do"><img class="logo" src="images/logo1.png" alt="" width="119" height="58"></a>
-             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
-               <ul class="nav navbar-nav flex-child-menu menu-left">
-                  <li class="hidden">
-                     <a href="#page-top"></a>
-                  </li>
-                  
-                  <li class="dropdown first">
-                     <a href="novelMain.do">
-                     소설
-                     </a>
-                  </li>
-                  <li class="dropdown first">
-                     <a href="community.do">
-                     커뮤니티
-                     </a>
-                  </li>
-               </ul>
-               <ul class="nav navbar-nav flex-child-menu menu-right">
-               <c:choose>
-                  <c:when test="${member.role eq 'admin'}">
-                     <li><a href="admin.do">관리자모드</a></li>
-                     <li><a href="logoutM.do">로그아웃</a></li>
-                  </c:when>
-                  <c:when test="${member.mid!=null}">
-                     <li><a href="mypage.do">마이페이지</a></li>
-                     <li><a href="logoutM.do">로그아웃</a></li>
-                  </c:when>
-                  <c:otherwise>
-                     <li class="loginLink"><a href="#">로그인</a></li>
-                     <li class="btn"><a href="signUp.jsp">회원가입</a></li>
-                  </c:otherwise>
-               </c:choose>
-                  
-               </ul>
-            </div>
-         <!-- /.navbar-collapse -->
-       </nav>
-   </div>
+	<div class="container">
+		<nav class="navbar navbar-default navbar-custom">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header logo">
+				<div class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<div id="nav-icon1">
+						<span></span> <span></span> <span></span>
+					</div>
+				</div>
+				<a href="main.do"><img class="logo" src="images/logo1.png"
+					alt="" width="119" height="58"></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse flex-parent"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav flex-child-menu menu-left">
+					<li class="hidden"><a href="#page-top"></a></li>
+
+					<li class="dropdown first"><a href="novelMain.do"> 소설 </a></li>
+					<li class="dropdown first"><a href="community.do"> 커뮤니티 </a></li>
+				</ul>
+				<ul class="nav navbar-nav flex-child-menu menu-right">
+					<c:choose>
+						<c:when test="${member.role eq 'admin'}">
+							<li><a href="admin.do">관리자모드</a></li>
+							<li><a href="logoutM.do">로그아웃</a></li>
+						</c:when>
+						<c:when test="${member.mid!=null}">
+							<li><a href="mypage.do">마이페이지</a></li>
+							<li><a href="logoutM.do">로그아웃</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="loginLink"><a href="#">로그인</a></li>
+							<li class="btn"><a href="signUp.jsp">회원가입</a></li>
+						</c:otherwise>
+					</c:choose>
+
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</nav>
+	</div>
 </header>
 <br>
 <br>
@@ -154,7 +146,9 @@
 <!-- END | Header -->
 
 <!-- 네이버 스크립트 -->
-<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+<script
+	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
+	charset="utf-8"></script>
 
 <script>
 function loginChk() {
@@ -176,8 +170,8 @@ function loginChk() {
 
 var naverLogin = new naver.LoginWithNaverId(
       {
-         clientId: "hLQzHJecbMviikbiJiSo", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-         callbackUrl: "http://localhost:8088/bbday/main.jsp", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+         clientId: "네이버 키값", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+         callbackUrl: "http://localhost:8088/bookster/main.jsp", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
          isPopup: false,
          callbackHandle: true
       }
@@ -228,9 +222,9 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
 </script>
 <!-- 네이버 스크립트 종료-->
 <!-- 카카오 스크립트 시작 -->
-   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script>
-        window.Kakao.init('6e89f814e92b8d171dd5a1fa9be630e9');
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+        window.Kakao.init('카카오 키값');
 
         function kakaoLogin() {
             window.Kakao.Auth.login({
@@ -268,8 +262,6 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
             });
         }
         
-   //     window.Kakao.init('6e89f814e92b8d171dd5a1fa9be630e9');
-        
        function kakaoLogout() {
            if (!Kakao.Auth.getAccessToken()) {
               console.log('Not logged in.');
@@ -297,7 +289,6 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
     };
     </script>
 <!-- 카카오 스크립트 종료 -->
-<!-- 문자 API -->
 
 <script type="text/javascript">
 if(${logoutValue}==100){
@@ -320,4 +311,4 @@ if(${logoutValue}==100){
       window.localStorage.clear();
        ${logoutValue=99};
  }
-</script>              
+</script>

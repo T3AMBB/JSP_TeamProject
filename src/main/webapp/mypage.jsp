@@ -30,7 +30,8 @@
 <div class="login-wrapper" id="login-content1">
     <div class="login-content">
         <a href="#" class="close">x</a>
-        <h3>회원탈퇴</h3>
+        <h1>회원탈퇴</h1>
+        
         <form action="deleteM.do" method="post" onsubmit="return false;"> 
            <div class="row">
                <label>
@@ -78,7 +79,8 @@
             <div class="form-style-1 user-pro" >
                <form action="updateM.do" class="user">
                 <input type="hidden" name="mpw" value="${data.mpw}">
-                  <h4>내 프로필</h4>
+                  <h1>내 프로필</h1>
+                  <br>
                   <div class="row">
                      <div class="col-md-6 form-it">
                         <label>이름</label>
@@ -106,7 +108,8 @@
                   </div>   
                </form>
                <form action="updateM.do" class="password" onsubmit="return false;">
-                  <h4>비밀번호 변경</h4>
+                  <h1>비밀번호 변경</h1>
+                  <br>                  
                   <div class="row">
                      <div class="col-md-6 form-it">
                         <label>현재 비밀번호</label>

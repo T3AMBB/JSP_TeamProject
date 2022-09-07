@@ -13,7 +13,7 @@
 <meta name="keywords" content="">
 <meta name="author" content="">
 <link rel="shorycut icon" href="images/favicon.png" type="images/png">
-   <link rel="apple-touch-icon" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="profile" href="#">
 
 <!--Google Font-->
@@ -94,114 +94,98 @@
 									<br>
 									<hr>
 									<br>
-									<h3 style="margin-left: -2%;">[리뷰] &nbsp;
-										${datas_size}개
+									<h3 style="margin-left: -2%;">
+										리뷰 &nbsp; ${datas_size}개
 										<c:if test="${!flag}">
-											<span style="float:right">리뷰를 작성을 완료한 작품입니다.</span>
+											<span style="float: right">리뷰를 작성을 완료한 작품입니다.</span>
 										</c:if>
 									</h3>
 									<div class="row">
 										<c:if test="${member != null}">
 											<c:if test="${flag}">
-											<div class="rv-hd">
-												<div class="div"></div>
-												<br> <br>
-												<div>
-													<form action="insertO.do" class="mb-3" name="myform"
-														id="myform" method="post"
-														style="text-align: end; width: 95%;">
-														<input type="hidden" name="nid" value="${data.nid}">
-														<fieldset>
-															<input type="radio" name="ostar" value="5" id="rate1"><label
-																for="rate1">★</label> <input type="radio" name="ostar"
-																value="4" id="rate2"><label for="rate2">★</label>
-															<input type="radio" name="ostar" value="3" id="rate3"><label
-																for="rate3">★</label> <input type="radio" name="ostar"
-																value="2" id="rate4"><label for="rate4">★</label>
-															<input type="radio" name="ostar" value="1" id="rate5"><label
-																for="rate5">★</label>
-														</fieldset>
+												<div class="rv-hd">
+													<div class="div"></div>
+													<br> <br>
+													<div>
+														<form action="insertO.do" class="mb-3" name="myform"
+															id="myform" method="post"
+															style="text-align: end; width: 95%;">
+															<input type="hidden" name="nid" value="${data.nid}">
+															<fieldset>
+																<input type="radio" name="ostar" value="5" id="rate1"><label
+																	for="rate1">★</label> <input type="radio" name="ostar"
+																	value="4" id="rate2"><label for="rate2">★</label>
+																<input type="radio" name="ostar" value="3" id="rate3"><label
+																	for="rate3">★</label> <input type="radio" name="ostar"
+																	value="2" id="rate4"><label for="rate4">★</label>
+																<input type="radio" name="ostar" value="1" id="rate5"><label
+																	for="rate5">★</label>
+															</fieldset>
 
-														<span class="text-bold">별점을 선택해주세요</span>
-														<textarea rows="40" cols="100"
-															placeholder="리뷰를 작성해주세요 최대 500자" name="ocontent"
-															style="height: 100px;"></textarea>
-														
-														<input type="submit" value="리뷰등록" class="redbtn">	
-													</form>
+															<span class="text-bold">별점을 선택해주세요</span>
+															<textarea rows="40" cols="100"
+																placeholder="리뷰를 작성해주세요 최대 500자" name="ocontent"
+																style="height: 100px;"></textarea>
+
+															<input type="submit" value="리뷰등록" class="redbtn"
+																style="margin-top: 1%;">
+														</form>
+													</div>
 												</div>
-											</div>
 											</c:if>
 										</c:if>
 										<c:if test="${member == null}">
 											<div class="rv-hd">
-												<div>
-													<br> <br> <span class="text-bold">리뷰를
-														작성하려면 로그인 해주세요.</span>
-													<form action="insertO.do" name="myform" id="myform"
-														method="post" style="width: 97%;">
-														<div style="">
-															<textarea rows="40" cols="100"
-																placeholder="로그인 후 리뷰를 작성해보세요 :D" class="ocontent"
-																name="ocontent"
-																style="height: 100px; width: 580px; display: inline-block; float: left;"
-																readonly>
-							            					</textarea>
-															<c:if test="${member != null}">
-																<input type="submit" value="리뷰등록" class="redbtn"
-																	style="display: inline-block; margin-left: 5px; margin-top: 15px;">
-																
-															</c:if>
-															
-														</div>
-														<br>
-													</form>
+												<div
+													style="width: 90%; margin-bottom: 3%; margin-top: 5%; border: 1px solid grey; border-radius: 0.5rem; text-align: center; background-color: whitesmoke; padding: 25px;">
+													<span style="font-size: 33px;">리뷰를 작성하려면 로그인 해주세요.</span>
 												</div>
+												<br>
+												</form>
 											</div>
-										</c:if>
-										<!-- ${datas} -->
-										<hr>
-										<c:forEach var="o" items="${datas}">
-											<div class="mv-user-review-item">
-												<div style="width:95%;">
-													<div class="user-infor">
-														<div class="userid-timestmap">
-															<h5>${o.mid}</h5>
-															<p style="float:right"class="time">${o.odate}</p>
-														</div>
-														<br>
-														<br>
-														<div class="no-star">
-															<i class="ion-android-star"></i> <span
-																style="color: black;">${o.ostar}</span>
-														</div>
-														<span class="ocontent"> ${o.ocontent}</span>
-													</div>
-												</div>
-
-
-
-												<%-- <span id="content">${o.ocontent}</span> --%>
-
-												<bb:oboard midCheck="${o.mid}" oid="${o.oid}" nid="${o.nid}" />
-
-												<hr>
-
-												<!-- <a href="updateO.do?oid=${oid}">수정</a>&nbsp;<a href="deleteO.do?oid=${oid}">삭제</a> -->
-												<hr>
-											</div>
-										</c:forEach>
-
-
-										<c:if test="${datas_size>cnt}">
-											<div class="topbar-filter" style="border: none;">
-												<div class="pagination2" style="padding-left: 0px;">
-													<a href="novelBoard.do?cnt=${cnt+5}&nid=${data.nid}">더보기<i
-														class="ion-arrow-down-b"></i></a>
-												</div>
-											</div>
-										</c:if>
 									</div>
+									</c:if>
+									<!-- ${datas} -->
+									<hr style="height: 5px; background-color: grey; border-radius: 3rem; width: 97%;">
+									<c:forEach var="o" items="${datas}">
+										<div class="mv-user-review-item">
+											<div style="width: 95%;">
+												<div class="user-infor">
+													<div class="userid-timestmap"
+														style="display: inline-block; width: 100%; margin-bottom: 4%;">
+														<span style="font-size: 28px;">${o.mid}</span>
+														<div class="no-star" style="display: inline-block; margin-left:2%;">
+															<i class="ion-android-star"></i> <span
+																style="color: black;">${o.ostar} / 5</span>
+														</div>
+														<span style="float: right" class="time">${o.odate}</span>
+													</div>
+													<span class="ocontent">${o.ocontent} </span>
+												</div>
+											</div>
+
+
+
+											<%-- <span id="content">${o.ocontent}</span> --%>
+
+											<bb:oboard midCheck="${o.mid}" oid="${o.oid}" nid="${o.nid}" />
+
+											<hr
+												style="height: 5px; background-color: grey; border-radius: 3rem; width: 97%;">
+
+											<!-- <a href="updateO.do?oid=${oid}">수정</a>&nbsp;<a href="deleteO.do?oid=${oid}">삭제</a> -->
+										</div>
+									</c:forEach>
+
+
+									<c:if test="${datas_size>cnt}">
+										<div class="topbar-filter" style="border: none;">
+											<div class="pagination2" style="padding-left: 0px;">
+												<a href="novelBoard.do?cnt=${cnt+5}&nid=${data.nid}">더보기<i
+													class="ion-arrow-down-b"></i></a>
+											</div>
+										</div>
+									</c:if>
 								</div>
 							</div>
 						</div>
@@ -209,6 +193,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- footer section-->
 	<bb:footer />
@@ -222,7 +207,7 @@
 
 <c:if test="${opinion}">
 
-<script type="text/javascript">
+	<script type="text/javascript">
 window.addEventListener("scroll", (event) => {
     let scrollY = this.scrollY;
     let scrollX = this.scrollX;
@@ -230,7 +215,7 @@ window.addEventListener("scroll", (event) => {
     console.log(scrollX);
 });
 </script>
-<script type="text/javascript">
+	<script type="text/javascript">
 window.addEventListener("scroll", (event) => {
     let scrollY = this.scrollY;
     let scrollX = this.scrollX;
@@ -241,7 +226,7 @@ window.addEventListener("scroll", (event) => {
 </script>
 </c:if>
 <c:if test="${cnt > 5 }">
-<script type="text/javascript">
+	<script type="text/javascript">
    var cnt = ${cnt*180};
    console.log(cnt);
    window.scrollTo({top:cnt, left:0, behavior:'smooth'});

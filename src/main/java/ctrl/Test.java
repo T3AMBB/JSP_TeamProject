@@ -47,7 +47,7 @@ public class Test extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String path="C:\\Users\\Administrator\\Desktop\\bbster-master\\BBSTER\\src\\main\\webapp\\images"; 
+		String path="D:\\JAVA\\java4\\resource\\project1\\src\\main\\webapp\\images"; 
 		int maxSize=100000000; // 바이트 단위
 		MultipartRequest mr=new MultipartRequest(request,path,maxSize,"UTF-8",new DefaultFileRenamePolicy());
 		

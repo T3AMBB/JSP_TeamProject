@@ -13,9 +13,9 @@
 <c:if test="${member.nickname==midCheck}">
    <c:choose>
    <c:when test="${type=='bmsg'}">
-			<a href="deleteB.do?bid=${bid}"><button>삭제</button></a> &nbsp;
+			<a href="deleteB.do?bid=${bid}"><button style="color:grey; background-color:gold; border:1px solid gold; border-radius:1rem; width:47px; padding:3px; ">삭제</button></a> &nbsp;
 		<div class="que1" style="display:inline-block;">
-	<button>수정</button>
+	<button style="color:white; background-color:gold; border:1px solid gold; border-radius:1rem; width:47px; padding:3px;">수정</button>
 	</div>
 	<div class="anw1" style="display: none; ">
 	<form action="updateB.do" name="updateBform">
@@ -27,9 +27,9 @@
 	
 		</c:when>
       <c:when test="${type=='rmsg'}">
-         <a href="deleteR.do?rid=${rid}&bid=${bid}"><button>삭제</button></a> &nbsp;
+         <a href="deleteR.do?rid=${rid}&bid=${bid}"><button style="color:grey; background-color:gold; border:1px solid gold; border-radius:1rem; width:47px; padding:3px;">삭제</button></a> &nbsp;
       <div class="que2"style="display:inline-block;">
-   <button>수정</button>
+   <button style="color:white; background-color:gold; border:1px solid gold; border-radius:1rem; width:47px; padding:3px;">수정</button>
    </div>
    <div class="anw2" style="display: none; ">
    <form action="updateR.do" name="updateRform">
@@ -37,15 +37,15 @@
       <input type="hidden" value="${rid}" name="rid">
       <input type="hidden" value="${content}" name="content">
       <input type="hidden" value="${bid}" name="bid">
-      <input type="submit" value="수정완료" style="float:right;"/>
+      <input type="submit" value="수정완료" style="float:right;color:grey; background-color:gold; border:1px solid gold; border-radius:1rem;"/>
    </form>
    </div>
       </c:when>
    
       <c:when test="${type=='rrmsg'}">
-   <a href="deleteRR.do?rrid=${rrid}&bid=${bid}"><button>삭제</button></a> &nbsp;    
+   <a href="deleteRR.do?rrid=${rrid}&bid=${bid}"><button style="color:grey; background-color:gold; border:1px solid gold; border-radius:1rem; width:47px; padding:3px; margin-left:2%">삭제</button></a> &nbsp;    
          <div class="que3"style="display:inline-block;">
-   <button>수정</button>
+   <button style="color:white; background-color:gold; border:1px solid gold; border-radius:1rem; width:47px; padding:3px;">수정</button>
    </div>
     <div class="anw3" style="display: none; "> 
    <form action="updateRR.do" name="updateRRform">
@@ -53,7 +53,7 @@
       <input type="hidden" value="${rrid}" name="rrid">
       <input type="hidden" value="${content}" name="content">
       <input type="hidden" value="${bid}" name="bid">
-      <input type="submit" value="수정완료" style="float:right;"/>
+      <input type="submit" value="수정완료" style="float:right;color:grey; background-color:gold; border:1px solid gold; border-radius:1rem;"/>
    </form>
     </div> 
       </c:when>

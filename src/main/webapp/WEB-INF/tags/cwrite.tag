@@ -17,7 +17,7 @@
                                     placeholder="댓글을 작성해주세요 최대 500자"></textarea>
                               </div>
                            </div>
-                           <input class="submit" type="submit" placeholder="submit">
+                           <input class="submit" type="submit" value="작성하기">
                         </form>
 		</c:when>
 	
@@ -31,7 +31,7 @@
                                              placeholder="댓글을 작성해주세요 최대 500자" ></textarea>
                                        </div>
                                     </div>
-                                    <input class="submit" type="submit" placeholder="submit">
+                                    <input class="submit" type="submit" value="작성하기" style="color:black; background-color:gold; border:1px solid gold; border-radius:1rem;">
                                  </form>
                                
 		</c:when>

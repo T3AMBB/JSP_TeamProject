@@ -104,10 +104,10 @@
 					
 					<div >
 					<form action="adminMemberU.do" method="post" style="width:74%; float:right;">
-										<select name="role"style="border-radius: 12px;">
-											<option value="member">member</option>
-											<option value="admin">admin</option>
-											<option value="MVP">MVP</option>
+										<select name="role"style="border-radius: 12px; width:90px; text-align:right;">
+											<option value="member"style="text-align:left;">member</option>
+											<option value="admin" style="text-align:left;">admin</option>
+											<option value="MVP" style="text-align:left;">MVP</option>
 											
 										</select>
 										<input type="hidden" value="${Mvo.mid}" name="mid">
